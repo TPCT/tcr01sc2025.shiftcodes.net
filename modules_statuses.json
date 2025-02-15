@@ -1,0 +1,6 @@
+{
+    "Admin": true,
+    "SuperAdmin": true,
+    "Website": true,
+    "API": true
+}

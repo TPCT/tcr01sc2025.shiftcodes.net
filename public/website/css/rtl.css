@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+html,body {
+    direction: rtl;
+}
+* {
+    font-family: 'Tajawal', sans-serif;
+}
+.header__actions {
+    justify-content: left;
+}
+.header__actions_label i {
+    margin-left: 0;
+    margin-right: 3px;
+}
+.header__actions li.header__actions_list_item p img {
+    margin-right: 0;
+    margin-left: 5px;
+}
+.header__actions_label img {
+    margin-right: 0;
+    margin-left: 5px;
+}
+.contact-footer li {
+    direction: ltr !important;
+  }
+.header__actions_menu {
+    right: auto;
+    left: 0;
+}
+.product__vertical {
+    direction: rtl;
+}
+.mr-auto {
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+.owl-carousel {
+    direction: ltr;
+}
+footer ul {
+    padding-left: 0;
+    padding-right: 30px;
+}
+.navbar-collapse .navbar-nav {
+    padding-right: 0;
+    padding-left: 1rem !important;
+}
+.header__actions li.header__actions_list_item i {
+    margin-right: 3px;
+    margin-left: 5px;
+}
+.product__vertical_actions ul li i {
+    margin-right: 0;
+    margin-left: 10px;
+}
+.home__brands_item {
+    margin-left: 0;
+    margin-right: auto;
+}
+.product__vertical_bottom_features ul {
+    padding-left: 0;
+    padding-right: 20px;
+}
+.note__label_holder {
+    justify-content: right !important;
+}
+.car_company_terms {
+    padding-left: 0;
+    padding-right: 20px;
+    padding-left: 0;
+}
+.car_company_terms li ul {
+    padding-left: 0;
+    padding-right: 50px;
+}
+@media screen and (max-width:767px) {
+    .home__brands_item h3 {
+        font-size: 11pt;
+    }
+    .product__vertical {
+        border-radius: 12px;
+    }
+    /* .product__vertical_actions ul {
+        gap: 0px;
+    }
+    .product__vertical_actions ul li a {
+        font-size: 9pt;
+    }
+    .product__vertical_actions ul li a {
+        gap: 2px;
+    }
+    .product__vertical_actions ul li i {
+        margin-left: 3px;
+    }
+    .product__vertical_actions {
+        padding: 15px 5px;
+    } */
+}
