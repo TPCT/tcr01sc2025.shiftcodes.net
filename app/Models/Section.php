@@ -34,18 +34,6 @@ class Section extends Model implements Sitemapable
         return $this->belongsToMany(Car::class, 'section_cars');
     }
 
-    public function slug() {
-        $name = $this->getTranslation('title', 'en');
-        $slug = str_replace(' ', '-', $name);
-        $slug = str_replace('/', '', $slug);
-        $slug = str_replace(['(', ')'], '', $slug);
-        $slug = str_replace(',', '', $slug);
-        $slug = preg_replace('/-+/', '-', $slug);
-        $slug = trim($slug, '-');
-        $slug = strtolower($slug);
-        return $slug;
-    }
-
     public function toSitemapTag(): Url | string | array
     {
         $url = LaravelLocalization::localizeUrl("/s/{$this->id}/{$this->slug()}");

@@ -4,6 +4,8 @@ namespace Modules\Website\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\City;
+use App\Models\Country;
+use App\Models\Currency;
 use \App\Models\Type;
 use \App\Models\Section;
 use \App\Models\Company;
@@ -54,33 +56,27 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function switchCountry($id) {
-        \Cookie::queue('country_id', $id, 60* 24 * 30);
+    public function switchCountry(?Country $country) {
+        \Cookie::queue('country_id', $country?->id ?? 0, 60* 24 * 30);
         \Cookie::queue('city_id', 0, 60* 24 * 30);
         return redirect()->back();
     }
 
-    public function switchCity($slug) {
-        $city = \App\Models\City::where('title->en', ucwords(str_replace('-', ' ', $slug)))->first();
-        \Cookie::queue('city_id', $slug, 60* 24 * 30);
+    public function switchCity(?City $city) {
+        \Cookie::queue('city_id', $city?->id ?? 0, 60* 24 * 30);
         if($city) {
             \Cookie::queue('country_id', $city->country_id, 60* 24 * 30);
         }
-        if(!$city || $slug == 0) {
+        if(!$city) {
             return redirect()->to(LaravelLocalization::localizeUrl('/'));
         }
-
-//        return redirect("/l/" . $city->id . "/" . $city->slug());
-
-//        $locale = app()->getLocale(); // Get the current locale
-//        return redirect("/{$locale}/l/" . $city->id . "/" . $city->slug());
-
-        $carsController = new CarsController();
-        return $carsController->cities($city->id, $city->slug);
+        return redirect()->back();
+//        $carsController = new CarsController();
+//        return $carsController->cities($city->id, $city->slug);
     }
 
-    public function switchCurrency($id) {
-        \Cookie::queue('currency_id', $id, 60* 24 * 30);
+    public function switchCurrency(?Currency $currency) {
+        \Cookie::queue('currency_id', $currency?->id ?? null, 60* 24 * 30);
         return redirect()->back();
     }
 

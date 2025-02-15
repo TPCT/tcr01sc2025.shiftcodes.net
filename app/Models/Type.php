@@ -37,13 +37,6 @@ class Type extends Model implements Sitemapable
         return $this->belongsToMany(Car::class, 'car_types')->with('company');
     }
 
-    public function slug() {
-        // $slug = str_replace(' ', '-', $this->getTranslation('title','en'));
-        // return $slug;
-        $slug = "rent-".str_replace(' ', '-', $this->getTranslation('title','en'))."-car-rental-dubai";
-        return $slug;
-    }
-
     public function toSitemapTag(): Url | string | array
     {
         $url = LaravelLocalization::localizeUrl("/t/{$this->sync_id}/{$this->slug()}");

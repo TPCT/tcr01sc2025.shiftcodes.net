@@ -24,10 +24,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::get('/lang/switch/{key}', [HomeController::class, 'switchLanguage']);
-    Route::get('/country/{id}/switch', [HomeController::class, 'switchCountry']);
-    Route::get('/currency/{id}/switch', [HomeController::class, 'switchCurrency']);
-    Route::get('/{slug}/car-rental', [HomeController::class, 'switchCity'])->name('website.switch-city');
+    Route::get('/language/{key}/switch', [HomeController::class, 'switchLanguage']);
+    Route::get('/country/{country?}/switch', [HomeController::class, 'switchCountry'])->name('website.switch-country');
+    Route::get('/currency/{currency?}/switch', [HomeController::class, 'switchCurrency'])->name('website.switch-currency');
+    Route::get('/city/{city?}/switch', [HomeController::class, 'switchCity'])->name('website.switch-city');
 
 
     Route::get('/brands/models', [CarsController::class, 'getModels']);

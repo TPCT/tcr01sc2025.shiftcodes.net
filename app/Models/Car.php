@@ -19,6 +19,7 @@ class Car extends Model implements Sitemapable
 
     protected $fillable = [
         'name',
+        'slug',
         'price_per_day',
         'price_per_week',
         'price_per_month',
@@ -97,18 +98,6 @@ class Car extends Model implements Sitemapable
     public function types()
     {
         return $this->belongsToMany(Type::class, 'car_types');
-    }
-
-    public function slug() {
-        $name = $this->getTranslation('name', 'en');
-        $slug = str_replace(' ', '-', $name);
-        $slug = str_replace('/', '', $slug);
-        $slug = str_replace(['(', ')'], '', $slug);
-        $slug = str_replace(',', '', $slug);
-        $slug = preg_replace('/-+/', '-', $slug);
-        $slug = trim($slug, '-');
-        $slug = strtolower($slug);
-        return $slug;
     }
 
     public function toSitemapTag(): Url | string | array

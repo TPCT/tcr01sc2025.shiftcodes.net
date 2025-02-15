@@ -19,6 +19,7 @@ class Company extends Model implements Sitemapable
 
     protected $fillable = [
         'country_id',
+        'slug',
         'name',
         'address',
         'phone_01',
@@ -171,11 +172,6 @@ class Company extends Model implements Sitemapable
 
     public function getActionsByTypeDate($type, $date) {
         return $this->actions()->where('type', $type)->whereDate('created_at', $date)->count();
-    }
-
-    public function slug() {
-        $slug = str_replace(' ', '-', $this->getTranslation('name','en'));
-        return $slug;
     }
 
     public function sections() {

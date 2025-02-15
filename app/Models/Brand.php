@@ -41,13 +41,6 @@ class Brand extends Model implements Sitemapable
         return $this->hasMany(Car::class);
     }
 
-    public function slug() {
-        // $slug = str_replace(' ', '-', $this->getTranslation('title','en'));
-        // return $slug;
-        $slug = "rent-".str_replace(' ', '-', $this->getTranslation('title','en'))."-in-Dubai";
-        return $slug;
-    }
-
     public function toSitemapTag(): Url | string | array
     {
         $url = LaravelLocalization::localizeUrl("/b/{$this->sync_id}/{$this->slug}");
