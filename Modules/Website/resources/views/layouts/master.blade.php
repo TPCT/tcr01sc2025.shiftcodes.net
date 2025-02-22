@@ -505,22 +505,22 @@
                     </div>
                 </li>
 
-                @if(count(app('settings')->getRentCarPages()) > 0)
-                    <li class="nav-item dropdown">
-                        <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                              aria-haspopup="true" aria-expanded="false">
-                        {{__('lang.Rent a car')}}
-                        </span>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach(app('settings')->getRentCarPages() as $item)
-                                <a class="dropdown-item"
-                                   href="{{ LaravelLocalization::localizeUrl("/p/{$item->id}/{$item->slug}") }}">{{$item->name}}</a>
-                            @endforeach
+{{--                @if(count(app('settings')->getRentCarPages()) > 0)--}}
+{{--                    <li class="nav-item dropdown">--}}
+{{--                        <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"--}}
+{{--                              aria-haspopup="true" aria-expanded="false">--}}
+{{--                        {{__('lang.Rent a car')}}--}}
+{{--                        </span>--}}
+{{--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">--}}
+{{--                            @foreach(app('settings')->getRentCarPages() as $item)--}}
+{{--                                <a class="dropdown-item"--}}
+{{--                                   href="{{ LaravelLocalization::localizeUrl("/p/{$item->id}/{$item->slug}") }}">{{$item->name}}</a>--}}
+{{--                            @endforeach--}}
 
 
-                        </div>
-                    </li>
-                @endif
+{{--                        </div>--}}
+{{--                    </li>--}}
+{{--                @endif--}}
 
                 <li class="nav-item active">
                     <a class="nav-link"
