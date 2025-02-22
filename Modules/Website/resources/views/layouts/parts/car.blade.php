@@ -4,28 +4,28 @@
             <div class="product__vertical_top">
                 <div class="product__vertical_meta">
                     @if($car->is_refresh)
-                    <span class="bg-blue">{{__('lang.Featured')}}</span>
+                        <span class="bg-blue">{{__('lang.Featured')}}</span>
                     @endif
                     <span class="bg-orange">{{__('lang.Verified')}}</span>
                     <span class="wishlist wishlist-toggle" data-auth="{{auth()->guard('customers')->check() ? 1 : 0}}" data-id="{{$car->id}}">
                         @if(auth()->guard('customers')->check())
                             @if(!auth()->guard('customers')->user()->wishlist->contains($car->id))
-                            {{__('lang.Save to wishlist')}}
+                                {{__('lang.Save to wishlist')}}
                             @else
-                            {{__('lang.Remove from wishlist')}}
+                                {{__('lang.Remove from wishlist')}}
                             @endif
                         @else
-                        {{__('lang.Save to wishlist')}}
+                            {{__('lang.Save to wishlist')}}
                         @endif
 
                     </span>
 
                 </div>
-                <a aria-label="{{$car->name}}" href="{{ LaravelLocalization::localizeUrl("/{$car->id}/{$car->slug()}") }}">
+                <a aria-label="{{$car->name}}" href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.cars.show', ['car' => $car])) }}">
                 <img loading="lazy" alt="{{$car->name}}" src="{{asset("/storage/{$car->image}")}}"/>
                 </a>
             </div>
-            <a aria-label="{{ $car->name }}" href="{{ LaravelLocalization::localizeUrl("/{$car->id}/{$car->slug()}") }}">
+            <a aria-label="{{$car->name}}" href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.cars.show', ['car' => $car])) }}">
             <div class="product__vertical_bottom">
                 <h2>{{$car->name}}</h2>
                 <div class="product__vertical_bottom_features">
@@ -112,15 +112,6 @@
 
                         <li>{{__('lang.Year')}} / {{$car->year ? $car->year->title : ""}}</li>
                     </ul>
-
-                    @if($car->company)
-                    <a aria-label="{{$car->name}}" href="{{LaravelLocalization::localizeUrl("/c/{$car->company->id}/{$car->company->slug()}") }}" class="flex-1">
-                        <div class="home__brands_item">
-                                <img loading="lazy" alt="{{$car->company->name . rand(0,999)}}" src="{{asset("/storage/{$car->company->image}")}}"/>
-                                <h3>{{$car->company->name}}</h3>
-                        </div>
-                    </a>
-                    @endif
                 </div>
                 <div class="product__vertical_actions">
                     <ul>

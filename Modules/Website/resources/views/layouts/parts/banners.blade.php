@@ -5,7 +5,7 @@
                 <div class="col-lg-12">
                     <div data-is-autoplay="true" data-is-loop="yes" data-items-large="1" data-items-small="1"  class="home__features_content home__rental_companies owl-carousel owl-theme">
                         @foreach($banners as $item)
-                        <a href="{{ $item->company ? LaravelLocalization::localizeUrl("/c/{$item->company->id}/{$item->company->slug()}") : $item->link}}">
+                        <a href="{{ $item->company ? LaravelLocalization::localizeUrl("/c/{$item->company->id}/{$item->company->slug}") : $item->link}}">
                             <div class="home__banner_item">
                                 <img width="1100" height="300" alt="{{$item->id}}" src="{{asset("/storage/{$item->image}")}}" />
                             </div>

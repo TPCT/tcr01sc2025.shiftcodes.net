@@ -29,9 +29,9 @@
                 <div class="col-lg-12">
                     <div data-items-large="6" data-is-loop="false" data-items-small="2" class="home__brands_content owl-carousel owl-theme">
                         @foreach($types as $item)
-                        <a href="{{$item->external_url ?? LaravelLocalization::localizeUrl("/t/{$item->sync_id}/{$item->slug()}") }}">
+                        <a href="{{$item->external_url ?? LaravelLocalization::getLocalizedURL(null, route('website.cars.types.show', ['type' => $item])) }}">
                             <div class="home__brands_item">
-                                <img width="174" height="100" loading="lazy" alt="{{$item->title . rand(0,9999)}}" src="{{asset("/storage/{$item->image}")}}"/>
+                                <img width="174" height="100" loading="lazy" alt="{{$item->slug}}" src="{{asset("/storage/{$item->image}")}}"/>
                                 <h3>{{$item->title}}</h3>
                             </div>
                         </a>
@@ -61,9 +61,9 @@
                 <div class="col-lg-12">
                     <div data-items-large="6" data-is-loop="false" data-items-small="2" class="home__brands_content owl-carousel owl-theme">
                         @foreach(app('cars')->brands as $item)
-                        <a href="{{LaravelLocalization::localizeUrl("/b/{$item->sync_id}/{$item->slug}") }}">
+                        <a href="{{LaravelLocalization::getLocalizedURL(null, route('website.cars.brands.show', ['brand' => $item])) }}">
                             <div class="home__brands_item">
-                                <img width="174" height="100"  loading="lazy" alt="{{$item->title . rand(0,9999)}}" src="{{asset("/storage/{$item->image}")}}"/>
+                                <img width="174" height="100"  loading="lazy" alt="{{$item->slug}}" src="{{asset("/storage/{$item->image}")}}"/>
                                 <h3>{{$item->title}}</h3>
                             </div>
                         </a>
@@ -83,57 +83,6 @@
     @include('website::layouts.parts.banners',[
         "banners" => $banners
     ])
-
-    @if(count($companies) > 0)
-    <section class="home__features">
-        <div class="container">
-            <div class="row">
-
-{{--                @include('website::layouts.parts.page-title', [--}}
-{{--                    "title" => app('settings')->get('car_companies_title'),--}}
-{{--                    "description" => app('settings')->get('car_companies_description'),--}}
-{{--                ])--}}
-
-                <div class="col-lg-12">
-                    <div class="home__brands_title">
-                        <h3>{{app('settings')->get('car_companies_title')}}</h3>
-                    </div>
-                    <div class="home__brands_desc">
-                    {{app('settings')->get('car_companies_description')}}
-                    </div>
-                    <span class="read-more" style="cursor: pointer;">{{__('lang.Read More')}}</span>
-
-                </div>
-
-                <div class="col-lg-12">
-                    <div data-items-large="6" data-items-small="2"  class="home__features_content home__rental_companies owl-carousel owl-theme">
-                        @foreach($companies as $company)
-                        <div class="product__vertical">
-                            <a href="{{ LaravelLocalization::localizeUrl("/c/{$company->id}/{$company->slug()}") }}">
-                            <div class="product__vertical_top">
-                                <img loading="lazy" alt="{{$company->name}}" src="{{asset("/storage/{$company->image}")}}"/>
-                            </div>
-                            <div class="product__vertical_bottom">
-                                <div class="product__vertical_bottom_features">
-                                    <ul>
-                                        @foreach($company->types()->limit(2)->get() as $type)
-                                            <li>{{$type->title}}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-
-                            </div>
-                            </a>
-                        </div>
-                        @endforeach
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    @endif
 
     @include('website::layouts.parts.content', [
         "content" => \App\Models\Content::where('type','home')->first()

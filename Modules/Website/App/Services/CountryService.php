@@ -12,7 +12,7 @@ class CountryService
     public function setCountry($countryId)
     {
         $this->country = Country::find($countryId);
-        $this->city    = null;
+        $this->city    = $this->country->cities()->whereDefault(true)->first()->id;
     }
 
     public function getCountry()

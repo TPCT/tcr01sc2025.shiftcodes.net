@@ -27,7 +27,6 @@ class HomeController extends Controller
     }
     public function index()
     {
-        // dd( \App\Models\Content::where('type','home')->first()->getTranslations('description')   );
         $types = Type::withCount('cars')
         ->orderBy('cars_count', 'desc')
         ->get();
@@ -35,12 +34,10 @@ class HomeController extends Controller
         $companies = Company::with("types")->where(function($query) {
             $query->where('type','default');
             $query->where('status',1);
-            $query->where('country_id', app('country')->getCountry()->id);
-            if(app('country')->getCity()) {
-                $query->whereHas('cities', function($qq) {
-                    $qq->where('city_id', app('country')->getCity()->id);
-                });
-            }
+            $query->where('country_id', session('country_id'));
+            $query->whereHas('cities', function($qq) {
+                $qq->where('city_id', session('city_id'));
+            });
         })->limit(10)->inRandomOrder()->get();
         $banners   = Banner::orderBy('id', 'desc')->get();
         return view('website::index')->with([
@@ -52,31 +49,20 @@ class HomeController extends Controller
     }
 
     public function switchLanguage($key) {
-        \Cookie::queue(\Cookie::make('locale', $key, 60*24*30));
+        session()->put('locale', $key);
         return redirect()->back();
     }
 
-    public function switchCountry(?Country $country) {
-        \Cookie::queue('country_id', $country?->id ?? 0, 60* 24 * 30);
-        \Cookie::queue('city_id', 0, 60* 24 * 30);
-        return redirect()->back();
+    public function switchCountry(Country $country) {
+        return redirect()->back()->with(['set-country' => $country->id, 'set-city' => $country->cities()->whereDefault(true)->first()->id]);
     }
 
     public function switchCity(?City $city) {
-        \Cookie::queue('city_id', $city?->id ?? 0, 60* 24 * 30);
-        if($city) {
-            \Cookie::queue('country_id', $city->country_id, 60* 24 * 30);
-        }
-        if(!$city) {
-            return redirect()->to(LaravelLocalization::localizeUrl('/'));
-        }
-        return redirect()->back();
-//        $carsController = new CarsController();
-//        return $carsController->cities($city->id, $city->slug);
+        return redirect()->back()->with(['set-country' => $city->country()->first()->id, 'set-city' => $city->id]);
     }
 
-    public function switchCurrency(?Currency $currency) {
-        \Cookie::queue('currency_id', $currency?->id ?? null, 60* 24 * 30);
+    public function switchCurrency(Currency $currency) {
+        session()->put('currency_id', $currency->id);
         return redirect()->back();
     }
 

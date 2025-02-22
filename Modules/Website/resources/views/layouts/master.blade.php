@@ -254,19 +254,19 @@
                         <ul class="header__actions_menu">
                             @foreach(app('country')->getAllCountries() as $country)
                                 <li>
-                                    <a href="{{ LaravelLocalization::localizeUrl("/country/{$country->id}/switch") }}">{{$country->title}}</a>
+                                    <a href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.switch.country', ['country' => $country])) }}">{{$country->title}}</a>
                                     @if(count($country->cities) > 0)
                                         <ul class="cities_menu">
-                                            <li>
-                                                <a href="{{ LaravelLocalization::getLocalizedURL(null, route('website.switch-city', ['city' => null])) }}">{{__('lang.All')}}
-                                                    @if(app('country')->getCountry()->id == $country->id && !app('country')->getCity())
-                                                        <i class="fa fa-check"></i>
-                                                    @endif
-                                                </a>
-                                            </li>
+{{--                                            <li>--}}
+{{--                                                <a href="{{ LaravelLocalization::getLocalizedURL(null, route('website.switch.city', ['city' => 'all'])) }}">{{__('lang.All')}}--}}
+{{--                                                    @if(app('country')->getCountry()->id == $country->id && !app('country')->getCity())--}}
+{{--                                                        <i class="fa fa-check"></i>--}}
+{{--                                                    @endif--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
                                             @foreach($country->cities as $city)
                                                 <li>
-                                                    <a href="{{ LaravelLocalization::getLocalizedURL(null, route('website.switch-city', ['city' => $city])) }}">{{$city->title}}
+                                                    <a href="{{ LaravelLocalization::getLocalizedURL(null, route('website.switch.city', ['city' => $city])) }}">{{$city->title}}
                                                         @if(app('country')->getCity() && $city->id == app('country')->getCity()->id)
                                                             <i class="fa fa-check"></i>
                                                         @endif
@@ -291,7 +291,7 @@
                         <ul class="header__actions_menu">
                             @foreach(app('currencies')->getAllCurrencies() as $currency)
                                 <li>
-                                    <a href="{{ LaravelLocalization::getLocalizedURL(null, route("website.switch-currency", ['currency' => $currency])) }}">{{$currency->code}}</a>
+                                    <a href="{{ LaravelLocalization::getLocalizedURL(null, route("website.switch.currency", ['currency' => $currency])) }}">{{$currency->code}}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -381,11 +381,11 @@
                 <ul class="header__actions_menu">
                     @foreach(app('country')->getAllCountries() as $country)
                         <li>
-                            <a href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.switch-country', ['country' => $country])) }}">{{$country->title}}</a>
+                            <a href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.switch.country', ['country' => $country])) }}">{{$country->title}}</a>
                             @if(count($country->cities) > 0)
                                 <ul class="cities_menu">
                                     <li>
-                                        <a href="{{ LaravelLocalization::getLocalizedUrl(null, 'website.switch-city', ['city' => null]) }}">{{__('lang.All')}}
+                                        <a href="{{ LaravelLocalization::getLocalizedUrl(null, 'website.switch.city', ['city' => null]) }}">{{__('lang.All')}}
                                             @if(app('country')->getCountry()->id == $country->id && !app('country')->getCity())
                                                 <i class="fa fa-check"></i>
                                             @endif
@@ -393,7 +393,7 @@
                                     </li>
                                     @foreach($country->cities as $city)
                                         <li>
-                                            <a href="{{ LaravelLocalization::getLocalizedURL(null, route('website.switch-city', ['city' => $city]))}}">{{$city->title}}
+                                            <a href="{{ LaravelLocalization::getLocalizedURL(null, route('website.switch.city', ['city' => $city]))}}">{{$city->title}}
                                                 @if(app('country')->getCity() && $city->id == app('country')->getCity()->id)
                                                     <i class="fa fa-check"></i>
                                                 @endif
@@ -655,7 +655,7 @@
 
                         <li>
                             <a data-toggle="tooltip" data-placement="left" title="{{__('lang.Rent')}} {{$t->title}}"
-                               href="{{ LaravelLocalization::localizeUrl("/t/{$t->sync_id}/{$t->slug()}") }}">{{__('lang.Rent')}} {{$t->title}}</a>
+                               href="{{ LaravelLocalization::getLocalizedURL(null, route('website.cars.types.show', ['type' => $t])) }}">{{__('lang.Rent')}} {{$t->title}}</a>
                         </li>
                     @endforeach
 

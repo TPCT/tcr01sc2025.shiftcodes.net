@@ -1,6 +1,6 @@
 <li>
     @php
-        $msg = "Hello, I am interested in your car " . \Mcamara\LaravelLocalization\Facades\LaravelLocalization::localizeUrl("/{$car->id}/{$car->slug()}");
+        $msg = "Hello, I am interested in your car " . \Mcamara\LaravelLocalization\Facades\LaravelLocalization::localizeUrl("/{$car->id}/{$car->slug}");
         $isMobile = Browser::isMobile();
         $url = $isMobile ? "https://api.whatsapp.com/send?phone=" . urlencode($car->company?->phone_02) . "&text=" . urlencode($msg) : "https://web.whatsapp.com/send?phone=" . urlencode($car->company?->phone_02) . "&text=" . urlencode($msg);
     @endphp

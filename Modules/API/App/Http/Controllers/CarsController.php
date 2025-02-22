@@ -16,7 +16,7 @@ class CarsController extends Controller
         $car = Car::findOrFail($id);
         $type = request()->get('type');
 
-        $msg = "Hello, I am interested in your car " . url('/')  .$car->sync_id .'/'. $car->slug();
+        $msg = "Hello, I am interested in your car " . url('/')  .$car->sync_id .'/'. $car->slug;
         if($type == 'whatsapp') {
             $url = "https://wa.me/".$car->company->phone_02 . "?text=" . urlencode($msg);
         } else if($type == 'email') {

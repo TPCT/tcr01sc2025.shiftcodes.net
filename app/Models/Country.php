@@ -6,7 +6,39 @@ use App\Helpers\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
-
+/**
+ * 
+ *
+ * @property int $id
+ * @property string|null $slug
+ * @property array|null $title
+ * @property string|null $flag
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $phone_code
+ * @property int|null $sync_id
+ * @property int $default
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\City> $cities
+ * @property-read int|null $cities_count
+ * @property-read mixed $translations
+ * @method static \Illuminate\Database\Eloquent\Builder|Country newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereDefault($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereFlag($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereJsonContainsLocale(string $column, string $locale, ?mixed $value, string $operand = '=')
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereJsonContainsLocales(string $column, array $locales, ?mixed $value, string $operand = '=')
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereLocale(string $column, string $locale)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereLocales(string $column, array $locales)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country wherePhoneCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereSyncId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Country extends Model
 {
     use HasFactory;
@@ -17,8 +49,8 @@ class Country extends Model
 
     protected $fillable = [
         'title',
-        'slug',
         'flag',
+        'slug',
         "sync_id"
     ];
 

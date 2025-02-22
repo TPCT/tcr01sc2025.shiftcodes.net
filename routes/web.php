@@ -14,6 +14,6 @@ use App\Services\AdminAuth;
 */
 
 
-Route::fallback(function () {
-    return redirect('/');
-});
+//Route::fallback(function () {
+//    return redirect('/');
+//});

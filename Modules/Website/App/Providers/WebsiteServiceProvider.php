@@ -2,7 +2,9 @@
 
 namespace Modules\Website\App\Providers;
 
+use App\Models\City;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use \Modules\Website\App\Services\SettingsService;
 use \Modules\Website\App\Services\CarsService;
@@ -35,8 +37,7 @@ class WebsiteServiceProvider extends ServiceProvider
         $router->aliasMiddleware('customer-auth', CustomerAuth::class);
         $router->aliasMiddleware('country', Country::class);
         $router->aliasMiddleware('currency', Currencies::class);
-         $router->aliasMiddleware('clean-url', CheckUrlClean::class);
-     
+        $router->aliasMiddleware('clean-url', CheckUrlClean::class);
     }
 
     /**

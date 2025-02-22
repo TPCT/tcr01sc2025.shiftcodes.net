@@ -53,7 +53,7 @@
             <ul>
                 @foreach($company->brands() as $brand)
                     <li>
-                        <a href="{{LaravelLocalization::localizeUrl("/b/{$brand->sync_id}/{$brand->slug()}?company_id={$company->id}")}}">
+                        <a href="{{LaravelLocalization::localizeUrl("/b/{$brand->sync_id}/{$brand->slug}?company_id={$company->id}")}}">
                             <i class="fa fa-check"></i>
                             {{$brand->title}} ({{$company->cars()->where('brand_id',$brand->id)->count()}})
                         </a>
@@ -71,7 +71,7 @@
             <ul>
                 @foreach($company->types as $type)
                     <li>
-                        <a href="{{LaravelLocalization::localizeUrl("/t/{$type->sync_id}/{$type->slug()}?company_id={$company->id}")}}">
+                        <a href="{{LaravelLocalization::localizeUrl("/t/{$type->sync_id}/{$type->slug}?company_id={$company->id}")}}">
                             <i class="fa fa-check"></i>
                             {{$type->title}} ({{$company->getCarsCountInType($type->id)}})
                         </a>

@@ -8,7 +8,7 @@
                     <div class="home__brands_title">
                         <h3>{{$section->title}}</h3>
                         <div class="home_brands_view_all_holder">
-                            <a class="home_brands_view_all" href="{{LaravelLocalization::localizeUrl("/s/{$section->id}/{$section->slug()}")}}">
+                            <a class="home_brands_view_all" href="{{LaravelLocalization::localizeUrl("/s/{$section->id}/{$section->slug}")}}">
                                 {{__('lang.View All')}}
                             </a>
                         </div>

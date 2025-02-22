@@ -81,7 +81,7 @@
             "image": [
                 "{{secure_url('/')}}/storage/{{$car->image}}"
             ],
-            "url": "{{secure_url('/')}}/{{$car->id}}/{{$car->slug()}}",
+            "url": "{{secure_url('/')}}/{{$car->id}}/{{$car->slug}}",
             "offers": {
                 "@type": "Offer",
                 "availability": "https://schema.org/InStock",

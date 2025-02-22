@@ -14,19 +14,14 @@ class CheckUrlClean
      */
     public function handle(Request $request, Closure $next)
     {
-      $currentUrl = url()->full();
-    $rejectedEnds = ['#!', '_escaped_fragment_='];
-    // dd($currentUrl);
-    foreach ($rejectedEnds as $end) {
-        if (Str::contains($currentUrl, $end)) {
-            abort(404); // Return a 404 response
+        $currentUrl = url()->full();
+        $rejectedEnds = ['#!', '_escaped_fragment_='];
+        // dd($currentUrl);
+        foreach ($rejectedEnds as $end) {
+            if (Str::contains($currentUrl, $end)) {
+                abort(404); // Return a 404 response
+            }
         }
-    }
-
-
-
-
-
         return $next($request);
     }
 }

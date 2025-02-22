@@ -10,12 +10,12 @@
                 <span class="wishlist wishlist-toggle" data-auth="{{auth()->guard('customers')->check() ? 1 : 0}}" data-id="{{$car->id}}">{{__('lang.Save to wishlist')}}</span>
 
             </div>
-            <a aria-label="{{$car->name}}" href="{{LaravelLocalization::localizeUrl("/{$car->id}/{$car->slug()}")}}">
-            <img alt="{{$car->name}}" src="{{ asset("/storage/{$car->image}") }}"/>
+            <a aria-label="{{$car->name}}" href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.cars.show', ['car' => $car])) }}">
+                <img alt="{{$car->name}}" src="{{ asset("/storage/{$car->image}") }}"/>
             </a>
         </div>
         <div class="product__vertical_bottom">
-            <a aria-label="{{$car->name}}" href="{{LaravelLocalization::localizeUrl("/{$car->id}/{$car->slug()}")}}">
+            <a aria-label="{{$car->name}}" href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.cars.show', ['car' => $car])) }}">
                 <h2>{{$car->name}} </h2>
             </a>
             <div class="product__vertical_bottom_features">
@@ -70,7 +70,7 @@
 
                 <div class="cm-logo">
                     @if($car->company)
-                    <a href="{{LaravelLocalization::localizeUrl("/c/{$car->company->id}/{$car->company->slug()}")}}" class="flex-1 link">
+                    <a href="{{LaravelLocalization::localizeUrl("/c/{$car->company->id}/{$car->company->slug}")}}" class="flex-1 link">
                         <div class="home__brands_item">
                                 <img loading="lazy" alt="{{$car->company->name . rand(0,999)}}" src="{{asset("/storage/{$car->company->image}")}}"/>
                                 <h3>{{$car->company->name}}</h3>
@@ -123,7 +123,7 @@
                     <li class="bottom_car_company">
                         @if($car->company)
                         <div class="home__brands_item">
-                            <a href="{{LaravelLocalization::localizeUrl("/c/{$car->company->id}/{$car->company->slug()}")}}">
+                            <a href="{{LaravelLocalization::localizeUrl("/c/{$car->company->id}/{$car->company->slug}")}}">
                                 <img alt="{{$car->company->name}}" src="{{ asset("/storage/{$car->company->image}")}}"/>
                             </a>
 

@@ -106,7 +106,7 @@
             "image": [
                 "{{secure_url('/')}}/storage/{{$car->image}}"
             ],
-            "url": "{{LaravelLocalization::localizeUrl("/{$car->id}/{$car->slug()}")}}",
+            "url": "{{LaravelLocalization::localizeUrl("/{$car->id}/{$car->slug}")}}",
             "offers": {
                 "@type": "Offer",
                 "availability": "https://schema.org/InStock",

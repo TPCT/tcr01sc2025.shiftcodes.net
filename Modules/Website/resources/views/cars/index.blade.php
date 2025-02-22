@@ -1,4 +1,5 @@
 @extends('website::layouts.master')
+
 @section('css')
     <link href="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.css" rel="stylesheet" />
 @endsection

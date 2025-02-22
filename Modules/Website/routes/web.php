@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Website\App\Http\Controllers\HomeController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Website\App\Http\Controllers\CarsController;
+use Modules\Website\App\Http\Controllers\HomeController;
 use Modules\Website\App\Http\Controllers\PagesController;
 use Modules\Website\App\Http\Controllers\UsersController;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,23 +20,60 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 // Route::group(["middleware" => ["language","country","currency", "redirectIfNotSEOFriendly" , 'clean-url']], function () {
 
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', "language", "country", "currency", "redirectIfNotSEOFriendly", 'clean-url']], function() {
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => [
+        'localeSessionRedirect', 'localizationRedirect',
+        "currency", \Modules\Website\App\Http\Middleware\CountryMiddleware::class
+    ]],
+    function() {
 
-    Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::get('/language/{key}/switch', [HomeController::class, 'switchLanguage']);
-    Route::get('/country/{country?}/switch', [HomeController::class, 'switchCountry'])->name('website.switch-country');
-    Route::get('/currency/{currency?}/switch', [HomeController::class, 'switchCurrency'])->name('website.switch-currency');
-    Route::get('/city/{city?}/switch', [HomeController::class, 'switchCity'])->name('website.switch-city');
+    Route::get('/language/{key}/switch', [HomeController::class, 'switchLanguage'])->name('website.switch.language');
+    Route::get('/country/{country?}/switch', [HomeController::class, 'switchCountry'])->name('website.switch.country');
+    Route::get('/currency/{currency?}/switch', [HomeController::class, 'switchCurrency'])->name('website.switch.currency');
+    Route::get('/city/{city?}/switch', [HomeController::class, 'switchCity'])->name('website.switch.city');
 
+    Route::group([
+        'middleware' => [\Modules\Website\App\Http\Middleware\CountryMiddleware::class],
+        'prefix' => '{country?}/{city?}'
+    ], function () {
+        Route::get('/', [HomeController::class, 'index'])->name('home');
+        Route::get('/types/{type}', [CarsController::class, 'types'])->name('website.cars.types.show');
+        Route::get('/brands/{brand}', [CarsController::class, 'brands'])->name('website.cars.brands.show');
+        Route::get('/cars/{car}', [CarsController::class, 'show'])->name('website.cars.show');
+    });
+    /*
+     *
+     * /en/monthly -> /uae/monthly -> /uae/dubai/monthly
+     * /en/uae/monthly/
+     *
+     * /en
+     * /en/uae
+     * /en/uae/dubai
+     *
+     * /en/uae/dubai/types/{type}/brands/{brand}/period/{period}
+     * /en/uae/dubai/types/{type}
+     * /en/uae/dubai/brands/{brand}
+     * /en/uae/dubai/period/{monthly,weekly,daily}
+     * /en/uae/dubai/cars/{}
+     *
+     * /en/uae/dubai/monthly/bmw/luxury?period=monthly
+     * /en/uae/dubai/monthly
+     *
+     * /en/uae/dubai/luxury/
+     * /car-rental-{location}
+     *
+     */
 
     Route::get('/brands/models', [CarsController::class, 'getModels']);
     Route::get('/a/{id}', [CarsController::class, 'contact']);
 
+
     Route::get('/t/{id}/{slug}', [CarsController::class, 'index'])->name('types');
     Route::get('/b/{id}/{slug}', [CarsController::class, 'index'])->name('brands');
 
- 
+
 
 
     Route::get('/d/cars', [CarsController::class, 'carsWithDriver']);
