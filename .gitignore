@@ -50,6 +50,7 @@ Thumbs.db
 
 /vendor
 /node_modules
-/storage/*
+/storage/framework
+/storage/logs
 
 .env
