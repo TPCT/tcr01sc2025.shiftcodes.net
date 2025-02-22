@@ -33,5 +33,14 @@ class Currency extends Model
 {
     use HasFactory;
 
+    public function getRouteKey(){
+        return $this->code;
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'code';
+    }
+
     protected $fillable = ['name', 'code', 'aed_rate', 'default'];
 }

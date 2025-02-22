@@ -4,6 +4,7 @@ namespace Modules\Website\App\Http\Middleware;
 
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Currency;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -61,6 +62,7 @@ class CountryMiddleware
         session()->put('city_id', $city->id);
         app('country')->setCountry(session('country_id'));
         app('country')->setCity(session('city_id'));
+        app('currencies')->setCurrency(session('currency_id', Currency::whereDefault(true)->first()->id));
         URL::defaults(['country' => $country->slug, 'city' => $city->slug]);
         return $next($request);
     }

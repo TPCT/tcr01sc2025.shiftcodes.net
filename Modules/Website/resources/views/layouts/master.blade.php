@@ -419,7 +419,7 @@
                 <ul class="header__actions_menu">
                     @foreach(app('currencies')->getAllCurrencies() as $currency)
                         <li>
-                            <a href="{{ LaravelLocalization::localizeUrl("/currency/{$currency}/cars") }}">{{$currency->code}}</a>
+                            <a href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.switch.currency', ['currency' => $currency])) }}">{{$currency->code}}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -465,13 +465,6 @@
                             </a>
                         </li>
                     @endforeach
-
-
-                    <!--@foreach(config('app.languages') as $key => $lang)-->
-                    <!--    <li>-->
-                    <!--        <a href="{{secure_url('/')}}/lang/switch/{{$key}}">{{$lang}}</a>-->
-                    <!--    </li>-->
-                    <!--@endforeach-->
                 </ul>
             </li>
 
@@ -485,7 +478,7 @@
             </div>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{LaravelLocalization::localizeUrl("/")}}">{{__('lang.Home')}}</a>
+                    <a class="nav-link" href="{{LaravelLocalization::getLocalizedUrl(null, route('home'))}}">{{__('lang.Home')}}</a>
                 </li>
                 <li class="nav-item dropdown">
                         <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -497,7 +490,7 @@
                             <div class="row">
                                 @foreach(app('cars')->brands as $item)
                                     <div class="col-lg-3">
-                                        <a href="{{ LaravelLocalization::localizeUrl("/b/{$item->sync_id}/{$item->slug}")}}">
+                                        <a href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.cars.brands.show', ['brand' => $item]))}}">
                                             <div class="navbar__car_brand_item">
                                                 <img loading="lazy" alt="{{$item->title}}"
                                                      src="/storage/{{$item->image}}"/>
