@@ -10,17 +10,6 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # Redirect non-www to www (or vice versa)
-    # Choose one of the following options based on your preference:
-
-    # Option 1: Redirect non-www to www
-    RewriteCond %{HTTP_HOST} !^www\. [NC]
-    RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [L,R=301]
-
-    # Option 2: Redirect www to non-www
-    # RewriteCond %{HTTP_HOST} ^www\. [NC]
-    # RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
-
     # Redirect non-http to https
     RewriteCond %{HTTPS} off
     RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
@@ -34,10 +23,6 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
-
-    # Remove index.php
-    RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
-    RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
 </IfModule>
 
 <IfModule mod_headers.c>
