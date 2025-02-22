@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -46,7 +47,7 @@ use Illuminate\Database\Eloquent\Builder;
 class Models extends Model
 {
     use HasFactory;
-
+    use HasSlug;
     use HasTranslations;
 
     public $translatable = ['title','page_features','page_description'];

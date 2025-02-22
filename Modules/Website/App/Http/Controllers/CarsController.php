@@ -2,6 +2,7 @@
 
 namespace Modules\Website\App\Http\Controllers;
 
+use App\Helpers\HasSuggestedCars;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use \App\Models\Car;
@@ -11,77 +12,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CarsController extends Controller
 {
-    public function getSuggestedCars($type, $resource_id) {
-        $cars = Car::with(['images','brand','model','color','types','company','year']);
-        if($type == "types") {
-            $cars = $cars->whereHas('types', function($q) use ($resource_id) {
-                $q->where('type_id',$resource_id);
-            });
-        } else if($type == "brands") {
-            $cars = $cars->where('brand_id', $resource_id);
-        }
-        $cars = $cars->whereHas('company', function($q) {
-            $q->where('status',1);
-            $q->where('country_id', app('country')->getCountry()->id);
-            if(app('country')->getCity()) {
-                $q->whereHas('cities', function($qq) {
-                    $qq->where('city_id', app('country')->getCity()->id);
-                });
-            }
-        });
-        return $cars->where('type','default')->limit(10)->get();
-    }
-
-    public function types($country, $city, Type $type){
-        $cars = $type->cars()->hasCompany()->paginate(10);
-        $resource = $type;
-        $selected_types = [$resource->id];
-        $seo      = \App\Models\SEO::where('type','type')->where('resource_id',$resource->id)->first();
-        $content  = \App\Models\Content::where('type','type')->where('resource_id', $resource->id)->first();
-        $faq      = \App\Models\Faq::where('type','type')->where('resource_id', $resource->id)->get();
-        $resource_title  = __('lang.Categories');
-        $models = [];
-
-        $suggested_cars = $this->getSuggestedCars(__('lang.Categories'), $resource->id);
-        return view('website::cars.index')->with([
-            'cars'         => $cars,
-            'resource'     => $resource,
-            'resource_title' => $resource_title,
-            'models'       => $models,
-            'selected_types' => $selected_types,
-            'suggested_cars' => $suggested_cars,
-            'seo'          => $seo,
-            'content'      => $content,
-            'faq'          => $faq,
-            'canonical'   =>  $type->slug
-        ]);
-    }
-
-    public function brands($country, $city, Brand $brand){
-        $cars = $brand->cars()->hasCompany()->paginate(10);
-        $resource = $brand;
-        $selected_types = [$resource->id];
-        $seo      = \App\Models\SEO::where('type','brand')->where('resource_id',$resource->id)->first();
-        $content  = \App\Models\Content::where('type','brand')->where('resource_id', $resource->id)->first();
-        $faq      = \App\Models\Faq::where('type','brand')->where('resource_id', $resource->id)->get();
-        $resource_title  = __('lang.Car Brands');
-        $models   = $resource->models()->limit(10)->get();
-
-        $suggested_cars = $this->getSuggestedCars(__('lang.Brands'), $resource->id);
-        return view('website::cars.index')->with([
-            'cars'         => $cars,
-            'resource'     => $resource,
-            'resource_title' => $resource_title,
-            'models'       => $models,
-            'selected_types' => $selected_types,
-            'suggested_cars' => $suggested_cars,
-            'seo'          => $seo,
-            'content'      => $content,
-            'faq'          => $faq,
-            'canonical'   =>  $brand->slug
-        ]);
-    }
-
+    use HasSuggestedCars;
     public function show($country, $city, Car $car)
     {
         $suggested_cars = Car::hasCompany()->with(['images','brand','model','color','types','company','year'])

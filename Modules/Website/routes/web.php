@@ -7,6 +7,8 @@ use Modules\Website\App\Http\Controllers\HomeController;
 use Modules\Website\App\Http\Controllers\PagesController;
 use Modules\Website\App\Http\Controllers\UsersController;
 use Modules\Website\App\Http\Controllers\BlogsController;
+use Modules\Website\App\Http\Controllers\TypesController;
+use Modules\Website\App\Http\Controllers\BrandsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +42,20 @@ Route::group([
         'prefix' => '{country?}/{city?}'
     ], function () {
         Route::get('/', [HomeController::class, 'index'])->name('home');
-        Route::get('/types/{type}', [CarsController::class, 'types'])->name('website.cars.types.show');
-        Route::get('/brands/{brand}', [CarsController::class, 'brands'])->name('website.cars.brands.show');
-        Route::get('/cars/{car}', [CarsController::class, 'show'])->name('website.cars.show');
+
+        Route::prefix('types')->group(function () {
+            Route::get('/{type}', [TypesController::class, 'show'])->name('website.cars.types.show');
+        });
+
+        Route::prefix('brands')->group(function () {
+            Route::get('/{brand}', [BrandsController::class, 'show'])->name('website.cars.brands.show');
+            Route::get('/{brand}/models/{model}', [BrandsController::class, 'model'])->name('website.cars.brands.models');
+        });
+
+        Route::prefix('cars')->group(function () {
+            Route::get('/{car}', [CarsController::class, 'show'])->name('website.cars.show');
+        });
+
         Route::prefix('/blogs')->group(function () {
             Route::get('/', [BlogsController::class , 'index'])->name('website.blogs.index');
             Route::get('/{blog}', [BlogsController::class, 'show'])->name('website.blogs.show');
