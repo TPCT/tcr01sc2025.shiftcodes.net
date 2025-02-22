@@ -522,16 +522,20 @@
 {{--                    </li>--}}
 {{--                @endif--}}
 
-                <li class="nav-item active">
-                    <a class="nav-link"
-                       href="{{ LaravelLocalization::localizeUrl("/d/cars") }}">{{__('lang.Rent a car with driver')}}</a>
-                </li>
+                @if ($type = Type::whereSlug('with-driver')->first())
+                    <li class="nav-item active">
+                        <a class="nav-link"
+                           href="{{ LaravelLocalization::getLocalizedURL(null, route('website.cars.types.show', ['type' => $type])) }}">{{__('lang.Rent a car with driver')}}</a>
+                    </li>
+                @endif
 
 
-                <li class="nav-item active">
-                    <a class="nav-link"
-                       href="{{ LaravelLocalization::localizeUrl("/yacht") }}">{{__('lang.Rent yacht')}}</a>
-                </li>
+                @if ($type = Type::whereSlug('yachts')->first())
+                    <li class="nav-item active">
+                        <a class="nav-link"
+                           href="{{ LaravelLocalization::getLocalizedURL(null, route('website.cars.types.show', ['type' => $type])) }}">{{__('lang.Rent yacht')}}</a>
+                    </li>
+                @endif
 
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ LaravelLocalization::localizeUrl("/blog") }}">{{__('lang.Blog')}}</a>
