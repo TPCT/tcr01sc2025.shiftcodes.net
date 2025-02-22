@@ -147,4 +147,5 @@ return [
     "Full" => "Full",
     "Minimum of Hours" => "Minimum of Hours",
     "Guests" => "No. Of Guests",
+    "Blogs" => "Blogs",
 ];

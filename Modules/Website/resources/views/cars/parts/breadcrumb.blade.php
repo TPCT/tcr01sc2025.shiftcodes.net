@@ -1,34 +1,26 @@
     <div class="col-lg-12">
         <ul class="breadcrumb-list">
             <li>
-                <a href="{{LaravelLocalization::localizeUrl("/")}}">{{__('lang.Home')}}</a>
+                <a href="{{LaravelLocalization::getLocalizedUrl(null, route('home'))}}">{{__('lang.Home')}}</a>
             </li>
-            @if($title_1)
-            <li>
-                @if(app()->getLocale() == 'ar')
-                <i class="fa fa-angle-left"></i>
-                @else
-                <i class="fa fa-angle-right"></i>
-                @endif
-            </li>
-            <li>
-                <span class="active">{{$title_1}}</span>
-            </li>
-            @endif
-
-            @if($title_2)
-            <li>
-                @if(app()->getLocale() == 'ar')
-                <i class="fa fa-angle-left"></i>
-                @else
-                <i class="fa fa-angle-right"></i>
-                @endif
-
-            </li>
-            <li>
-                <span class="active link">{{$title_2}}</span>
-            </li>
-            @endif
+            @foreach($breadcrumbs ?? [] as $title => $url)
+                <li>
+                    @if(app()->getLocale() == 'ar')
+                        <i class="fa fa-angle-left"></i>
+                    @else
+                        <i class="fa fa-angle-right"></i>
+                    @endif
+                </li>
+                <li>
+                    @if ($url)
+                        <a class="link @if($loop->last) active @endif" href="{{$url}}">
+                            <span> {{$title}}</span>
+                        </a>
+                    @else
+                        <span class="@if ($loop->last) active @endif">{{$title}}</span>
+                    @endif
+                </li>
+            @endforeach
             <li>
                 <span  style="background: #E6F6FF;
     width: 24px;
@@ -49,40 +41,40 @@
     </div>
 
     @section('breadcrumbs')
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement":
-        [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "item":
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement":
+            [
                 {
-                    "@id": "{{LaravelLocalization::localizeUrl("/")}}",
-                    "name": "Home"
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "item":
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item":
+                    {
+                        "@id": "{{LaravelLocalization::localizeUrl("/")}}",
+                        "name": "Home"
+                    }
+                },
                 {
-                    "@id": "{{url()->full() }}",
-                    "name": "{{$title_1 ?? ''}}"
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "item":
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item":
+                    {
+                        "@id": "{{url()->full() }}",
+                        "name": "{{$title_1 ?? ''}}"
+                    }
+                },
                 {
-                    "@id": "{{url()->full() }}",
-                    "name": "{{$title_2 ?? ''}}"
+                    "@type": "ListItem",
+                    "position": 3,
+                    "item":
+                    {
+                        "@id": "{{url()->full() }}",
+                        "name": "{{$title_2 ?? ''}}"
+                    }
                 }
-            }
-        ]
-    }
-    </script>
+            ]
+        }
+        </script>
     @endsection

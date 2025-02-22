@@ -20,15 +20,24 @@ class BlogsController extends Controller
                 }
             })->get();
         $blogs = \App\Models\Blog::orderBy("id","desc")->paginate(12);
+        $breadcrumbs = [
+            __('lang.Blogs') => null,
+        ];
         return view('website::blogs.index',[
             'suggested_cars' => $suggested_cars,
-            'blogs' => $blogs
+            'blogs' => $blogs,
+            'breadcrumbs' => $breadcrumbs,
         ]);
     }
 
     public function show($country, $city, Blog $blog){
+        $breadcrumbs = [
+            __('lang.Blogs') => route('website.blogs.index'),
+            $blog->title => null,
+        ];
         return view('website::blogs.show',[
-            'blog' => $blog
+            'blog' => $blog,
+            'breadcrumbs' => $breadcrumbs,
         ]);
     }
 }

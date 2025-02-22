@@ -44,10 +44,13 @@ Route::group([
         Route::get('/', [HomeController::class, 'index'])->name('home');
 
         Route::prefix('types')->group(function () {
+            Route::get('/', [TypesController::class, 'index'])->name('website.cars.types.index');
             Route::get('/{type}', [TypesController::class, 'show'])->name('website.cars.types.show');
+            Route::get('/{type}/models/{model}', [TypesController::class, 'model'])->name('website.cars.types.models');
         });
 
         Route::prefix('brands')->group(function () {
+            Route::get('/', [BrandsController::class, 'index'])->name('website.cars.brands.index');
             Route::get('/{brand}', [BrandsController::class, 'show'])->name('website.cars.brands.show');
             Route::get('/{brand}/models/{model}', [BrandsController::class, 'model'])->name('website.cars.brands.models');
         });

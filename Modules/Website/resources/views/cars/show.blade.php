@@ -34,42 +34,11 @@
 <section class="products-page">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <ul class="breadcrumb-list">
-                        <li>
-                            <a href="/">{{__('lang.Home')}}</a>
-                        </li>
-                        <li>
-                            @if(app()->getLocale() == 'ar')
-                                <i class="fa fa-angle-left"></i>
-                                @else
-                                <i class="fa fa-angle-right"></i>
-                            @endif
-                        </li>
-                        <li>
-                            <span class='link' >{{$car->type == 'yacht' ? __('lang.Yacht') : __('lang.Cars')}}</span>
-                        </li>
-                        <li>
-                            @if(app()->getLocale() == 'ar')
-                            <i class="fa fa-angle-left"></i>
-                            @else
-                            <i class="fa fa-angle-right"></i>
-                            @endif
-                        </li>
-                        <li>
-                            <span  class="link active">{{$car->name}}</span>
-                        </li>
-                        <li>
-                <span  style="background: #E6F6FF; width: 24px; display: flex; height: 24px; justify-content: center; align-items: center; border-radius: 50%; position: relative; margin-left: 10px; border:1px solid rgba(0,0,0,0.10); top: 3px; font-size: 12pt;" class="go-back">
-                    <i style="margin:0;color:black" class="fa fa-angle-left"></i>
-                </span>
-            </li>
-        </ul>
-                </div>
-                    @include('website::layouts.parts.page-title',[
-                        "title"       => $car->name,
-                        "description" => $car->getDescription(),
-                    ])
+                @include('website::cars.parts.breadcrumb')
+                @include('website::layouts.parts.page-title',[
+                    "title"       => $car->name,
+                    "description" => $car->getDescription(),
+                ])
             </div>
 
             <div class="row mt-25">

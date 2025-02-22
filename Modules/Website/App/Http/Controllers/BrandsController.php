@@ -25,7 +25,10 @@ class BrandsController extends Controller
         $faq      = \App\Models\Faq::where('type','brand')->where('resource_id', $resource->id)->get();
         $resource_title  = __('lang.Car Brands');
         $models   = $resource->models()->limit(10)->get();
-
+        $breadcrumbs = [
+            __('lang.Car Brands') => route('website.cars.brands.index'),
+            $brand->title => null,
+        ];
         $suggested_cars = $this->getSuggestedCars(__('lang.Brands'), $resource->id);
         return view('website::cars.index')->with([
             'cars'         => $cars,
@@ -37,7 +40,8 @@ class BrandsController extends Controller
             'seo'          => $seo,
             'content'      => $content,
             'faq'          => $faq,
-            'canonical'   =>  $brand->slug
+            'canonical'   =>  $brand->slug,
+            'breadcrumbs' => $breadcrumbs,
         ]);
     }
 
@@ -50,6 +54,11 @@ class BrandsController extends Controller
         $faq      = \App\Models\Faq::where('type','brand')->where('resource_id', $resource->id)->get();
         $resource_title  = __('lang.Car Brands');
         $models   = $resource->models()->limit(10)->get();
+        $breadcrumbs = [
+            __('lang.Car Brands') => route('website.cars.brands.index'),
+            $brand->title => route('website.cars.brands.show', ['brand' => $brand]),
+            $model->title => null,
+        ];
 
         $suggested_cars = $this->getSuggestedCars(__('lang.Brands'), $resource->id);
         return view('website::cars.index')->with([
@@ -62,7 +71,8 @@ class BrandsController extends Controller
             'seo'          => $seo,
             'content'      => $content,
             'faq'          => $faq,
-            'canonical'   =>  $brand->slug
+            'canonical'   =>  $brand->slug,
+            'breadcrumbs' => $breadcrumbs
         ]);
     }
 }
