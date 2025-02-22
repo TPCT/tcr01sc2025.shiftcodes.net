@@ -6,6 +6,7 @@ use Modules\Website\App\Http\Controllers\CarsController;
 use Modules\Website\App\Http\Controllers\HomeController;
 use Modules\Website\App\Http\Controllers\PagesController;
 use Modules\Website\App\Http\Controllers\UsersController;
+use Modules\Website\App\Http\Controllers\BlogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,11 @@ Route::group([
         Route::get('/types/{type}', [CarsController::class, 'types'])->name('website.cars.types.show');
         Route::get('/brands/{brand}', [CarsController::class, 'brands'])->name('website.cars.brands.show');
         Route::get('/cars/{car}', [CarsController::class, 'show'])->name('website.cars.show');
+        Route::prefix('/blogs')->group(function () {
+            Route::get('/', [BlogsController::class , 'index'])->name('website.blogs.index');
+            Route::get('/{blog}', [BlogsController::class, 'show'])->name('website.blogs.show');
+        });
+        Route::get('/faq', [PagesController::class, 'faq']);
     });
     /*
      *
@@ -66,19 +72,19 @@ Route::group([
      *
      */
 
-    Route::get('/brands/models', [CarsController::class, 'getModels']);
+//    Route::get('/brands/models', [CarsController::class, 'getModels']);
     Route::get('/a/{id}', [CarsController::class, 'contact']);
 
+//
+//    Route::get('/t/{id}/{slug}', [CarsController::class, 'index'])->name('types');
+//    Route::get('/b/{id}/{slug}', [CarsController::class, 'index'])->name('brands');
+//
 
-    Route::get('/t/{id}/{slug}', [CarsController::class, 'index'])->name('types');
-    Route::get('/b/{id}/{slug}', [CarsController::class, 'index'])->name('brands');
 
 
-
-
-    Route::get('/d/cars', [CarsController::class, 'carsWithDriver']);
-    Route::get('/yacht', [CarsController::class, 'yacht']);
-    Route::get('/c/{id}/{slug}', [CarsController::class, 'company'])->name('company');
+//    Route::get('/d/cars', [CarsController::class, 'carsWithDriver']);
+//    Route::get('/yacht', [CarsController::class, 'yacht']);
+//    Route::get('/c/{id}/{slug}', [CarsController::class, 'company'])->name('company');
     Route::get('/p/{id}/{slug}', [PagesController::class, 'index']);
     Route::get('/s/{id}/{slug}', [CarsController::class, 'section']);
 
@@ -86,10 +92,6 @@ Route::group([
     Route::get('/search', [CarsController::class, 'search']);
     Route::get('/l/{id}/{slug}', [CarsController::class, 'cities']);
 
-    Route::get('/blog', [PagesController::class, 'blog']);
-    Route::get('/blog-details/{id}', [PagesController::class, 'blogDetails']);
-
-    Route::get('/faq', [PagesController::class, 'faq']);
 
     Route::get("/contact", [PagesController::class, 'contact']);
     Route::get("/listyourcar", [PagesController::class, 'listYourCar']);

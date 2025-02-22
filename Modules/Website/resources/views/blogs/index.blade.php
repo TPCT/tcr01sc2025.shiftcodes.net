@@ -34,35 +34,15 @@
 
                                 <div class="media-body" style="padding:0px 20px;">
                                     <h6 class="media-title font-weight-semibold">
-                                        <a href="{{LaravelLocalization::localizeUrl("blog-details/{$blog->id}")}}" data-abc="true">{{ $blog->title }}</a>
+                                        <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.blogs.show', ['blog' => $blog]))}}" data-abc="true">{{ $blog->title }}</a>
                                     </h6>
 
-                                    <!--  text-center text-lg-left <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">-->
-                                    <!--    <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>-->
-                                    <!--    <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>-->
-                                    <!--</ul>-->
-
                                     <p class="mb-3" >{{ Str::limit(strip_tags($blog->content), 150) }} .....</p>
-                                    <a href="{{LaravelLocalization::localizeUrl("blog-details/{$blog->id}")}}" class="btn mt-4 text-white" style="background:#564b89"><i class="icon-cart-add mr-2"></i> {{ __('lang.Read More') }}</a>
+                                    <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.blogs.show', ['blog' => $blog]))}}" class="btn mt-4 text-white" style="background:#564b89"><i class="icon-cart-add mr-2"></i> {{ __('lang.Read More') }}</a>
 
-
-                                    <!--<ul class="list-inline list-inline-dotted mb-0">-->
-                                    <!--    <li class="list-inline-item">All items from <a href="#" data-abc="true">Mobile point</a></li>-->
-                                    <!--    <li class="list-inline-item">Add to <a href="#" data-abc="true">wishlist</a></li>-->
-                                    <!--</ul>-->
                                 </div>
-
-                                <!--<div class="mt-3 mt-lg-0 ml-lg-3 text-center">-->
-
-                                <!--    <button type="button" class="btn mt-4 text-white" style="background:#564b89"><i class="icon-cart-add mr-2"></i> Read More</button>-->
-                                <!--</div>-->
                             </div>
                         </div>
-
-    <!--    </div>                     -->
-    <!--    </div>-->
-    <!--</div>-->
-
                     @endforeach
 
                 </div>

@@ -538,7 +538,7 @@
                 @endif
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ LaravelLocalization::localizeUrl("/blog") }}">{{__('lang.Blog')}}</a>
+                    <a class="nav-link" href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.blogs.index')) }}">{{__('lang.Blog')}}</a>
                 </li>
 
 
