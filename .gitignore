@@ -53,3 +53,4 @@ Thumbs.db
 /storage/*
 
 .env
+/storage/
