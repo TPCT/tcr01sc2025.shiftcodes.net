@@ -29,7 +29,7 @@
                 <div class="col-lg-12">
                     <div data-items-large="6" data-is-loop="false" data-items-small="2" class="home__brands_content owl-carousel owl-theme">
                         @foreach($types as $item)
-                        <a href="{{$item->external_url ?? LaravelLocalization::getLocalizedURL(null, route('website.cars.types.show', ['type' => $item])) }}">
+                        <a href="{{LaravelLocalization::getLocalizedURL(null, route('website.cars.types.show', ['type' => $item])) }}">
                             <div class="home__brands_item">
                                 <img width="174" height="100" loading="lazy" alt="{{$item->slug}}" src="{{asset("/storage/{$item->image}")}}"/>
                                 <h3>{{$item->title}}</h3>
