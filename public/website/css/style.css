@@ -269,6 +269,11 @@ footer ul li a {
     padding-left: 42px;
     height: 100%;
 }
+@media (max-width:576.89px) {
+    .search-banner-field .search-banner-field__input input{
+        width: 100%;
+    }
+}
 
 .search-banner-field .search-banner-field__btn {
     position: relative;
