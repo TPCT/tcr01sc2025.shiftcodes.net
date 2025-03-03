@@ -269,6 +269,11 @@ footer ul li a {
     padding-left: 42px;
     height: 100%;
 }
+@media (max-width:576.89px) {
+    .search-banner-field .search-banner-field__input input{
+        width: 100%;
+    }
+}
 
 .search-banner-field .search-banner-field__btn {
     position: relative;
@@ -395,7 +400,7 @@ footer ul li a {
 }
 
 .product__vertical {
-
+    width: 100%;
     border: 1px solid #EDEDED;
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
@@ -628,6 +633,7 @@ footer ul li a {
     padding: 25px;
     position: relative;
     z-index: 99;
+    height: 100%;
 }
 
 .home__find_your_car_item img {
@@ -638,6 +644,7 @@ footer ul li a {
 .home__find_your_car_item h3 {
     font-size: 15pt;
     text-align: center;
+    min-height: 3.1rem;
 }
 
 .home__find_your_car_item p {
@@ -2315,4 +2322,14 @@ a:hover {
 
 .car__notes_holder .widget__content a {
     display: inline-block !important;
+}
+
+
+
+/* Edits */
+.owl-carousel .owl-stage{
+    display: flex;
+}
+.owl-carousel .owl-item{
+    display: flex;
 }
