@@ -633,6 +633,7 @@ footer ul li a {
     padding: 25px;
     position: relative;
     z-index: 99;
+    height: 100%;
 }
 
 .home__find_your_car_item img {
@@ -643,6 +644,7 @@ footer ul li a {
 .home__find_your_car_item h3 {
     font-size: 15pt;
     text-align: center;
+    min-height: 3.1rem;
 }
 
 .home__find_your_car_item p {
