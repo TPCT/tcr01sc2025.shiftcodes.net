@@ -2321,3 +2321,13 @@ a:hover {
 .car__notes_holder .widget__content a {
     display: inline-block !important;
 }
+
+
+
+/* Edits */
+.owl-carousel .owl-stage{
+    display: flex;
+}
+.owl-carousel .owl-item{
+    display: flex;
+}
