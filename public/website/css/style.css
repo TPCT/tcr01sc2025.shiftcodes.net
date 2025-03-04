@@ -409,12 +409,12 @@ footer ul li a {
     display: flex;
 }
 
-.product__vertical.card_type_1{
+.product__vertical.card_type_1 {
     flex-direction: column;
     max-height: unset;
 }
 
-.product__vertical.card_type_1 .product__vertical_top img{
+.product__vertical.card_type_1 .product__vertical_top img {
     max-height: 200px;
 }
 
@@ -1022,6 +1022,10 @@ footer ul li a:hover {
 
 .products-page {
     padding: 25px 0px;
+}
+
+.products-page .product__vertical {
+    flex-direction: column;
 }
 
 .product-page__header {
