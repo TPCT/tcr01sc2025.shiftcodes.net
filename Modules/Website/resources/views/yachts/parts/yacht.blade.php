@@ -1,4 +1,4 @@
-    <div class="product__vertical product__horizontal">
+    <div class="product__vertical product__horizontal card_type_1">
 
         <div class="product__vertical_top">
 
