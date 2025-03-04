@@ -120,19 +120,8 @@
             <div class="product__vertical_actions">
                 <ul>
                     @include('website::layouts.parts.car-actions', ['car' => $car])
-                    <li class="bottom_car_company">
-                        @if($car->company)
-                        <div class="home__brands_item">
-                            <a href="{{LaravelLocalization::localizeUrl("/c/{$car->company->id}/{$car->company->slug}")}}">
-                                <img alt="{{$car->company->name}}" src="{{ asset("/storage/{$car->company->image}")}}"/>
-                            </a>
-
-                        </div>
-                        @endif
-                    </li>
                 </ul>
             </div>
-        </a>
         </div>
 
     </div>
