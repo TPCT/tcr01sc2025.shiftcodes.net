@@ -88,6 +88,11 @@ class CarsController extends Controller
             'selected_types' => request('types', []),
         ]);
     }
+
+    public function with_driver(){
+        $cars = Car::hasCompany()->where('type', 'driver')->paginate(10);
+        return view('website::cars.cars_with_driver', ['cars' => $cars]);
+    }
 //    public function index($id, $slug)
 //    {
 

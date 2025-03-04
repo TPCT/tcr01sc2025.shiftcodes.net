@@ -21,7 +21,10 @@ class TypesController extends Controller
     public function show($country, $city, Type $type){
         if ($type->slug == "yacht")
             return redirect()->route('website.yachts.index');
-        
+
+        if ($type->slug == "with-driver")
+            return redirect()->route('website.cars.with-drivers');
+
         $cars = $type->cars()->hasCompany()->where('type', 'default')->paginate(10);
         $resource = $type;
         $selected_types = [$resource->slug];
@@ -89,10 +92,5 @@ class TypesController extends Controller
             'canonical'   =>  $type->slug,
             'breadcrumbs' => $breadcrumbs
         ]);
-    }
-
-    public function with_driver(){
-        $cars = Car::hasCompany()->where('type', 'driver')->paginate(10);
-        return view('website::cars.cars_with_driver', ['cars' => $cars]);
     }
 }

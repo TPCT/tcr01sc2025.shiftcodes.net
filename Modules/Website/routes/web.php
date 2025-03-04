@@ -46,7 +46,6 @@ Route::group([
 
         Route::prefix('types')->controller(TypesController::class)->group(function () {
             Route::get('/', 'index')->name('website.cars.types.index');
-            Route::get('/with-driver', 'with_driver')->name('website.cars.types.with-driver');
             Route::get('/{type}', 'show')->name('website.cars.types.show');
             Route::get('/{type}/models/{model}', 'model')->name('website.cars.types.models');
         });
@@ -58,6 +57,7 @@ Route::group([
         });
 
         Route::prefix('cars')->controller(CarsController::class)->group(function () {
+            Route::get('/with-drivers', 'with_driver')->name('website.cars.with-drivers');
             Route::get('/filter', 'filter')->name('website.cars.filter');
             Route::get('/{car}', 'show')->name('website.cars.show');
         });
