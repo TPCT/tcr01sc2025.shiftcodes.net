@@ -3,9 +3,10 @@
     <div class="product__vertical_top">
         <div class="product__vertical_meta">
             @if($car->is_refresh)
-            <span class="bg-blue">{{__('lang.Featured')}}</span>
+            <span class="bg-blue text-white">{{__('lang.Featured')}}</span>
             @endif
-            <span class="bg-orange">{{__('lang.Verified')}}</span>
+            <span class="bg-black text-white">Premium</span>
+            <span class="bg-orange text-white">{{__('lang.Verified')}}</span>
             <span class="wishlist wishlist-toggle" data-auth="{{auth()->guard('customers')->check() ? 1 : 0}}" data-id="{{$car->id}}">
                 @if(auth()->guard('customers')->check())
                 @if(!auth()->guard('customers')->user()->wishlist->contains($car->id))
@@ -119,6 +120,7 @@
                 <ul>
                     @include('website::layouts.parts.car-actions', ['car' => $car])
                 </ul>
+                
             </div>
         </div>
     </a>

@@ -134,7 +134,6 @@
                                         <li>{{__('lang.Insurance Type')}} / {{__('lang.Full')}} </li>
                                         @endif
                                     </ul>
-
                                 </div>
                                 <div class="home__brands_item product__horizontal_fees single_car_prices">
                                     @if($car->price_per_day)

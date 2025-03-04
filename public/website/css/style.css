@@ -348,7 +348,6 @@ footer ul li a {
 
 .home__brands_item {
     border: 1px solid #E6EAEE;
-    border-radius: 6px;
     text-align: center;
 }
 
@@ -601,6 +600,8 @@ footer ul li a {
 
 .home__banner_item {
     width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .home__banner_item img {
@@ -1228,11 +1229,13 @@ footer ul li a:hover {
     height: 335px;
     object-fit: cover;
 }
-.single_product_main_image-box{
+
+.single_product_main_image-box {
     width: 100%;
-} 
-.single_product_main_image .owl-nav
-,.single_product_images .owl-nav{
+}
+
+.single_product_main_image .owl-nav,
+.single_product_images .owl-nav {
     display: none;
 }
 
@@ -2343,8 +2346,18 @@ a:hover {
 /* Edits */
 .owl-carousel .owl-stage {
     display: flex;
+    padding-block: 1rem;
 }
 
 .owl-carousel .owl-item {
     display: flex;
+}
+
+.home__brands_content .owl-item {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -2px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.home__brands .read-more {
+    text-decoration: underline !important;
+    font-weight: 600;
 }
