@@ -22,7 +22,6 @@ use Modules\Website\App\Http\Controllers\YachtsController;
 |
 */
 
-// Route::group(["middleware" => ["language","country","currency", "redirectIfNotSEOFriendly" , 'clean-url']], function () {
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
@@ -73,52 +72,17 @@ Route::group([
         });
         Route::get('/faq', [PagesController::class, 'faq']);
     });
-    /*
-     *
-     * /en/monthly -> /uae/monthly -> /uae/dubai/monthly
-     * /en/uae/monthly/
-     *
-     * /en
-     * /en/uae
-     * /en/uae/dubai
-     *
-     * /en/uae/dubai/types/{type}/brands/{brand}/period/{period}
-     * /en/uae/dubai/types/{type}
-     * /en/uae/dubai/brands/{brand}
-     * /en/uae/dubai/period/{monthly,weekly,daily}
-     * /en/uae/dubai/cars/{}
-     *
-     * /en/uae/dubai/monthly/bmw/luxury?period=monthly
-     * /en/uae/dubai/monthly
-     *
-     * /en/uae/dubai/luxury/
-     * /car-rental-{location}
-     *
-     */
 
-//    Route::get('/brands/models', [CarsController::class, 'getModels']);
     Route::get('/a/{id}', [CarsController::class, 'contact']);
 
-//
-//    Route::get('/t/{id}/{slug}', [CarsController::class, 'index'])->name('types');
-//    Route::get('/b/{id}/{slug}', [CarsController::class, 'index'])->name('brands');
-//
-
-
-
-//    Route::get('/d/cars', [CarsController::class, 'carsWithDriver']);
-//    Route::get('/yacht', [CarsController::class, 'yacht']);
-//    Route::get('/c/{id}/{slug}', [CarsController::class, 'company'])->name('company');
     Route::get('/p/{id}/{slug}', [PagesController::class, 'index']);
     Route::get('/s/{id}/{slug}', [CarsController::class, 'section']);
 
-    Route::get('/cars/search', [CarsController::class, 'getSearch']);
-    Route::get('/search', [CarsController::class, 'search']);
     Route::get('/l/{id}/{slug}', [CarsController::class, 'cities']);
 
 
-    Route::get("/contact", [PagesController::class, 'contact']);
     Route::get("/listyourcar", [PagesController::class, 'listYourCar']);
+    Route::get("/contact", [PagesController::class, 'contact']);
     Route::post("/contact", [PagesController::class, 'saveContact']);
 
 
@@ -137,8 +101,4 @@ Route::group([
     });
 
     Route::get('/iframes', [HomeController::class, 'reviews']);
-    Route::get('/{id}/{slug}', [CarsController::class, 'show'])->name('website.show-car');
-
-
-
 });
