@@ -17,7 +17,7 @@ class TypesController extends Controller
 
     }
     public function show($country, $city, Type $type){
-        $cars = $type->cars()->hasCompany()->paginate(10);
+        $cars = $type->cars()->hasCompany()->where('type', 'default')->paginate(10);
         $resource = $type;
         $selected_types = [$resource->id];
         $seo      = \App\Models\SEO::where('type','type')->where('resource_id',$resource->id)->first();
@@ -48,7 +48,10 @@ class TypesController extends Controller
     }
 
     public function model($country, $city, Type $type, Models $model){
-        $cars = $type->cars()->where('model_id',$model->id)->paginate(10);
+        $cars = $type->cars()->where(function ($query) use ($model){
+            $query->where('model_id',$model->id);
+            $query->where('type', 'default');
+        })->paginate(10);
         $resource = $type;
         $selected_types = [$resource->id];
         $seo      = \App\Models\SEO::where('type','brand')->where('resource_id',$resource->id)->first();
