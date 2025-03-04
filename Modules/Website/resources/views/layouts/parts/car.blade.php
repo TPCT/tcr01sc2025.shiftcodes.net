@@ -25,7 +25,7 @@
             <img loading="lazy" alt="{{$car->name}}" src="{{asset("/storage/{$car->image}")}}" />
         </a>
     </div>
-    
+
     <a aria-label="{{$car->name}}" href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.cars.show', ['car' => $car])) }}">
         <div class="product__vertical_bottom">
             <h2>{{$car->name}}</h2>
@@ -120,7 +120,7 @@
                 <ul>
                     @include('website::layouts.parts.car-actions', ['car' => $car])
                 </ul>
-                
+
             </div>
         </div>
     </a>

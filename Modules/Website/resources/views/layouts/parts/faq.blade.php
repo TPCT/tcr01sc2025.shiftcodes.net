@@ -18,7 +18,7 @@
             <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne{{$f->id}}" aria-expanded="false" aria-controls="collapseOne{{$f->id}}">
                     {{$f->question}}
-                    <i class="fa fa-plus icon"></i> 
+                    <i class="fa fa-angle-down icon"></i>
                 </button>
             </h2>
         </div>
