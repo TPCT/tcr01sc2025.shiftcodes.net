@@ -1189,7 +1189,8 @@ footer ul li a:hover {
     height: 100%;
     object-fit: cover;
     max-height: 300px;
-    overflow: hidden;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .products-page__content {
@@ -1200,6 +1201,7 @@ footer ul li a:hover {
 
 .product__horizontal {
     border-radius: 30px;
+    overflow: hidden;
     margin: 0;
 }
 
