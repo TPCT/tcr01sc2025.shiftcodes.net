@@ -17,9 +17,9 @@ class TypesController extends Controller
     public function index(){
 
     }
+
     public function show($country, $city, Type $type){
         $cars = $type->cars()->hasCompany()->where('type', 'default')->paginate(10);
-
         $resource = $type;
         $selected_types = [$resource->slug];
         $seo      = \App\Models\SEO::where('type','type')->where('resource_id',$resource->id)->first();
@@ -32,9 +32,6 @@ class TypesController extends Controller
             __('lang.Categories') => route('website.cars.types.index'),
             $type->title => null
         ];
-
-        if ($type->slug == "with-driver")
-            return view('website::cars.cars_with_driver', ['cars' => $cars]);
 
         $suggested_cars = $this->getSuggestedCars(__('lang.Categories'), $resource->id);
         return view('website::cars.index')->with([
@@ -89,5 +86,10 @@ class TypesController extends Controller
             'canonical'   =>  $type->slug,
             'breadcrumbs' => $breadcrumbs
         ]);
+    }
+
+    public function with_driver(){
+        $cars = Car::hasCompany()->where('type', 'driver')->paginate(10);
+        return view('website::cars.cars_with_driver', ['cars' => $cars]);
     }
 }
