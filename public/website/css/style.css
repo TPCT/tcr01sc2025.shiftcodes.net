@@ -829,9 +829,9 @@ footer ul li a {
     float: right;
     background: white;
     width: 25px;
-    height: 25px;
+    height: 18px;
     border-radius: 50%;
-    font-size: 15pt;
+    font-size: 10pt;
     padding: 10px;
     display: flex;
     align-items: center;
