@@ -413,7 +413,7 @@ footer ul li a {
     flex-direction: column;
     max-height: unset;
     height: 100% !important;
-    border-radius: 8px;
+    border-radius: 30px;
 }
 
 .product__vertical .product__vertical_top {
@@ -462,14 +462,6 @@ footer ul li a {
     object-fit: cover;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
-}
-
-.product__vertical .product__vertical_top img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
 }
 
 .product__vertical .product__vertical_bottom {
@@ -1196,8 +1188,6 @@ footer ul li a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
     max-height: 300px;
     overflow: hidden;
 }
@@ -1209,7 +1199,7 @@ footer ul li a:hover {
 }
 
 .product__horizontal {
-    border-radius: 8px;
+    border-radius: 30px;
     margin: 0;
 }
 
