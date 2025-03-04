@@ -136,10 +136,7 @@ $(".open-auth").click(function() {
 $(".close-menu").on("click", function() {
     $(".navbar-collapse").removeClass("show")
 });
-$(".toggle-search").on("click", function() {})
-if ($(window).width() < 768) {
-    $(".search-filter-keywoard").remove()
-}
+
 $(".read-more-page").click(function() {
     var ReadMore = $(".tr-read-more").val();
     var ReadLess = $(".tr-read-less").val();

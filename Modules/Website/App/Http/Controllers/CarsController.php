@@ -44,168 +44,44 @@ class CarsController extends Controller
     }
 
     public function filter($country, $city){
+        $cars = Car::hasCompany()->with(['images','brand','model','color','types','company','year']);
+        $cars->when(request('order_by'), function ($query, $order) {
+            $query->orderBy('price_per_day', $order == "price_low" ? "asc" : "desc");
+        })->when(request('types'), function ($query, $types) {
+            $query->whereHas('types', function ($query) use ($types) {
+                $query->whereIn('slug', $types);
+            });
+        })->when(request('brand'), function ($query, $brand) {
+            $query->whereHas('brand', function ($query) use ($brand) {
+                $query->where('slug', $brand);
+            });
+        })->when('model', function ($query, $model) {
+            $query->whereHas('model', function ($query) use ($model) {
+                $query->where('slug', $model);
+            });
+        })->when('year', function ($query, $year) {
+            $query->whereHas('year', function ($query) use ($year) {
+                $query->where('title', $year);
+            });
+        })->when('color', function ($query, $color) {
+            $query->whereHas('color', function ($query) use ($color) {
+                $query->where('slug', $color);
+            });
+        })->when('min_price', function ($query, $min_price) {
+            $query->where('price_per_day', '>=' , $min_price);
+        })->when('max_price', function ($query, $max_price) {
+            $query->where('price_per_day', '<=' , $max_price);
+        })->where('type', 'default')->paginate(10);
 
+        return view('website::cars.search')->with([
+            'cars'         => $cars,
+            'models'       => [],
+            'selected_types' => request('types'),
+        ]);
     }
-
-//    public function indexModel($id, $slug, $slug_model)
-//    {
-//
-//        $cars = Car::with(['images','brand.models','model','color','types','company','year']);
-//
-//        $resource_type   = request()->route()->getName();
-//        $resource        = null;
-//        $resource_title  = $resource_type == "types" ? __('lang.Categories') : __('lang.Car Brands');
-//        $models          = [];
-//        $selected_types  = [];
-//
-//        $resource = \App\Models\Brand::with("models")
-//            ->where('id', $id)
-//            ->first();
-//
-//        if(!$resource) {
-//            return redirect()->to(LaravelLocalization::localizeUrl('/'));
-//        }
-//
-//        $cars = $cars->where('brand_id', $resource->id);
-//
-//
-//// Execute the query and get the results
-//        $filteredCars = $cars->pluck('id')->toArray();
-//        dd($filteredCars);
-//        request()->merge(['brand_id' => $resource->id]);
-//
-////        $models = $resource->models()->where('slug', $slug_model)->limit(10)->get();
-//
-//        $models   = $resource->models()->with('brand')->limit(10)->get();
-//        $seo      = \App\Models\SEO::where('type','brand')->where('resource_id',$resource->id)->first();
-//        $content  = \App\Models\Content::where('type','brand')->where('resource_id', $resource->id)->first();
-//        $faq      = \App\Models\Faq::where('type','brand')->where('resource_id', $resource->id)->get();
-//
-//        if ($resource->slug != $slug) {
-//            return redirect()->route('brands', [$id, $resource->slug]);
-//        }
-//
-//
-//        if(request()->get('order_by') == 'price_low') {
-//            $cars = $cars->orderBy('price_per_day','asc');
-//        } else if(request()->get('order_by') == 'price_high') {
-//            $cars = $cars->orderBy('price_per_day','desc');
-//        }
-//
-//        $cars = $cars->paginate(10);
-//
-//        $suggested_cars = $this->getSuggestedCars($resource_type, $resource->id);
-//
-//        return view('website::cars.index')->with([
-//            'cars'         => $cars,
-//            'resource'     => $resource,
-//            'resource_title' => $resource_title,
-//            'models'       => $models,
-//            'selected_types' => $selected_types,
-//            'suggested_cars' => $suggested_cars,
-//            'seo'          => $seo,
-//            'content'      => $content,
-//            'faq'          => $faq,
-//            'canonical'   =>  $resource instanceof Brand &&  $resource->slug != $slug
-//        ]);
-//
-//    }
-//
 //    public function index($id, $slug)
 //    {
-//        $cars = Car::with(['images','brand','model','color','types','company','year']);
-//        $resource_type   = request()->route()->getName();
-//        $resource        = null;
-//        $resource_title  = $resource_type == "types" ? __('lang.Categories') : __('lang.Car Brands');
-//        $models          = [];
-//        $selected_types  = [];
-//        if($resource_type == 'types') {
-//            $resource = \App\Models\Type::where("sync_id", $id)->first();
-//            if(!$resource) {
-//                return redirect()->to(LaravelLocalization::localizeUrl('/'));
-//            }
-//
-//            if ($resource->slug != $slug) {
-//                return redirect()->route('types', [$id, $resource->slug]);
-//            }
-//
-//            $selected_types = [$resource->id];
-//            $seo      = \App\Models\SEO::where('type','type')->where('resource_id',$resource->id)->first();
-//            $content  = \App\Models\Content::where('type','type')->where('resource_id', $resource->id)->first();
-//            $faq      = \App\Models\Faq::where('type','type')->where('resource_id', $resource->id)->get();
-//
-//        } else if($resource_type == 'brands') {
-//            $resource = \App\Models\Brand::with("models")->where('sync_id', $id)->first();
-//
-//            if(!$resource) {
-//                return redirect()->to(LaravelLocalization::localizeUrl('/'));
-//            }
-//            $cars = $cars->where('brand_id',$resource->id);
-//            request()->merge(['brand_id' => $resource->id]);
-//
-//            $models   = $resource->models()->limit(10)->get();
-//            $seo      = \App\Models\SEO::where('type','brand')->where('resource_id',$resource->id)->first();
-//            $content  = \App\Models\Content::where('type','brand')->where('resource_id', $resource->id)->first();
-//            $faq      = \App\Models\Faq::where('type','brand')->where('resource_id', $resource->id)->get();
-//
-//            if ($resource->slug != $slug) {
-//                return redirect()->route('brands', [$id, $resource->slug]);
-//            }
-//        }
-//
-//        if(request()->get('type_id')) {
-//            array_push($selected_types, ...request()->get('type_id'));
-//        }
-//        $selected_types = array_unique($selected_types);
-//        $cars = $cars->whereHas('types', function($q) use ($selected_types) {
-//            if(count($selected_types) > 0) {
-//                $q->whereIn('type_id',$selected_types);
-//            }
-//        });
-//        $cars = $cars->whereHas('company', function($q) {
-//            $q->where('status',1);
-//            $q->where('country_id', app('country')->getCountry()->id);
-//            if(app('country')->getCity()) {
-//                $q->whereHas('cities', function($qq) {
-//                    $qq->where('city_id', app('country')->getCity()->id);
-//                });
-//            }
-//        });
-//
-//        $cars = $cars->where(function($query) {
-//            if(request()->get('search')) {
-//                $query->where('name', 'like', '%' . request()->get('search') . '%');
-//            }
-//            if(request()->get('brand_id')) {
-//                $query->where('brand_id',request()->get('brand_id'));
-//            }
-//            if(request()->get('model_id')) {
-//                $query->where('model_id',request()->get('model_id'));
-//            }
-//            if(request()->get('year_id')) {
-//                $query->where('year_id',request()->get('year_id'));
-//            }
-//            if(request()->get('color_id')) {
-//                $query->where('color_id',request()->get('color_id'));
-//            }
-//            if(request()->get('min_price')) {
-//                $query->where('price_per_day','>=',request()->get('min_price'));
-//            }
-//            if(request()->get('max_price')) {
-//                $query->where('price_per_day','<=',request()->get('max_price'));
-//            }
-//            if(request()->get('company_id')) {
-//                $query->where('company_id',request()->get('company_id'));
-//            }
-//            $query->where('type','default');
-//        })->orderBy('refreshed_at','desc');
-//
-//        if(request()->get('order_by') == 'price_low') {
-//            $cars = $cars->orderBy('price_per_day','asc');
-//        } else if(request()->get('order_by') == 'price_high') {
-//            $cars = $cars->orderBy('price_per_day','desc');
-//        }
-//
+
 //        $cars = $cars->paginate(10);
 //
 //        $suggested_cars = $this->getSuggestedCars($resource_type, $resource->id);

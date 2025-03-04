@@ -1,17 +1,4 @@
 
-    <div class="search-banner-field filter-main-search">
-        <div class="search-banner-field__input">
-            <i class="fa fa-search"></i>
-            <input name="search" placeholder="{{__('lang.Search here')}}" value="{{request()->get('search')}}" type="text" class="form-control search-cars"/>
-        </div>
-        <div class="search-banner-field__btn">
-            <button class="toggle-search">
-                <img loading="lazy" width="28" height="28" alt="left" src="{{secure_url('/')}}/website/images/icons/left.webp"/>
-                {{__('lang.Filter Search')}}
-
-            </button>
-        </div>
-    </div>
     <div class="search__filter_toggler">
         <i class="fa fa-filter"></i>
         <span>{{__('lang.Filter')}}</span>
@@ -23,7 +10,7 @@
             <p>{{__('lang.SEARCH YOUR CAR')}}</p>
         </div>
         <div class="products-page__filter_body">
-            <div class="form-group search-filter-keywoard">
+            <div class="form-group search-filter-keyword">
                 <input value="{{request()->get('search')}}" type="text" name="search" class="form-control" placeholder="{{__('lang.Search here')}}">
 
             </div>
@@ -35,13 +22,13 @@
                     @endforeach
                 </select>
             </div>
-            @if(request()->get('brand') || (isset($resource_type) && $resource_type == "brand"))
+            @if(request()->get('brand') || (isset($resource_type) && $resource_type == "brand") || (isset($resource_sub_type) && $resource_sub_type === "models"))
                 <div class="form-group">
                     @if ($brand = request()->get('brand', $resource->slug))
                         <select class="form-control select-model" name="model">
                             <option value="">{{__('lang.Model')}}</option>
                             @foreach(\App\Models\Models::where('brand_id', \App\Models\Brand::whereSlug($brand)->first()->id)->get() as $model)
-                                <option @selected(request()->get('model') == $model->slug) value="{{$model->slug}}">{{$model->title}}</option>
+                                <option @selected(request()->get('model', $resource_model?->slug) == $model->slug) value="{{$model->slug}}">{{$model->title}}</option>
                             @endforeach
                         </select>
                     @endif
@@ -69,7 +56,7 @@
                 <ul>
                     @foreach(\App\Models\Type::whereNotIn('slug', ['with-driver', 'yachts'])->get() as $type)
                         <li @if(in_array($type->slug, $selected_types)) class="active" @endif>
-                            <input @checked(in_array($type->slug, $selected_types)) type="checkbox" name="type[]" value="{{$type->slug}}">
+                            <input @checked(in_array($type->slug, $selected_types)) type="checkbox" name="types[]" value="{{$type->slug}}">
                             {{$type->title}}
                         </li>
                     @endforeach

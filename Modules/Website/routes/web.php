@@ -43,25 +43,26 @@ Route::group([
     ], function () {
         Route::get('/', [HomeController::class, 'index'])->name('home');
 
-        Route::prefix('types')->group(function () {
-            Route::get('/', [TypesController::class, 'index'])->name('website.cars.types.index');
-            Route::get('/{type}', [TypesController::class, 'show'])->name('website.cars.types.show');
-            Route::get('/{type}/models/{model}', [TypesController::class, 'model'])->name('website.cars.types.models');
+        Route::prefix('types')->controller(TypesController::class)->group(function () {
+            Route::get('/', 'index')->name('website.cars.types.index');
+            Route::get('/{type}', 'show')->name('website.cars.types.show');
+            Route::get('/{type}/models/{model}', 'model')->name('website.cars.types.models');
         });
 
-        Route::prefix('brands')->group(function () {
-            Route::get('/', [BrandsController::class, 'index'])->name('website.cars.brands.index');
-            Route::get('/{brand}', [BrandsController::class, 'show'])->name('website.cars.brands.show');
-            Route::get('/{brand}/models/{model}', [BrandsController::class, 'model'])->name('website.cars.brands.models');
+        Route::prefix('brands')->controller(BrandsController::class)->group(function () {
+            Route::get('/', 'index')->name('website.cars.brands.index');
+            Route::get('/{brand}', 'show')->name('website.cars.brands.show');
+            Route::get('/{brand}/models/{model}', 'model')->name('website.cars.brands.models');
         });
 
-        Route::prefix('cars')->group(function () {
-            Route::get('/{car}', [CarsController::class, 'show'])->name('website.cars.show');
+        Route::prefix('cars')->controller(CarsController::class)->group(function () {
+            Route::get('/{car}', 'show')->name('website.cars.show');
+            Route::get('/filter', 'filter')->name('website.cars.filter');
         });
 
-        Route::prefix('/blogs')->group(function () {
-            Route::get('/', [BlogsController::class , 'index'])->name('website.blogs.index');
-            Route::get('/{blog}', [BlogsController::class, 'show'])->name('website.blogs.show');
+        Route::prefix('/blogs')->controller(BlogsController::class)->group(function () {
+            Route::get('/', 'index')->name('website.blogs.index');
+            Route::get('/{blog}', 'show')->name('website.blogs.show');
         });
         Route::get('/faq', [PagesController::class, 'faq']);
     });
