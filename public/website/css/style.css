@@ -2380,3 +2380,7 @@ a:hover {
     inset-inline-end: 10px;
     top: 10px;
 }
+
+.home__features .home__features_content .product__vertical {
+    flex-direction: column;
+}
