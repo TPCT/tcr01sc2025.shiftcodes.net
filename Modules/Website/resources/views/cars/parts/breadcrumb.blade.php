@@ -21,22 +21,6 @@
                     @endif
                 </li>
             @endforeach
-            <li>
-                <span  style="background: #E6F6FF;
-    width: 24px;
-    display: flex;
-    height: 24px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    position: relative;
-    margin-left: 10px;
-    border:1px solid rgba(0,0,0,0.10);
-    top: 3px;
-    font-size: 12pt;" class="go-back">
-                    <i style="margin:0;color:black" class="fa fa-angle-left"></i>
-                </span>
-            </li>
         </ul>
     </div>
 

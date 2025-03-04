@@ -9,6 +9,7 @@ use Modules\Website\App\Http\Controllers\UsersController;
 use Modules\Website\App\Http\Controllers\BlogsController;
 use Modules\Website\App\Http\Controllers\TypesController;
 use Modules\Website\App\Http\Controllers\BrandsController;
+use Modules\Website\App\Http\Controllers\YachtsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,11 @@ Route::group([
         Route::prefix('cars')->controller(CarsController::class)->group(function () {
             Route::get('/filter', 'filter')->name('website.cars.filter');
             Route::get('/{car}', 'show')->name('website.cars.show');
+        });
+
+        Route::prefix('yachts')->controller(YachtsController::class)->group(function () {
+            Route::get('/', 'index')->name('website.yachts.index');
+            Route::get('/{yacht}', 'show')->name('website.yachts.show');
         });
 
         Route::prefix('/blogs')->controller(BlogsController::class)->group(function () {

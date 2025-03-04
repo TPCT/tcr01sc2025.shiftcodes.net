@@ -33,9 +33,9 @@
 
                         <div class="products-page__content">
                             <div class="row">
-                                @foreach($cars as $car)
+                                @foreach($yachts as $yacht)
                                     <div class="col-lg-4">
-                                        @include('website::layouts.parts.car', ['car' => $car])
+                                        @include('website::yachts.parts.yacht', ['yacht' => $yacht])
                                     </div>
                                     @endforeach
                             </div>
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="col-12">
-                        {{$cars->appends(request()->input())->links()}}
+                        {{$yachts->appends(request()->input())->links()}}
                     </div>
 
                 </div>
@@ -68,30 +68,30 @@
 @endsection
 
 @section('schemes')
-        @if(count($cars) > 0)
-            @foreach($cars as $car)
+        @if(count($yachts) > 0)
+            @foreach($yachts as $yacht)
                 <script type="application/ld+json">{
             "@context": "https://schema.org",
-            "@type": ["AutoRental","Product", "Car"],
-            "name": "{{$car->name}}",
+            "@type": ["AutoRental","Product", "Yacht"],
+            "name": "{{$yacht->name}}",
             "telephone": "{{app('settings')->get('contact_phone')}}",
              "priceRange": "AED 100-60000",
-            "vehicleIdentificationNumber": "{{substr(md5($car->id) , 0 , 17)}}",
-            "vehicleModelDate": "{{$car->year ? $car->year->title : '2021'}}",
+            "vehicleIdentificationNumber": "{{substr(md5($yacht->id) , 0 , 17)}}",
+            "vehicleModelDate": "{{$yacht->year ? $yacht->year->title : '2021'}}",
             "image": [
-                "{{secure_url('/')}}/storage/{{$car->image}}"
+                "{{secure_url('/')}}/storage/{{$yacht->image}}"
             ],
-            "url": "{{secure_url('/')}}/{{$car->id}}/{{$car->slug}}",
+            "url": "{{secure_url('/')}}/{{$yacht->id}}/{{$yacht->slug}}",
             "offers": {
                 "@type": "Offer",
                 "availability": "https://schema.org/InStock",
-                "price": "{{ isset($car->price_per_day) && $car->price_per_day > 0 ? $car->price_per_day   : 100}}",
+                "price": "{{ isset($yacht->price_per_day) && $yacht->price_per_day > 0 ? $yacht->price_per_day   : 100}}",
                 "priceCurrency": "AED",
                 "priceValidUntil": "2025-12-31"
             },
             "itemCondition": "https://schema.org/NewCondition",
-            "model": "{{$car->model ? $car->model->title : 'Model'}}",
-            "brand": "{{$car->brand ? $car->brand->title : 'Brand'}}",
+            "model": "{{$yacht->model ? $yacht->model->title : 'Model'}}",
+            "brand": "{{$yacht->brand ? $yacht->brand->title : 'Brand'}}",
             "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "5",
@@ -105,8 +105,8 @@
                         "name": "Tajeer"
                     },
                     "datePublished": "{{date('Y-m-d')}}",
-                    "reviewBody": "{{$car->getDescription()}}",
-                    "name": "{{$car->name}}",
+                    "reviewBody": "{{$yacht->getDescription()}}",
+                    "name": "{{$yacht->name}}",
                     "reviewRating": {
                         "@type": "Rating",
                         "bestRating": "5",
@@ -128,13 +128,13 @@
                 "fuelType": "Gasoline"
               },
              "vehicleTransmission": "Automatic",
-             "vehicleInteriorColor": "{{ $car?->color?->title ?? 'White' }}",
-              "numberOfDoors": {{ $car?->doors ?? 2 }},
+             "vehicleInteriorColor": "{{ $yacht?->color?->title ?? 'White' }}",
+              "numberOfDoors": {{ $yacht?->doors ?? 2 }},
               "bodyType": "Pickup",
               "vehicleInteriorType": "Standard",
               "driveWheelConfiguration": "https://schema.org/FourWheelDriveConfiguration",
-              "vehicleSeatingCapacity": {{ $car?->passengers ?? 2 }},
-              "color": "{{ $car?->color?->title ?? 'White' }}"
+              "vehicleSeatingCapacity": {{ $yacht?->passengers ?? 2 }},
+              "color": "{{ $yacht?->color?->title ?? 'White' }}"
             }
                 </script>
             @endforeach

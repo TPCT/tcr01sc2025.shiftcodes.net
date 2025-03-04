@@ -18,12 +18,8 @@ class TypesController extends Controller
 
     }
     public function show($country, $city, Type $type){
-        if ($type->slug == "with-driver")
-            $cars = Car::hasCompany()->where('type', 'with-driver')->paginate(10);
-        elseif ($type->slug == "yachts")
-            $cars = Car::hasCompany()->where('type', 'yacht')->paginate(10);
-        else
-            $cars = $type->cars()->hasCompany()->where('type', 'default')->paginate(10);
+        $cars = $type->cars()->hasCompany()->where('type', 'default')->paginate(10);
+
         $resource = $type;
         $selected_types = [$resource->slug];
         $seo      = \App\Models\SEO::where('type','type')->where('resource_id',$resource->id)->first();
@@ -39,9 +35,6 @@ class TypesController extends Controller
 
         if ($type->slug == "with-driver")
             return view('website::cars.cars_with_driver', ['cars' => $cars]);
-
-        if ($type->slug == "yachts")
-            return view("website::cars.yacht", ['cars' => $cars]);
 
         $suggested_cars = $this->getSuggestedCars(__('lang.Categories'), $resource->id);
         return view('website::cars.index')->with([

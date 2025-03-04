@@ -505,23 +505,6 @@
                     </div>
                 </li>
 
-{{--                @if(count(app('settings')->getRentCarPages()) > 0)--}}
-{{--                    <li class="nav-item dropdown">--}}
-{{--                        <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"--}}
-{{--                              aria-haspopup="true" aria-expanded="false">--}}
-{{--                        {{__('lang.Rent a car')}}--}}
-{{--                        </span>--}}
-{{--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">--}}
-{{--                            @foreach(app('settings')->getRentCarPages() as $item)--}}
-{{--                                <a class="dropdown-item"--}}
-{{--                                   href="{{ LaravelLocalization::localizeUrl("/p/{$item->id}/{$item->slug}") }}">{{$item->name}}</a>--}}
-{{--                            @endforeach--}}
-
-
-{{--                        </div>--}}
-{{--                    </li>--}}
-{{--                @endif--}}
-
                 @if ($type = Type::whereSlug('with-driver')->first())
                     <li class="nav-item active">
                         <a class="nav-link"
@@ -533,7 +516,7 @@
                 @if ($type = Type::whereSlug('yachts')->first())
                     <li class="nav-item active">
                         <a class="nav-link"
-                           href="{{ LaravelLocalization::getLocalizedURL(null, route('website.cars.types.show', ['type' => $type])) }}">{{__('lang.Rent yacht')}}</a>
+                           href="{{ LaravelLocalization::getLocalizedURL(null, route('website.yachts.index')) }}">{{__('lang.Rent yacht')}}</a>
                     </li>
                 @endif
 
