@@ -31,6 +31,9 @@ class TypesController extends Controller
             $type->title => null
         ];
 
+        if ($type->slug == "with-driver")
+            return view('website::cars.cars_with_driver', ['cars' => $cars]);
+
         $suggested_cars = $this->getSuggestedCars(__('lang.Categories'), $resource->id);
         return view('website::cars.index')->with([
             'cars'         => $cars,
