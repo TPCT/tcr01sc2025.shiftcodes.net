@@ -19,7 +19,7 @@ class TypesController extends Controller
     public function show($country, $city, Type $type){
         $cars = $type->cars()->hasCompany()->where('type', 'default')->paginate(10);
         $resource = $type;
-        $selected_types = [$resource->id];
+        $selected_types = [$resource->slug];
         $seo      = \App\Models\SEO::where('type','type')->where('resource_id',$resource->id)->first();
         $content  = \App\Models\Content::where('type','type')->where('resource_id', $resource->id)->first();
         $faq      = \App\Models\Faq::where('type','type')->where('resource_id', $resource->id)->get();
@@ -35,6 +35,7 @@ class TypesController extends Controller
         return view('website::cars.index')->with([
             'cars'         => $cars,
             'resource'     => $resource,
+            'resource_type' => 'type',
             'resource_title' => $resource_title,
             'models'       => $models,
             'selected_types' => $selected_types,
@@ -53,7 +54,7 @@ class TypesController extends Controller
             $query->where('type', 'default');
         })->paginate(10);
         $resource = $type;
-        $selected_types = [$resource->id];
+        $selected_types = [$resource->slug];
         $seo      = \App\Models\SEO::where('type','brand')->where('resource_id',$resource->id)->first();
         $content  = \App\Models\Content::where('type','brand')->where('resource_id', $resource->id)->first();
         $faq      = \App\Models\Faq::where('type','brand')->where('resource_id', $resource->id)->get();
@@ -69,6 +70,7 @@ class TypesController extends Controller
         return view('website::cars.index')->with([
             'cars'         => $cars,
             'resource'     => $resource,
+            'resource_type' => 'type',
             'resource_title' => $resource_title,
             'models'       => $models,
             'selected_types' => $selected_types,

@@ -28,46 +28,48 @@
 
             </div>
             <div class="form-group">
-                <select class="form-control select-brand" name="brand_id">
+                <select class="form-control select-brand" name="brand">
                     <option value="">{{__('lang.Brand')}}</option>
                     @foreach(\App\Models\Brand::all() as $brand)
-                        <option @if(request()->get('brand_id') == $brand->id) selected @endif value="{{$brand->id}}">{{$brand->title}}</option>
+                        <option @selected(request()->get('brand') == $brand->slug || (isset($resource_type) && $resource_type == "brand" && $resource->slug == $brand->slug)) value="{{$brand->slug}}">{{$brand->title}}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="form-group">
-                <select class="form-control select-model" name="model_id">
-                    <option value="">{{__('lang.Model')}}</option>
-                    @if(request()->get('brand_id'))
-                        @foreach(\App\Models\Models::where('brand_id', request()->get('brand_id'))->get() as $model)
-                            <option @if(request()->get('model_id') == $model->id) selected @endif value="{{$model->id}}">{{$model->title}}</option>
-                        @endforeach
+            @if(request()->get('brand') || (isset($resource_type) && $resource_type == "brand"))
+                <div class="form-group">
+                    @if ($brand = request()->get('brand', $resource->slug))
+                        <select class="form-control select-model" name="model">
+                            <option value="">{{__('lang.Model')}}</option>
+                            @foreach(\App\Models\Models::where('brand_id', \App\Models\Brand::whereSlug($brand)->first()->id)->get() as $model)
+                                <option @selected(request()->get('model') == $model->slug) value="{{$model->slug}}">{{$model->title}}</option>
+                            @endforeach
+                        </select>
                     @endif
-                </select>
-            </div>
+                </div>
+            @endif
             <div class="form-group">
-                <select class="form-control" name="year_id">
+                <select class="form-control" name="year">
                     <option value="">{{__('lang.Year')}}</option>
                     @foreach(\App\Models\Year::all() as $year)
-                        <option @if(request()->get('year_id') == $year->id) selected @endif value="{{$year->id}}">{{$year->title}}</option>
+                        <option @selected(request()->get('year') == $year->title) value="{{$year->title}}">{{$year->title}}</option>
                     @endforeach
 
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control" name="color_id">
+                <select class="form-control" name="color">
                     <option value="">{{__('lang.Color')}}</option>
                     @foreach(\App\Models\Color::all() as $color)
-                        <option @if(request()->get('color_id') == $color->id) selected @endif value="{{$color->id}}">{{$color->title}}</option>
+                        <option @selected(request()->get('color') == $color->slug) value="{{$color->slug}}">{{$color->title}}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group type__filter">
                 <p>{{__("lang.Type")}}</p>
                 <ul>
-                    @foreach(\App\Models\Type::all() as $type)
-                        <li @if(in_array($type->id, $selected_types)) class="active" @endif>
-                            <input @if(in_array($type->id, $selected_types)) checked @endif type="checkbox" name="type_id[]" value="{{$type->id}}">
+                    @foreach(\App\Models\Type::whereNotIn('slug', ['with-driver', 'yachts'])->get() as $type)
+                        <li @if(in_array($type->slug, $selected_types)) class="active" @endif>
+                            <input @checked(in_array($type->slug, $selected_types)) type="checkbox" name="type[]" value="{{$type->slug}}">
                             {{$type->title}}
                         </li>
                     @endforeach

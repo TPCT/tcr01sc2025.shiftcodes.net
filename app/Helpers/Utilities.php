@@ -101,7 +101,8 @@ class Utilities
         foreach (static::charsArray() as $key => $val) {
             $value = str_replace($val, $key, $value);
         }
-        $string = preg_replace('/[^\x20-\x7E\x{0621}-\x{063A}x{0641}-\x{064A}]/u', '', $value);
+        $string = trim($value);
+        $string = preg_replace('/[^\x20-\x7E\x{0621}-\x{063A}x{0641}-\x{064A}]/u', '', $string);
         $string = preg_replace("/[\-?\/,]+/", "", $string);
         $string = preg_replace("/[\s-]+/", " ", $string);
         return preg_replace("/[\s_]/", $separator, $string);

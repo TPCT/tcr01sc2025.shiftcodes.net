@@ -43,6 +43,10 @@ class CarsController extends Controller
         ]);
     }
 
+    public function filter($country, $city){
+
+    }
+
 //    public function indexModel($id, $slug, $slug_model)
 //    {
 //

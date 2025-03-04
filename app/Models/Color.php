@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
@@ -32,11 +33,13 @@ class Color extends Model
 {
     use HasFactory;
     use HasTranslations;
+    use HasSlug;
 
     public $translatable = ['title'];
     
     protected $fillable = [
         'title',
-        "sync_id"
+        "sync_id",
+        "slug"
     ];
 }
