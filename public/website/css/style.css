@@ -2383,3 +2383,7 @@ a:hover {
 .home__features .home__features_content .product__vertical {
     flex-direction: column;
 }
+
+.home__brands_content .owl-item a {
+    flex: 1;
+}
