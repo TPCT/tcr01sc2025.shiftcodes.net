@@ -24,11 +24,18 @@
             </div>
             @if(request()->get('brand') || (isset($resource_type) && $resource_type == "brand") || (isset($resource_sub_type) && $resource_sub_type === "models"))
                 <div class="form-group">
-                    @if ($brand = request()->get('brand', $resource->slug))
+                    @if ($brand = request()->get('brand'))
                         <select class="form-control select-model" name="model">
                             <option value="">{{__('lang.Model')}}</option>
                             @foreach(\App\Models\Models::where('brand_id', \App\Models\Brand::whereSlug($brand)->first()->id)->get() as $model)
-                                <option @selected(request()->get('model', $resource_model?->slug) == $model->slug) value="{{$model->slug}}">{{$model->title}}</option>
+                                <option @selected(request()->get('model') == $model->slug) value="{{$model->slug}}">{{$model->title}}</option>
+                            @endforeach
+                        </select>
+                    @elseif(isset($resource) && $resource_type == "brand")
+                        <select class="form-control select-model" name="model">
+                            <option value="">{{__('lang.Model')}}</option>
+                            @foreach(\App\Models\Models::where('brand_id', $resource->id)->get() as $model)
+                                <option @selected(request()->get('model') == $model->slug) value="{{$model->slug}}">{{$model->title}}</option>
                             @endforeach
                         </select>
                     @endif

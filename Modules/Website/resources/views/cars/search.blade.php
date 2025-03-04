@@ -30,7 +30,7 @@
             </div>
 
 
-            <form action="{{secure_url('/')}}/{{\Request::path()}}" method="get">
+            <form action="{{route('website.cars.filter')}}" method="get">
 
                 <div class="row mt-50">
 

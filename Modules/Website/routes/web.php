@@ -56,8 +56,8 @@ Route::group([
         });
 
         Route::prefix('cars')->controller(CarsController::class)->group(function () {
-            Route::get('/{car}', 'show')->name('website.cars.show');
             Route::get('/filter', 'filter')->name('website.cars.filter');
+            Route::get('/{car}', 'show')->name('website.cars.show');
         });
 
         Route::prefix('/blogs')->controller(BlogsController::class)->group(function () {
