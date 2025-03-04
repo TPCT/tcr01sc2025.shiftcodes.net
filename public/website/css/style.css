@@ -409,7 +409,7 @@ footer ul li a {
     display: flex;
 }
 
-.cards-version-1 .product__vertical {
+.product__vertical {
     flex-direction: column;
     max-height: unset;
     height: 100% !important;
@@ -464,7 +464,7 @@ footer ul li a {
     border-top-left-radius: 30px;
 }
 
-.cards-version-1 .product__vertical_top img {
+.product__vertical .product__vertical_top img {
     width: 100%;
     height: 250px;
     object-fit: cover;
