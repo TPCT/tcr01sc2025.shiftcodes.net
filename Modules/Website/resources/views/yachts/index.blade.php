@@ -31,7 +31,7 @@
                     <div class="col-lg-12">
 
 
-                        <div class="products-page__content cards-version-1">
+                        <div class="products-page__content">
                             <div class="row">
                                 @foreach($yachts as $yacht)
                                     <div class="col-lg-4 mb-3">
