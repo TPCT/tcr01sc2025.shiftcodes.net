@@ -1,4 +1,4 @@
-    <div class="product__vertical product__horizontal">
+    <div class="product__vertical">
 
         <div class="product__vertical_top">
 
@@ -67,17 +67,6 @@
 
                     @endif
                 </ul>
-
-                <div class="cm-logo">
-                    @if($yacht->company)
-                    <a href="{{LaravelLocalization::localizeUrl("/c/{$yacht->company->id}/{$yacht->company->slug}")}}" class="flex-1 link">
-                        <div class="home__brands_item">
-                                <img loading="lazy" alt="{{$yacht->company->name . rand(0,999)}}" src="{{asset("/storage/{$yacht->company->image}")}}"/>
-                                <h3>{{$yacht->company->name}}</h3>
-                        </div>
-                    </a>
-                    @endif
-                </div>
 
                 <div class="product__horizontal_right">
                     <div class="home__brands_item product__horizontal_fees">
