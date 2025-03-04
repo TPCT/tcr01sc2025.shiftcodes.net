@@ -47,6 +47,9 @@
                     <div data-items-large="1" data-items-small="1" class="single-image-slider owl-carousel owl-theme">
                     <div class="single_product_main_image-box" data-src="/storage/{{$car->image}}" data-fancybox="gallery">
                         <img alt="{{$car->name}}" src="/storage/{{$car->image}}" />
+                        <div class="product__vertical_meta">
+                            <span class="wishlist wishlist-toggle" data-auth="" data-id="">Save to wishlist</span>
+                        </div>
                     </div>
                         @foreach($car->images as $image)
                         <div data-src="/storage/{{$car->image}}" data-fancybox="gallery">

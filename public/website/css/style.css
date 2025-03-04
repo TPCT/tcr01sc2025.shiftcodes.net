@@ -251,7 +251,8 @@ footer ul li a {
     position: relative;
 }
 
-.search-banner-field .search-banner-field__input i {
+.search-banner-field .search-banner-field__input i,
+.search-banner-field .search-banner-field__input svg {
     position: absolute;
     left: 14px;
     top: 50%;
@@ -994,11 +995,12 @@ footer ul li a:hover {
     transform: scaleX(-1) !important;
     background: transparent !important;
     border: 0 !important;
-    height: 18px !important;
+    height: 20px !important;
+    width: 10px !important;
 }
 
 .breadcrumb-list span i {
-    color: #939393;
+    color: #939393 !important;
 }
 
 .breadcrumb-list li a {
@@ -1964,6 +1966,7 @@ a:hover {
 
 .product__horizontal {
     max-height: 300px;
+    flex-direction: row;
 }
 
 .mobile-top-bar {
@@ -2361,4 +2364,19 @@ a:hover {
 .home__brands .read-more {
     text-decoration: underline !important;
     font-weight: 600;
+}
+
+.single_product_main_image {
+    position: relative;
+}
+
+.single_product_main_image .wishlist {
+    padding: 5px 9px;
+    font-size: 8pt;
+    color: #23262D;
+    border-radius: 4px;
+    font-weight: 500;
+    position: absolute;
+    inset-inline-end: 10px;
+    top: 10px;
 }
