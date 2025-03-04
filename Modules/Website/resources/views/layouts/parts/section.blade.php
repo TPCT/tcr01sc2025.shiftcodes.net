@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="col-lg-12">
-                    <div data-stage="15" data-items-large="3" data-items-small="1"  class="home__features_content owl-carousel owl-theme">
+                    <div data-stage="15" data-items-large="3" data-items-medium="2" data-items-small="1"   class="home__features_content owl-carousel owl-theme">
                         @foreach($section->cars()->whereHas('company', function($q) {
                             $q->where('country_id', app('country')->getCountry()->id);
                         })->orderBy('refreshed_at','desc')->limit(10)->get() as $car)

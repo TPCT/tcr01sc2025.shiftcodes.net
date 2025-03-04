@@ -406,6 +406,8 @@ footer ul li a {
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 .product__vertical .product__vertical_top {
@@ -458,7 +460,12 @@ footer ul li a {
     border-top-left-radius: 30px;
 }
 
-.product__vertical .product__vertical_bottom {}
+.product__vertical .product__vertical_bottom {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 .product__vertical .product__vertical_bottom h2 {
     font-size: 12pt;
