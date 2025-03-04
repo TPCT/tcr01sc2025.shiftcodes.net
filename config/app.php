@@ -188,7 +188,7 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
-        Laravel\Telescope\TelescopeServiceProvider::class,
+//        Laravel\Telescope\TelescopeServiceProvider::class,
     ])->toArray(),
 
     /*
