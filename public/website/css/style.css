@@ -1981,7 +1981,7 @@ a:hover {
 
 .product__horizontal {
     max-height: 300px;
-    flex-direction: row;
+    flex-direction: row !important;
 }
 
 .mobile-top-bar {
