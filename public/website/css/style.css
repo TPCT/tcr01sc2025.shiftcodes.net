@@ -414,7 +414,7 @@ footer ul li a {
     max-height: unset;
 }
 
-.product__vertical .product__vertical_top img{
+.product__vertical.card_type_1 .product__vertical_top img{
     max-height: 200px;
 }
 
