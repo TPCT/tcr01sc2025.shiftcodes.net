@@ -45,7 +45,7 @@
                 <div class="col-lg-7">
                     <div class="single_product_main_image">
                     <div data-items-large="1" data-items-small="1" class="single-image-slider owl-carousel owl-theme">
-                    <div data-src="/storage/{{$car->image}}" data-fancybox="gallery">
+                    <div class="single_product_main_image-box" data-src="/storage/{{$car->image}}" data-fancybox="gallery">
                         <img alt="{{$car->name}}" src="/storage/{{$car->image}}" />
                     </div>
                         @foreach($car->images as $image)
