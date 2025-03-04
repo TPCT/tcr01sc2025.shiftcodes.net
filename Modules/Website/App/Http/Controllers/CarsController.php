@@ -85,7 +85,7 @@ class CarsController extends Controller
         return view('website::cars.search')->with([
             'cars'         => $cars,
             'models'       => [],
-            'selected_types' => request('types'),
+            'selected_types' => request('types', []),
         ]);
     }
 //    public function index($id, $slug)

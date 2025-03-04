@@ -19,6 +19,9 @@ class TypesController extends Controller
     }
 
     public function show($country, $city, Type $type){
+        if ($type->slug == "yacht")
+            return redirect()->route('website.yachts.index');
+        
         $cars = $type->cars()->hasCompany()->where('type', 'default')->paginate(10);
         $resource = $type;
         $selected_types = [$resource->slug];
