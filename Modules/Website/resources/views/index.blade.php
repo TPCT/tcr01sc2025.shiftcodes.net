@@ -19,6 +19,11 @@
                 <div class="col-lg-12">
                     <div class="home__brands_title">
                         <h3>{{app('settings')->get('car_types_title')}}</h3>
+                        <div class="home_brands_view_all_holder">
+                            <a class="home_brands_view_all" href="#">
+                                View All
+                            </a>
+                        </div>
                     </div>
                     <div class="home__brands_desc">
                     {{app('settings')->get('car_types_description')}}
@@ -51,6 +56,11 @@
                         <h3>
                             {{app('settings')->get('car_brands_title')}}
                         </h3>
+                        <div class="home_brands_view_all_holder">
+                            <a class="home_brands_view_all" href="#">
+                                View All
+                            </a>
+                        </div>
                     </div>
                     <div class="home__brands_desc">
                         {{app('settings')->get('car_brands_description')}}
