@@ -33,11 +33,11 @@
                     <div class="col-lg-12">
 
 
-                        <div class="products-page__content">
+                        <div class="products-page__content cards-version-1">
                             <div class="row">
                                 @foreach($cars as $car)
-                                    <div class="col-lg-4">
-                                        @include('website::layouts.parts.car', ['car' => $car])
+                                    <div class="col-lg-4 mb-3">
+                                        @include('website::layouts.parts.car', ['car' => $car, 'class' => 'card_type_1'])
                                     </div>
                                 @endforeach
                             </div>
