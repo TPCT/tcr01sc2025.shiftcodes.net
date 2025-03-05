@@ -53,8 +53,8 @@ Route::group([
             Route::get("/account/verify", [UsersController::class, 'verify_user'])->name('website.account.verify');
             Route::get("/account/wishlist", [UsersController::class, 'wishlist'])->name('website.account.wishlist');
             Route::get("/account/fcm/register", [UsersController::class, 'register_fcm_token'])->name('website.account.registerFCMToken');
-            Route::get("/wishlist/toggle", [UsersController::class, 'toggle_wish_list'])->name('website.account.toggleWishlist');
-            Route::get("/logout", [UsersController::class, 'logout'])->name('website.account.logout');
+            Route::get("/account/wishlist/toggle", [UsersController::class, 'toggle_wish_list'])->name('website.account.toggleWishlist');
+            Route::get("/account/logout", [UsersController::class, 'logout'])->name('website.account.logout');
         });
 
         Route::get('/iframes', [HomeController::class, 'reviews']);
