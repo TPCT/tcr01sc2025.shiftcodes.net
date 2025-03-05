@@ -52,5 +52,6 @@ Thumbs.db
 /node_modules
 /storage/*
 
-/.env
+.env
+.env.example
 /public/*

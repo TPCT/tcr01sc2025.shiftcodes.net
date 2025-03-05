@@ -49,21 +49,27 @@ class HomeController extends Controller
     }
 
     public function switchLanguage($key) {
-        session()->put('locale', $key);
-        return redirect()->back();
+        return redirect()->back()->withCookie(cookie()->forever('locale', $key));
     }
 
     public function switchCountry(Country $country) {
-        return redirect()->back()->with(['set-country' => $country->id, 'set-city' => $country->cities()->whereDefault(true)->first()->id]);
+        $city = $country->cities()->whereDefault(true)->first()->id ?? $country->cities()->first()->id;
+        return redirect()->back()->withCookies([
+            \Cookie::make('country_id', $country->id, 60 * 60 * 24 * 30),
+            \Cookie::make('city_id', $city->id, 60 * 60 * 24 * 30),
+        ]);
     }
 
     public function switchCity(?City $city) {
-        return redirect()->back()->with(['set-country' => $city->country()->first()->id, 'set-city' => $city->id]);
+        return redirect()->back()->withCookies([
+            \Cookie::make('country_id', $city->country->id, 60 * 60 * 24 * 30),
+            \Cookie::make('city_id', $city->id, 60 * 60 * 24 * 30),
+        ]);
     }
 
     public function switchCurrency(Currency $currency) {
         session()->put('currency_id', $currency->id);
-        return redirect()->back();
+        return redirect()->back()->withCookie(cookie('currency_id', $currency->id, 60 * 60 * 24 * 30));
     }
 
 }

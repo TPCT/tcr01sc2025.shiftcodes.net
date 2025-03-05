@@ -12,13 +12,13 @@ class CountryService
 
     public function setCountry($countryId)
     {
-        $this->country = Country::find($countryId);
-        $this->city    = $this->country->cities()->whereDefault(true)->first()->id;
+        $this->country = Country::find($countryId) ?? Country::whereDefault(true)->first() ?? Country::first();
+        $this->setCity($this->country->cities()->whereDefault(true)->first()->id);
     }
 
     public function getCountry()
     {
-        return $this->country ?? Country::find(session('country_id'));
+        return $this->country ?? Country::find(session('country_id')) ?? Country::whereDefault(true)->first();
     }
 
     public function getAllCountries()
@@ -33,11 +33,11 @@ class CountryService
 
     public function setCity($cityId)
     {
-        $this->city = $cityId ? $this->country->cities->where("id", $cityId)->first() : null;
+        $this->city = City::find($cityId) ?? City::whereDefault(true)->first() ?? City::first();
     }
 
     public function getCity()
     {
-        return $this->city ?? City::find(session('city_id'));
+        return $this->city ?? City::find(session('city_id')) ?? City::whereDefault(true)->first();
     }
 }

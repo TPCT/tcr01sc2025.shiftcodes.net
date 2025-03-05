@@ -13,11 +13,11 @@ class CurrencyService {
     }
 
     public function setCurrency($id) {
-        $this->currency = Currency::find($id);
+        $this->currency = Currency::find($id) ?? Currency::whereDefault(true)->first() ?? Currency::first();
     }
 
     public function getCurrency() {
-        return $this->currency ?? Currency::find(session('currency_id'));
+        return $this->currency;
     }
 
     public function convert($amount) {

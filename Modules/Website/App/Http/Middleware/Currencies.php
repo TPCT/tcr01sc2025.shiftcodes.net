@@ -13,7 +13,7 @@ class Currencies
      */
     public function handle(Request $request, Closure $next)
     {
-        app('currencies')->setCurrency(\Cookie::get('currency_id') ? \Cookie::get('currency_id') : Currency::where('default', 1)->first()->id);
+        app('currencies')->setCurrency(\Cookie::get('currency_id'));
         return $next($request);
     }
 }

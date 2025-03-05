@@ -1,7 +1,7 @@
 @php use Mcamara\LaravelLocalization\Facades\LaravelLocalization; @endphp
 @php use App\Models\Type; @endphp
 @php use App\Models\Faq; @endphp
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -18,7 +18,6 @@
           onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="{{asset('/website/css/owl.theme.default.min.css')}}" as="style"
           onload="this.onload=null;this.rel='stylesheet'">
-    <!-- <link rel="preload" href="{{asset('/website/css/style.css')}}" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
 
     <link rel="stylesheet" href="{{asset('/website/css/bootstrap.min.css')}}">
     @if(app()->getLocale() == 'ar')
@@ -30,8 +29,6 @@
     <noscript>
         <link rel="stylesheet" href="{{asset('/website/css/media.css')}}">
     </noscript>
-    <!-- <link rel="stylesheet" href="{{asset('/css/bootstrap-rtl.min.css')}}"> -->
-
     <noscript>
         <link rel="stylesheet" href="{{asset('/website/css/font-awesome.css')}}">
     </noscript>
@@ -48,18 +45,7 @@
         <link href="{{asset('/website/css/rtl.css')}}" rel="stylesheet">
     @endif
     <link rel="icon" href="{{asset('/website/images/fav.jpg')}}" type="image/x-icon">
-
-    {{--    @if(isset($canonical)  && isset($resource) )--}}
-    {{--        <link rel="canonical" href="{{LaravelLocalization::localizeUrl("/b/{$resource->sync_id}/{$resource->slug}") }}" />--}}
-    {{--    @else--}}
-    {{--        <link rel="canonical" href="{{url()->current()}}"/>--}}
-    {{--    @endif--}}
-
     <link href="{{url()->current()}}" rel="canonical"/>
-
-
-    <!--<link rel="preload" href="{{asset('/website/images/search_bg.webp')}}" as="image">-->
-
     <!-- Preload Bootstrap JavaScript -->
     <link rel="preload" href="{{asset('/website/js/bootstrap.min.js')}}" as="script">
     <link rel="preload" href="{{asset('/website/js/owl.carousel.min.js')}}" as="script">
@@ -88,10 +74,6 @@
 {!!app('settings')->get('scripts_body')!!}
 <input type="hidden" class="tr-read-more" value="{{__('lang.Read More')}}"/>
 <input type="hidden" class="tr-read-less" value="{{__('lang.Read Less')}}"/>
-
-<!-- <span class="loader">
-    <i class="fa fa-spinner fa-spin"></i>
-</span> -->
 
 <input type="hidden" class="is-auth" value="{{auth()->guard('customers')->check() ? 'true' : 'false'}}"/>
 
@@ -231,7 +213,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-7">
-                <a href="{{url('/listyourcar')}}">
+                <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.pages.list-your-car'))}}">
                     <div class="header__list_your_car">
                         <img width="30" height="30" alt="listcar" class="car"
                              src="{{asset('/website/images/header_car.png')}}"/>
@@ -257,13 +239,6 @@
                                     <a href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.switch.country', ['country' => $country])) }}">{{$country->title}}</a>
                                     @if(count($country->cities) > 0)
                                         <ul class="cities_menu">
-{{--                                            <li>--}}
-{{--                                                <a href="{{ LaravelLocalization::getLocalizedURL(null, route('website.switch.city', ['city' => 'all'])) }}">{{__('lang.All')}}--}}
-{{--                                                    @if(app('country')->getCountry()->id == $country->id && !app('country')->getCity())--}}
-{{--                                                        <i class="fa fa-check"></i>--}}
-{{--                                                    @endif--}}
-{{--                                                </a>--}}
-{{--                                            </li>--}}
                                             @foreach($country->cities as $city)
                                                 <li>
                                                     <a href="{{ LaravelLocalization::getLocalizedURL(null, route('website.switch.city', ['city' => $city])) }}">{{$city->title}}
@@ -508,7 +483,7 @@
                 @if ($type = Type::whereSlug('with-driver')->first())
                     <li class="nav-item active">
                         <a class="nav-link"
-                           href="{{ LaravelLocalization::getLocalizedURL(null, route('website.cars.types.show', ['type' => $type])) }}">{{__('lang.Rent a car with driver')}}</a>
+                           href="{{ LaravelLocalization::getLocalizedURL(null, route('website.cars.with-drivers')) }}">{{__('lang.Rent a car with driver')}}</a>
                     </li>
                 @endif
 

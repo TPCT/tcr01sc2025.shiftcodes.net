@@ -27,7 +27,7 @@ Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => [
         'localeSessionRedirect', 'localizationRedirect',
-        "currency"
+        "currency", "country"
     ]],
     function() {
 
@@ -40,7 +40,6 @@ Route::group([
         Route::get('/faq', [PagesController::class, 'faq'])->name('website.pages.faq');
         Route::any("/contact-us", [PagesController::class, 'contact'])->name('website.pages.contact-us');
         Route::get("/list-your-car", [PagesController::class, 'list_your_car'])->name('website.pages.list-your-car');
-        Route::get('/{page}', [PagesController::class, 'show'])->name('website.pages.show');
 
 
         Route::post("/signup", [UsersController::class, 'signup'])->name('website.account.register');
@@ -56,6 +55,7 @@ Route::group([
             Route::get("/account/wishlist/toggle", [UsersController::class, 'toggle_wish_list'])->name('website.account.toggleWishlist');
             Route::get("/account/logout", [UsersController::class, 'logout'])->name('website.account.logout');
         });
+        Route::get('/{page}', [PagesController::class, 'show'])->name('website.pages.show');
 
         Route::get('/iframes', [HomeController::class, 'reviews']);
 
@@ -93,14 +93,7 @@ Route::group([
                 Route::get('/{blog}', 'show')->name('website.blogs.show');
             });
         });
-});
-
-
-    Route::get('/a/{id}', [CarsController::class, 'contact']);
-
-    Route::get('/s/{id}/{slug}', [CarsController::class, 'section']);
-
-    Route::get('/l/{id}/{slug}', [CarsController::class, 'cities']);
+ });
 
 
 
