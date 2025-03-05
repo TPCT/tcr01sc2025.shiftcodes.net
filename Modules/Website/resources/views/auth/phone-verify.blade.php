@@ -63,7 +63,7 @@
 
                             </form>
 
-                            <a href="/logout" class="btn btn-dark mt-20">{{__('lang.Logout')}}</a>
+                            <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.account.logout'))}}" class="btn btn-dark mt-20">{{__('lang.Logout')}}</a>
 
 
 

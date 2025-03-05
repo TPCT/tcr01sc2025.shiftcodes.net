@@ -345,12 +345,12 @@
                                 <li data-toggle="modal" data-target="#signupModal">{{__('lang.Sign up')}}</li>
                             @else
                                 <li>
-                                    <a href="/account/wishlist">
+                                    <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.account.wishlist'))}}">
                                         {{__('lang.Wishlist')}}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/logout">{{__('lang.Logout')}}</a>
+                                    <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.account.logout'))}}">{{__('lang.Logout')}}</a>
                                 </li>
                             @endif
                         </ul>
@@ -549,10 +549,10 @@
                             {{__('lang.Sign up')}}
                         </span>
                 @else
-                    <a href="{{ LaravelLocalization::localizeUrl("account/wishlist") }}">
+                    <a href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.account.wishlist')) }}">
                         {{__('lang.Wishlist')}}
                     </a>
-                    <a href="{{url('/logout')}}">
+                    <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.account.logout'))}}">
                         {{__('lang.Logout')}}
                     </a>
                 @endif

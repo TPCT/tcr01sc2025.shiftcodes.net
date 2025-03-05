@@ -36,7 +36,7 @@ class Language
             && \Route::currentRouteName() != 'verify' && \Route::currentRouteName() != 'phone'
             && \Route::currentRouteName() != 'logout'
             ) {
-                return redirect("/account/phone");
+                return redirect()->route('website.account.phone');
             }
         }
 

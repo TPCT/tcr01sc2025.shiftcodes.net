@@ -48,7 +48,7 @@
                     <div class="single_product_main_image-box" data-src="/storage/{{$car->image}}" data-fancybox="gallery">
                         <img alt="{{$car->name}}" src="/storage/{{$car->image}}" />
                         <div class="product__vertical_meta">
-                            <span class="wishlist wishlist-toggle" data-auth="" data-id="">Save to wishlist</span>
+                            <span class="wishlist wishlist-toggle" data-auth="" data-id="">@lang('lang.Save to wishlist')</span>
                         </div>
                     </div>
                         @foreach($car->images as $image)

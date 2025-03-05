@@ -32,7 +32,7 @@ class UsersController extends Controller
         $data['type']     = 'customer';
         $user = User::create($data);
         auth()->guard('customers')->login($user);
-        return redirect("/account/phone");
+        return redirect()->route('website.account.phone');
     }
 
     public function login(Request $request) {
@@ -60,7 +60,7 @@ class UsersController extends Controller
         return view("website::auth.phone-verify");
     }
 
-    public function verifyUser(Request $request) {
+    public function verify_user(Request $request) {
         $user = auth()->guard('customers')->user();
         $user->is_phone_verified = 1;
         $user->save();
@@ -93,11 +93,11 @@ class UsersController extends Controller
             $newUser->type              = 'customer';
             $newUser->save();
             auth()->guard('customers')->login($newUser);
-            return redirect('/account/phone');
+            return redirect()->route('website.account.phone');
         }
     }
 
-    public function toggleWishlist() {
+    public function toggle_wish_list() {
         $car_id = request('car_id');
         $user = auth()->guard('customers')->user();
         if($user->wishlist->contains($car_id)) {
@@ -123,7 +123,7 @@ class UsersController extends Controller
         ]);
     }
    
-    public function registerFCMToken() {
+    public function register_fcm_token() {
         $token = request('token');
         $user = auth()->guard('customers')->user();
         $fcm = $user->fcms()->where('fcm_token', $token)->first();

@@ -49,12 +49,12 @@ Route::group([
         Route::get("/login/{provider}/callback", [UsersController::class, 'handle_provider_callback'])->name('website.account.login_with_provider_callback');
 
         Route::group(["middleware" => ["customer-auth"]], function () {
-            Route::get("/account/phone", [UsersController::class, 'phone'])->name('phone');
-            Route::get("/account/verify", [UsersController::class, 'verifyUser'])->name('verify');
-            Route::get("/account/wishlist", [UsersController::class, 'wishlist']);
-            Route::get("/account/fcm/register", [UsersController::class, 'registerFCMToken']);
-            Route::get("/wishlist/toggle", [UsersController::class, 'toggleWishlist']);
-            Route::get("/logout", [UsersController::class, 'logout'])->name('logout');
+            Route::get("/account/phone", [UsersController::class, 'phone'])->name('website.account.phone');
+            Route::get("/account/verify", [UsersController::class, 'verify_user'])->name('website.account.verify');
+            Route::get("/account/wishlist", [UsersController::class, 'wishlist'])->name('website.account.wishlist');
+            Route::get("/account/fcm/register", [UsersController::class, 'register_fcm_token'])->name('website.account.registerFCMToken');
+            Route::get("/wishlist/toggle", [UsersController::class, 'toggle_wish_list'])->name('website.account.toggleWishlist');
+            Route::get("/logout", [UsersController::class, 'logout'])->name('website.account.logout');
         });
 
         Route::get('/iframes', [HomeController::class, 'reviews']);
