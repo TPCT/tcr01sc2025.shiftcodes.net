@@ -1684,6 +1684,10 @@ a:hover {
     border: 0;
 }
 
+.page-link {
+    padding: .5rem 1.4rem !important;
+}
+
 .search__result {
     position: absolute;
     background: white;
@@ -2399,20 +2403,23 @@ a:hover {
 
 /* new pages  */
 /* car brands  */
-.arabic-version{
+.arabic-version {
     direction: rtl;
 }
-.arabic-version .breadcrumb-item + .breadcrumb-item::before {
+
+.arabic-version .breadcrumb-item+.breadcrumb-item::before {
     padding-left: 0.5rem;
     float: right;
     /* transform: scale(-1); */
 }
-.new-pages-banner{
+
+.new-pages-banner {
     padding: 0;
     position: relative;
     height: 200px;
 }
-.new-pages-banner::after{
+
+.new-pages-banner::after {
     width: 100%;
     height: 100%;
     content: '';
@@ -2422,7 +2429,8 @@ a:hover {
     background-color: #3A1B50;
     opacity: 0.66;
 }
-.new-pages-banner h2{
+
+.new-pages-banner h2 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -2430,26 +2438,32 @@ a:hover {
     z-index: 99;
     inset-inline-start: 1.5rem;
 }
+
 @media (max-width:576.89px) {
-    .new-pages-banner h2{
+    .new-pages-banner h2 {
         inset-inline-start: 0.5rem;
     }
 }
+
 .new-pages-banner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.breadcrumb-item a{
+
+.breadcrumb-item a {
     color: #939393;
 }
-.breadcrumb-item.active a{
+
+.breadcrumb-item.active a {
     color: #3A1B50;
 }
+
 .breadcrumb-item+.breadcrumb-item::before {
     content: '>';
     color: #939393;
 }
+
 .car-brands-new {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -2458,23 +2472,28 @@ a:hover {
     margin-bottom: 5rem;
     row-gap: 3rem;
 }
+
 #car-brands .home__brands_item {
     width: 100%;
     max-width: unset;
 }
+
 .home_brands_view_all {
     white-space: nowrap;
 }
-.social-icons-new-box{
+
+.social-icons-new-box {
     display: flex;
     gap: 0.5rem;
 }
-#car-brands .home__about{
+
+#car-brands .home__about {
     position: relative;
 }
-#car-brands .home__about::after{
+
+#car-brands .home__about::after {
     content: '';
-    background-color:#3A1B50;
+    background-color: #3A1B50;
     height: 1px;
     width: 60%;
     inset-inline-start: 50%;
@@ -2482,14 +2501,17 @@ a:hover {
     position: absolute;
     top: 0;
 }
-.arabic-version #car-brands .home__about::after{
+
+.arabic-version #car-brands .home__about::after {
     inset-inline-start: unset;
     inset-inline-end: 50%;
 }
-#car-brands .home__about_content p{
+
+#car-brands .home__about_content p {
     margin-block: 1rem;
 }
-.social-icons-new-box picture{
+
+.social-icons-new-box picture {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2498,25 +2520,90 @@ a:hover {
     width: 45px;
     height: 45px;
 }
-.social-icons-new-box a:nth-child(1) picture{
+
+.social-icons-new-box a:nth-child(1) picture {
     background-color: #3A1B50;
 }
-.social-icons-new-box a:nth-child(2) picture{
+
+.social-icons-new-box a:nth-child(2) picture {
     background-color: #3B5998;
 }
-.social-icons-new-box a:nth-child(3) picture{
+
+.social-icons-new-box a:nth-child(3) picture {
     background-color: #55ACEE;
 }
-.social-icons-new-box a:nth-child(4) picture{
+
+.social-icons-new-box a:nth-child(4) picture {
     background-color: #3A1B50;
 }
+
 @media (max-width:991.89px) {
-    .car-brands-new{
+    .car-brands-new {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
+
 @media (max-width:767.89px) {
-    .car-brands-new{
+    .car-brands-new {
         grid-template-columns: 1fr 1fr;
     }
+}
+
+/* ====== */
+.price-range-container {
+    margin: 40px auto;
+}
+
+.price-range-container h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 20px;
+}
+
+.slider-track {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+input[type="range"] {
+    position: absolute;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    pointer-events: none;
+    z-index: 2;
+    left: 0;
+    width: 100%;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #381C48;
+    /* Dark purple square */
+    border-radius: 3px;
+    cursor: pointer;
+    pointer-events: auto;
+    position: relative;
+}
+
+.price-values {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 16px;
 }

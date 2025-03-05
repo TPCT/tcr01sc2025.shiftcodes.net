@@ -12,26 +12,26 @@
 
                 <div class="col-lg-12">
                 <div class="accordion" id="accordionExample">
-    @foreach($faq as $f)
-    <div class="card">
-        <div class="card-header" id="headingOne{{$f->id}}">
-            <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne{{$f->id}}" aria-expanded="false" aria-controls="collapseOne{{$f->id}}">
-                    {{$f->question}}
-                    <i class="fa fa-angle-down icon"></i>
-                </button>
-            </h2>
-        </div>
+                    @foreach($faq as $f)
+                    <div class="card">
+                        <div class="card-header" id="headingOne{{$f->id}}">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne{{$f->id}}" aria-expanded="false" aria-controls="collapseOne{{$f->id}}">
+                                    {{$f->question}}
+                                    <i class="fa fa-plus icon"></i>
+                                </button>
+                            </h2>
+                        </div>
 
-        <div id="collapseOne{{$f->id}}" class="collapse" aria-labelledby="headingOne{{$f->id}}" data-parent="#accordionExample">
-            <div class="card-body">
-                {{$f->answer}}
-            </div>
-        </div>
-    </div>
-    @endforeach
-</div>
+                        <div id="collapseOne{{$f->id}}" class="collapse" aria-labelledby="headingOne{{$f->id}}" data-parent="#accordionExample">
+                            <div class="card-body">
+                                {{$f->answer}}
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
+
 
              
             </div>

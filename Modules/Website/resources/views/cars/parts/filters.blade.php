@@ -69,7 +69,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="form-group filter__price">
+            <!-- <div class="form-group filter__price">
                 <p>{{__('lang.PRICE RANGE')}}</p>
                 <div id="price-range"></div>
                 <div class="row">
@@ -80,7 +80,22 @@
                         <input id="input-with-keypress-1" class="form-control" type="text" name="max_price">
                     </div>
                 </div>
+            </div> -->
+            <div class="price-range-container">
+                <h3 class="text-start">PRICE RANGE</h3>
+                <div class="slider-wrapper">
+                    <div class="slider-track"></div>
+                    <input type="range" id="minRange" min="0" max="200000" value="30000" step="1000">
+                    <input type="range" id="maxRange" min="0" max="200000" value="160000" step="1000">
+                </div>
+                <div class="price-values">
+                    <span id="minValue">$ 30,000</span>
+                    <span id="maxValue">$ 160,000</span>
+                </div>
             </div>
+
+
+
             <div class="form-group filter__submit">
                 <button>{{__('lang.Find Car')}}</button>
             </div>
@@ -162,3 +177,35 @@
         @endif
 
     @endsection
+<script>
+const minRange = document.getElementById("minRange");
+const maxRange = document.getElementById("maxRange");
+const minValueDisplay = document.getElementById("minValue");
+const maxValueDisplay = document.getElementById("maxValue");
+const track = document.querySelector(".slider-track");
+
+minRange.addEventListener("input", updateRange);
+maxRange.addEventListener("input", updateRange);
+
+function updateRange() {
+    let minVal = parseInt(minRange.value);
+    let maxVal = parseInt(maxRange.value);
+
+    if (minVal >= maxVal) {
+        minRange.value = maxVal - 1000;
+        minVal = maxVal - 1000;
+    }
+
+    minValueDisplay.textContent = `$ ${minVal.toLocaleString()}`;
+    maxValueDisplay.textContent = `$ ${maxVal.toLocaleString()}`;
+
+    // Update track color between the two handles
+    let minPercent = ((minVal - 0) / (200000 - 0)) * 100;
+    let maxPercent = ((maxVal - 0) / (200000 - 0)) * 100;
+    track.style.background = `linear-gradient(to right, #ddd ${minPercent}%, #A2E2FF ${minPercent}%, #A2E2FF ${maxPercent}%, #ddd ${maxPercent}%)`;
+}
+
+// Initialize track color
+updateRange();
+
+</script>
