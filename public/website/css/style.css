@@ -1023,9 +1023,13 @@ footer ul li a:hover {
 @media (max-width: 991px) {
     .products-page .product__vertical {
         flex-direction: column !important;
+
     }
 }
 
+.products-page .product__vertical {
+    border-radius: 30px;
+}
 
 
 .product-page__header {
@@ -2620,4 +2624,66 @@ input[type="range"]::-webkit-slider-thumb {
     width: 20px;
     height: 20px;
     fill: #3D1F50;
+}
+
+@media (min-width: 992px) {
+    .mobile-my-account .mobile-my-account-first {
+        display: none;
+    }
+
+    .nav-icons {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse !important;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 991px) {
+
+    .mobile-my-account {
+        flex-direction: column;
+    }
+
+    .mobile-my-account .open-auth {
+        background-color: #3A1B50;
+        color: #fff;
+        padding: 5px 30px;
+        border-radius: 20px;
+
+    }
+
+    .mobile-my-account .mobile-my-account-first {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding-inline-start: 2rem;
+    }
+
+    .mobile-my-account .mobile-my-account-sec {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .mobile-my-account .mobile-my-account-first .mobile-my-account-link {
+        padding: 0;
+        background-color: inherit;
+        color: #3A1B50;
+        text-decoration: underline !important;
+    }
+}
+
+
+@media (max-width: 991px) {
+    .nav-icons ul li img {
+        width: 40px !important;
+    }
+
+    .show .apps-image {
+        height: 40px !important;
+    }
 }
