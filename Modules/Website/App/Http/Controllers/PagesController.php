@@ -3,6 +3,7 @@
 namespace Modules\Website\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Page;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -13,9 +14,8 @@ class PagesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id,$slug)
+    public function show(Page $page)
     {
-        $page = \App\Models\Page::findOrFail($id);
         return view('website::page')->with([
             'page' => $page
         ]);
@@ -27,16 +27,15 @@ class PagesController extends Controller
     }
 
     public function contact() {
+        if (\request()->method() == 'POST') {
+            $data = $request->all();
+            \App\Models\Message::create($data);
+            return redirect()->back()->with('success', __("lang.contact-us-success-message"));
+        }
         return view('website::contact');
     }
 
-    public function saveContact(Request $request) {
-        $data = $request->all();
-        \App\Models\Message::create($data);
-        return redirect()->back()->with('success', 'Message sent successfully');
-    }
-
-    public function listYourCar() {
+    public function list_your_car() {
         return view('website::list-your-car');
     }
 

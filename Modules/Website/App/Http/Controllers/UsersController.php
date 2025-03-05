@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use \App\Models\User;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 class UsersController extends Controller
 {
@@ -69,11 +70,11 @@ class UsersController extends Controller
         ]);
     }
 
-    public function loginWithProvider($provider) {
+    public function login_with_provider($provider) {
         return Socialite::driver($provider)->redirect();
     }
 
-    public function handleProviderCallback($driver)
+    public function handle_provider_callback($driver)
     {
         try {
             $user = Socialite::driver($driver)->user();
@@ -88,7 +89,7 @@ class UsersController extends Controller
             $newUser                    = new User;
             $newUser->name              = $user->getName();
             $newUser->email             = $user->getEmail();
-            $newUser->password          = bcrypt(rand(100000,999999));
+            $newUser->password          = bcrypt(Str::uuid());
             $newUser->type              = 'customer';
             $newUser->save();
             auth()->guard('customers')->login($newUser);

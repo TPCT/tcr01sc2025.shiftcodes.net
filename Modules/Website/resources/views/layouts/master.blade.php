@@ -106,7 +106,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="signup-form" action="{{route('signup')}}" method="post">
+            <form id="signup-form" action="{{LaravelLocalization::getLocalizedUrl(null, route('website.account.register'))}}" method="post">
                 @csrf
                 <div class="modal-body">
                     @if($errors->signup->any())
@@ -140,11 +140,11 @@
                     <div class="form-group">
 
 
-                        <a href="{{secure_url('/')}}/login/google" class="google social-login">
+                        <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.account.login_with_provider', ['provider' => 'google']))}}" class="google social-login">
                             <i class="fa fa-google"></i>
                             <p>{{__('lang.Login with google')}}</p>
                         </a>
-                        <a href="{{secure_url('/')}}/login/facebook" class="facebook social-login">
+                        <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.account.login_with_provider', ['provider' => 'facebook']))}}" class="facebook social-login">
                             <i class="fa fa-facebook-square"></i>
                             <p>{{__('lang.Login with facebook')}}</p>
                         </a>
@@ -170,7 +170,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('login') }}" method="post">
+            <form action="{{ LaravelLocalization::getLocalizedUrl(null, route('website.account.login')) }}" method="post">
                 @csrf
                 <div class="modal-body">
                     @if($errors->login->any())
@@ -198,11 +198,11 @@
                     <div class="form-group">
 
 
-                        <a href="{{secure_url('/')}}/login/google" class="google social-login">
+                        <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.account.login_with_provider', ['provider' => 'google']))}}" class="google social-login">
                             <i class="fa fa-google"></i>
                             <p>{{__('lang.Login with google')}}</p>
                         </a>
-                        <a href="{{secure_url('/')}}/login/facebook" class="facebook social-login">
+                        <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.account.login_with_provider', ['provider' => 'facebook']))}}" class="facebook social-login">
                             <i class="fa fa-facebook-square"></i>
                             <p>{{__('lang.Login with facebook')}}</p>
                         </a>
@@ -613,26 +613,25 @@
                 <ul>
                     <li>
                         <a data-toggle="tooltip" data-placement="left" title="{{__('lang.FAQ')}}"
-                           href="{{ LaravelLocalization::localizeUrl("/faq") }}">{{__('lang.FAQ')}}</a>
+                           href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.pages.faq')) }}">{{__('lang.FAQ')}}</a>
                     </li>
                     <li>
                         <a data-toggle="tooltip" data-placement="left" title="{{__('lang.Blog')}}"
-                           href="{{ LaravelLocalization::localizeUrl("/blog") }}">{{__('lang.Blog')}}</a>
+                           href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.blogs.index')) }}">{{__('lang.Blog')}}</a>
                     </li>
                     <li>
                         <a data-toggle="tooltip" data-placement="left" title="{{__('lang.Contact Us')}}"
-                           href="{{ LaravelLocalization::localizeUrl("/contact") }}">{{__('lang.Contact Us')}}</a>
+                           href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.pages.contact-us')) }}">{{__('lang.Contact Us')}}</a>
                     </li>
                     @foreach(app('settings')->getFooterPages() as $key => $item)
 
                         <li>
                             <a data-toggle="tooltip" data-placement="left" title="{{$item->name}}"
-                               href="{{ LaravelLocalization::localizeUrl("/p/{$item->id}/{$item->slug}") }}">{{$item->name}}</a>
+                               href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.pages.show', ['page' => $item])) }}">{{$item->name}}</a>
                         </li>
 
                     @endforeach
                     @foreach(Type::get() as $t)
-
                         <li>
                             <a data-toggle="tooltip" data-placement="left" title="{{__('lang.Rent')}} {{$t->title}}"
                                href="{{ LaravelLocalization::getLocalizedURL(null, route('website.cars.types.show', ['type' => $t])) }}">{{__('lang.Rent')}} {{$t->title}}</a>

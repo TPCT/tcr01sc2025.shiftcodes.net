@@ -2,6 +2,7 @@
 
 namespace Modules\Website\App\Services;
 
+use App\Models\City;
 use App\Models\Country;
 
 class CountryService
@@ -17,7 +18,7 @@ class CountryService
 
     public function getCountry()
     {
-        return $this->country;
+        return $this->country ?? Country::find(session('country_id'));
     }
 
     public function getAllCountries()
@@ -37,6 +38,6 @@ class CountryService
 
     public function getCity()
     {
-        return $this->city;
+        return $this->city ?? City::find(session('city_id'));
     }
 }

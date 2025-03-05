@@ -17,7 +17,7 @@ class CurrencyService {
     }
 
     public function getCurrency() {
-        return $this->currency;
+        return $this->currency ?? Currency::find(session('currency_id'));
     }
 
     public function convert($amount) {

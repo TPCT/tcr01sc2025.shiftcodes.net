@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -48,7 +49,7 @@ use Carbon\Carbon;
 class Page extends Model implements Sitemapable
 {
     use HasFactory;
-
+    use HasSlug;
     use HasTranslations;
 
     public $translatable = ['name','content'];

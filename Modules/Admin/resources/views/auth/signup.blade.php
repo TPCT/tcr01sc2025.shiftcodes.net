@@ -10,7 +10,7 @@
                     <h1 class="">سجل حسابك الأن<br/> 
                     وابدء <span>متجر الجمعية الخاص بك</span>
                     </h1>
-                    <form class="text-left" action="{{url('/')}}/signup" method="post">
+                    <form class="text-left" action="{{\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedUrl(null, route('website.account.register'))}}" method="post">
                         @csrf
                         <div class="form">
 
@@ -57,7 +57,7 @@
 
                         </div>
                     </form>      
-                    <p class="signup-link">لديك حساب بالفعل ؟ <a href="{{url('/')}}/login">الدخول</a></p>
+                    <p class="signup-link">لديك حساب بالفعل ؟ <a href="{{\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedUrl(null, route('website.account.login'))}}">الدخول</a></p>
                 
                     <p class="terms-conditions">جميع الحقوق محفوظة @ 2024 منتجات <a href="/">خارطة الابداع</a> </p>
 
