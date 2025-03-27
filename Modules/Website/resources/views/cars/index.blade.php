@@ -6,7 +6,7 @@
 
 @php
     $cars = (clone $query)->paginate(10);
-    $max_price = app('currencies')->convert($query->max('price_per_day'))
+    $max_price = app('currencies')->convert((clone $query)->max('price_per_day'))
 @endphp
 
 @section('seo')
