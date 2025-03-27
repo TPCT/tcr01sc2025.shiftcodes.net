@@ -213,7 +213,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-7">
-                <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.pages.list-your-car'))}}">
+                <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.pages.list-your-car'))}}" class="d-flex h-100">
                     <div class="header__list_your_car">
                         <img width="30" height="30" alt="listcar" class="car"
                              src="{{asset('/website/images/header_car.png')}}"/>
@@ -341,7 +341,7 @@
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="122.879px" height="103.609px" viewBox="0 0 122.879 103.609" enable-background="new 0 0 122.879 103.609" xml:space="preserve"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M10.368,0h102.144c5.703,0,10.367,4.665,10.367,10.367v0 c0,5.702-4.664,10.368-10.367,10.368H10.368C4.666,20.735,0,16.07,0,10.368v0C0,4.665,4.666,0,10.368,0L10.368,0z M10.368,82.875 h102.144c5.703,0,10.367,4.665,10.367,10.367l0,0c0,5.702-4.664,10.367-10.367,10.367H10.368C4.666,103.609,0,98.944,0,93.242l0,0 C0,87.54,4.666,82.875,10.368,82.875L10.368,82.875z M10.368,41.438h102.144c5.703,0,10.367,4.665,10.367,10.367l0,0 c0,5.702-4.664,10.368-10.367,10.368H10.368C4.666,62.173,0,57.507,0,51.805l0,0C0,46.103,4.666,41.438,10.368,41.438 L10.368,41.438z"/></g></svg>
         </button>
 
         <ul class="header__actions mobile__header_actions">
@@ -515,26 +515,38 @@
                     </div>
                 </li>
             </ul>
-            <div class="mobile-my-account">
-                @if(!auth()->guard('customers')->check())
-                    <span data-toggle="modal" class="open-auth" data-target="#signinModal">
-                            {{__('lang.Sign in')}}
-                        </span>
-                    <span data-toggle="modal" class="open-auth" data-target="#signupModal">
-                            {{__('lang.Sign up')}}
-                        </span>
-                @else
-                    <a href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.account.wishlist')) }}">
-                        {{__('lang.Wishlist')}}
-                    </a>
-                    <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.account.logout'))}}">
-                        {{__('lang.Logout')}}
-                    </a>
-                @endif
+            <div class="mobile-my-account ">
+                <div class="mobile-my-account-first ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <g id="User_User_Square" data-name="User / User_Square" transform="translate(-2 -2)">
+                            <path id="Vector" d="M15.444,19a4.444,4.444,0,1,0-8.889,0m8.889,0h.714a4.407,4.407,0,0,0,1.87-.194,1.781,1.781,0,0,0,.778-.778A4.407,4.407,0,0,0,19,16.158V5.842a4.41,4.41,0,0,0-.194-1.871,1.779,1.779,0,0,0-.778-.777A4.413,4.413,0,0,0,16.156,3H5.845a4.419,4.419,0,0,0-1.874.194,1.777,1.777,0,0,0-.777.777A4.419,4.419,0,0,0,3,5.845V16.156a4.413,4.413,0,0,0,.194,1.873,1.779,1.779,0,0,0,.777.778A4.41,4.41,0,0,0,5.842,19h.714m8.889,0H6.556M11,11.889a2.667,2.667,0,1,1,2.667-2.667A2.667,2.667,0,0,1,11,11.889Z" fill="none" stroke="#472459" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </g>
+                    </svg>
+                   <a href="#" class="mobile-my-account-link">
+                    My account
+                   </a>         
+                </div>
+                <div class="mobile-my-account-sec flex-wrap">
+                    @if(!auth()->guard('customers')->check())
+                        <span data-toggle="modal" class="open-auth" data-target="#signinModal" class=>
+                                {{__('lang.Sign in')}}
+                            </span>
+                        <span data-toggle="modal" class="open-auth" data-target="#signupModal">
+                                {{__('lang.Sign up')}}
+                            </span>
+                    @else
+                        <a href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.account.wishlist')) }}">
+                            {{__('lang.Wishlist')}}
+                        </a>
+                        <a href="{{LaravelLocalization::getLocalizedUrl(null, route('website.account.logout'))}}">
+                            {{__('lang.Logout')}}
+                        </a>
+                    @endif
+                </div>
             </div>
 
-            <div class="nav-icons my-2 my-lg-0">
-                <ul>
+            <div class="nav-icons my-2 my-lg-0 flex-column mt-5 mt-lg-0   ">
+                <ul class="mb-4 mb-lg-0 ">
                     <li>
                         <a href="tel:{{app('settings')->get('contact_phone')}}">
                             <img width="36" height="36" alt="call" src="{{asset('/website/images/icons/call.png')}}"/>
@@ -557,7 +569,9 @@
                                  src="{{asset('/website/images/icons/instagram.png')}}"/>
                         </a>
                     </li>
-                    <li>
+                </ul>
+                <ul>
+                <li>
                         <a href="{{app('settings')->get('app_google_play')}}">
                             <img width="125" height="37" alt="app" class="apps-image"
                                  src="{{asset('/website/images/icons/googleplay.webp')}}"/>
@@ -578,8 +592,64 @@
 
 @section("content")
 @show
+        <div class="main-social-media">
+            <ul>
+                <li>
+                    <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="37" height="36.977" viewBox="0 0 37 36.977">
+                        <g id="call-svgrepo-com" transform="translate(0.5 0.332)">
+                            <path id="Path_1080" data-name="Path 1080" d="M18,0A17.988,17.988,0,1,1,0,17.988,17.994,17.994,0,0,1,18,0Z" transform="translate(0 0.168)" fill="#3a1b50" stroke="#707070" stroke-width="1"/>
+                            <g id="Group_2704" data-name="Group 2704" transform="translate(10.391 9.543)">
+                            <rect id="Rectangle_236" data-name="Rectangle 236" width="2.164" height="5.303" transform="translate(10.249 12.074) rotate(-38.01)" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <path id="Path_1070" data-name="Path 1070" d="M143.319,151.17l-3.266-4.18a7.016,7.016,0,0,1-5.131-6.563l-3.266-4.178s-3.094,4.433,1.762,10.642S143.319,151.17,143.319,151.17Z" transform="translate(-130.685 -134.227)" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <rect id="Rectangle_237" data-name="Rectangle 237" width="2.164" height="5.303" transform="translate(1.849 1.333) rotate(-38.01)" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            </g>
+                        </g>
+                    </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36.977" height="36.977" viewBox="0 0 36.977 36.977">
+                        <g id="facebook-svgrepo-com" transform="translate(0.5 0.5)">
+                            <path id="Path_1071" data-name="Path 1071" d="M17.988,0A17.988,17.988,0,1,1,0,17.988,17.988,17.988,0,0,1,17.988,0Z" fill="#3b5998" stroke="#707070" stroke-width="1"/>
+                            <path id="Path_1072" data-name="Path 1072" d="M115.837,75.972h2.318V72.547H115.43v.012c-3.3.117-3.979,1.973-4.038,3.923h-.007v1.71h-2.248v3.354h2.248v8.99h3.389v-8.99h2.776l.536-3.354h-3.311V77.159A1.1,1.1,0,0,1,115.837,75.972Z" transform="translate(-95.658 -63.588)" fill="#fff" stroke="#707070" stroke-width="1"/>
+                        </g>
+                        </svg>
 
-
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="37.479" height="36.977" viewBox="0 0 37.479 36.977">
+                            <g id="twitter-svgrepo-com" transform="translate(0.499 0.5)">
+                                <ellipse id="Ellipse_37" data-name="Ellipse 37" cx="18.24" cy="17.988" rx="18.24" ry="17.988" transform="translate(0.001 0)" fill="#55acee" stroke="#707070" stroke-width="1"/>
+                                <g id="Group_2707" data-name="Group 2707" transform="translate(8.163 10.911)">
+                                <path id="Path_1079" data-name="Path 1079" d="M46.354,36.044a8.794,8.794,0,0,1-2.5.676,4.323,4.323,0,0,0,1.917-2.378A8.8,8.8,0,0,1,43,35.385a4.384,4.384,0,0,0-3.183-1.357,4.331,4.331,0,0,0-4.36,4.3,4.236,4.236,0,0,0,.113.98,12.434,12.434,0,0,1-8.987-4.493,4.236,4.236,0,0,0-.59,2.162,4.284,4.284,0,0,0,1.939,3.579,4.375,4.375,0,0,1-1.975-.538c0,.018,0,.037,0,.055a4.318,4.318,0,0,0,3.5,4.216,4.436,4.436,0,0,1-1.969.074,4.357,4.357,0,0,0,4.073,2.986,8.9,8.9,0,0,1-6.455,1.78,12.458,12.458,0,0,0,6.683,1.932,12.23,12.23,0,0,0,12.4-12.234c0-.186,0-.372-.013-.556a8.775,8.775,0,0,0,2.176-2.225Z" transform="translate(-25.103 -34.028)" fill="#f1f2f2" stroke="#707070" stroke-width="1"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="37" height="36.976" viewBox="0 0 37 36.976">
+                        <g id="Group_2708" data-name="Group 2708" transform="translate(-5123.5 14716.364)">
+                            <g id="call-svgrepo-com" transform="translate(5124 -14715.864)">
+                            <ellipse id="Ellipse_35" data-name="Ellipse 35" cx="18" cy="17.988" rx="18" ry="17.988" transform="translate(0 0)" fill="#3a1b50" stroke="#707070" stroke-width="1"/>
+                            </g>
+                            <g id="XMLID_13_" transform="translate(5133.568 -14706.308)">
+                            <path id="XMLID_17_" d="M11.84,0H5.024A5.03,5.03,0,0,0,0,5.024V11.84a5.03,5.03,0,0,0,5.024,5.024H11.84a5.03,5.03,0,0,0,5.024-5.024V5.024A5.03,5.03,0,0,0,11.84,0Zm3.327,11.84a3.327,3.327,0,0,1-3.327,3.327H5.024A3.327,3.327,0,0,1,1.7,11.84V5.024A3.327,3.327,0,0,1,5.024,1.7H11.84a3.327,3.327,0,0,1,3.327,3.327V11.84Z" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <path id="XMLID_81_" d="M137.362,133a4.362,4.362,0,1,0,4.362,4.362A4.367,4.367,0,0,0,137.362,133Zm0,7.027a2.665,2.665,0,1,1,2.665-2.665A2.665,2.665,0,0,1,137.362,140.027Z" transform="translate(-128.93 -128.93)" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <circle id="XMLID_83_" cx="1.045" cy="1.045" r="1.045" transform="translate(11.757 3.058)" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            </g>
+                        </g>
+                    </svg>
+                    </a>
+                </li>
+            </ul
+        </div>
+    </div>
 <footer>
     <img class="bg" loading="lazy" src="{{asset('/website/images/footer_bg.webp')}}" alt="bg">
     <div class="container">
