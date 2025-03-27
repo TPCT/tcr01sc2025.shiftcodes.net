@@ -523,7 +523,7 @@
                         </g>
                     </svg>
                    <a href="#" class="mobile-my-account-link">
-                    My account
+                       @lang('lang.My account')
                    </a>         
                 </div>
                 <div class="mobile-my-account-sec flex-wrap">
