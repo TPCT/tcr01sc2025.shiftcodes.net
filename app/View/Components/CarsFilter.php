@@ -21,10 +21,12 @@ class CarsFilter extends Component
     public function render(): View|Closure|string
     {
         $query = Utilities::getCarsFilterQuery();
+        $cars = Utilities::getCarsFilterQuery(true)->paginate(10);
         $max_price = app('currencies')->convert((clone $query)->max('price_per_day'));
         return view('website::cars.parts.filters', [
             'selected_types' => request('types', []),
             'max_price'     => $max_price,
+            'cars'         => $cars,
         ]);
     }
 }
