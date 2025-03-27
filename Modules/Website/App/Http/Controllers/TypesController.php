@@ -25,7 +25,7 @@ class TypesController extends Controller
         if ($type->slug == "with-driver")
             return redirect()->route('website.cars.with-drivers');
 
-        $cars = $type->cars()->hasCompany()->where('type', 'default')->paginate(10);
+        $query = $type->cars()->hasCompany()->where('type', 'default');
         $resource = $type;
         $selected_types = [$resource->slug];
         $seo      = \App\Models\SEO::where('type','type')->where('resource_id',$resource->id)->first();
@@ -41,7 +41,7 @@ class TypesController extends Controller
 
         $suggested_cars = $this->getSuggestedCars(__('lang.Categories'), $resource->id);
         return view('website::cars.index')->with([
-            'cars'         => $cars,
+            'query'         => $query,
             'resource'     => $resource,
             'resource_type' => 'type',
             'resource_title' => $resource_title,
@@ -58,10 +58,10 @@ class TypesController extends Controller
     }
 
     public function model($country, $city, Type $type, Models $model){
-        $cars = $type->cars()->where(function ($query) use ($model){
+        $query = $type->cars()->where(function ($query) use ($model){
             $query->where('model_id',$model->id);
             $query->where('type', 'default');
-        })->paginate(10);
+        });
         $resource = $type;
         $selected_types = [$resource->slug];
         $seo      = \App\Models\SEO::where('type','brand')->where('resource_id',$resource->id)->first();
@@ -77,7 +77,7 @@ class TypesController extends Controller
 
         $suggested_cars = $this->getSuggestedCars(__('lang.Brands'), $resource->id);
         return view('website::cars.index')->with([
-            'cars'         => $cars,
+            'query'         => $query,
             'resource'     => $resource,
             'resource_type' => 'type',
             'resource_sub_type' => 'models',

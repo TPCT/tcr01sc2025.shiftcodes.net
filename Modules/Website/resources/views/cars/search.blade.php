@@ -2,6 +2,18 @@
 @section('css')
 <link href="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.css" rel="stylesheet">
 @endsection
+
+@php
+    $cars = (clone $query)
+        ->when(request('min_price'), function ($query, $min_price) {
+            $query->where('price_per_day', '>=' , app('currencies')->getAedAmount($min_price));
+        })
+        ->when(request('max_price'), function ($query, $max_price) {
+            $query->where('price_per_day', '<=' , app('currencies')->getAedAmount($max_price));
+        })->paginate(10);
+    $max_price = app('currencies')->convert($query->max('price_per_day'))
+@endphp
+
 @section('seo')
     @include('website::layouts.parts.seo', [
         'seo' => \App\Models\SEO::where('type','home')->first(),
@@ -35,7 +47,7 @@
                 <div class="row mt-50">
 
                     <div class="col-lg-3">
-                        <x-cars-filter/>
+                        @include('website::cars.parts.filters')
                     </div>
 
                     <div class="col-lg-9">

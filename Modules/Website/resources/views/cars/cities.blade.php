@@ -30,7 +30,7 @@
                 <div class="row mt-50">
 
                     <div class="col-lg-3">
-                        <x-cars-filter/>
+                        @include('website::cars.parts.filters')
                     </div>
 
                     <div class="col-lg-9">

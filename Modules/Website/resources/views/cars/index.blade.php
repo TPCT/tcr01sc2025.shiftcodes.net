@@ -4,6 +4,11 @@
     <link href="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.css" rel="stylesheet" />
 @endsection
 
+@php
+    $cars = (clone $query)->paginate(10);
+    $max_price = app('currencies')->convert($query->max('price_per_day'))
+@endphp
+
 @section('seo')
     <link href="{{url()->current()}}" rel="canonical" />
     @include('website::layouts.parts.seo', [
@@ -37,7 +42,7 @@
             <div class="row mt-50">
 
                     <div class="col-lg-3">
-                        <x-cars-filter/>
+                        @include('website::cars.parts.filters')
                     </div>
 
                     <div class="col-lg-9">

@@ -43,9 +43,9 @@ class BrandsController extends Controller
     }
 
     public function show($country, $city, Brand $brand){
-        $cars = $brand->cars()->hasCompany()->where(function ($query){
+        $query = $brand->cars()->hasCompany()->where(function ($query){
             $query->where('type', 'default');
-        })->paginate(10);
+        });
         $resource = $brand;
         $selected_types = [];
         $seo      = \App\Models\SEO::where('type','brand')->where('resource_id',$resource->id)->first();
@@ -58,8 +58,9 @@ class BrandsController extends Controller
             $brand->title => null,
         ];
         $suggested_cars = $this->getSuggestedCars(__('lang.Brands'), $resource->id);
+
         return view('website::cars.index')->with([
-            'cars'         => $cars,
+            'query'         => $query,
             'resource'     => $resource,
             'resource_type' => 'brand',
             'resource_sub_type' => 'models',
@@ -77,9 +78,9 @@ class BrandsController extends Controller
     }
 
     public function model($country, $city, Brand $brand, Models $model){
-        $cars = $brand->models()->findOrFail($model->id)->cars()->where(function ($query){
+        $query = $brand->models()->findOrFail($model->id)->cars()->where(function ($query){
             $query->where('type', 'default');
-        })->paginate(10);
+        });
         $resource = $brand;
         $selected_types = [];
         $seo      = \App\Models\SEO::where('type','brand')->where('resource_id',$resource->id)->first();
@@ -95,7 +96,7 @@ class BrandsController extends Controller
 
         $suggested_cars = $this->getSuggestedCars(__('lang.Brands'), $resource->id);
         return view('website::cars.index')->with([
-            'cars'         => $cars,
+            'query'         => $query,
             'resource'     => $resource,
             'resource_type' => 'brand',
             'resource_title' => $resource_title,
