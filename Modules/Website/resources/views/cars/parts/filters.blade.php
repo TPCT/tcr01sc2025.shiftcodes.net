@@ -79,7 +79,7 @@
                 </div>
                 <div class="price-values">
                     <span id="minValue">{{0}} {{app('currencies')->getCurrency()->code}}</span>
-                    <span id="maxValue">{{request('max_price', $max_price)}} {{app('currencies')->getCurrency()->code}}</span>
+                    <span id="maxValue">{{$max_price}} {{app('currencies')->getCurrency()->code}}</span>
                 </div>
             </div>
 
