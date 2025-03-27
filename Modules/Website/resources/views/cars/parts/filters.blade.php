@@ -75,11 +75,11 @@
                 <div class="slider-wrapper">
                     <div class="slider-track"></div>
                     <input type="range" id="minRange" min="0" max="{{request('max_price', $max_price)}}" value="{{request('min_price', 0)}}" step="1000" name="min_price">
-                    <input type="range" id="maxRange" min="0" max="{{$max_price}}" value="{{request('max_price')}}" step="1000" name="max_price">
+                    <input type="range" id="maxRange" min="0" max="{{$max_price}}" value="{{request('max_price', $max_price)}}" step="1000" name="max_price">
                 </div>
                 <div class="price-values">
-                    <span id="minValue">$ 30,000</span>
-                    <span id="maxValue">$ 160,000</span>
+                    <span id="minValue">{{request('min_price', 0)}} {{app('currencies')->getCurrency()->code}}</span>
+                    <span id="maxValue">{{request('max_price', $max_price)}} {{app('currencies')->getCurrency()->code}}</span>
                 </div>
             </div>
 
