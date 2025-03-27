@@ -69,24 +69,13 @@
                     @endforeach
                 </ul>
             </div>
-            <!-- <div class="form-group filter__price">
-                <p>{{__('lang.PRICE RANGE')}}</p>
-                <div id="price-range"></div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <input id="input-with-keypress-0" class="form-control" type="text" name="min_price">
-                    </div>
-                    <div class="col-lg-6">
-                        <input id="input-with-keypress-1" class="form-control" type="text" name="max_price">
-                    </div>
-                </div>
-            </div> -->
+
             <div class="price-range-container">
                 <h3 class="text-start">@lang('lang.PRICE RANGE')</h3>
                 <div class="slider-wrapper">
                     <div class="slider-track"></div>
-                    <input type="range" id="minRange" min="0" max="200000" value="30000" step="1000" name="min_price">
-                    <input type="range" id="maxRange" min="0" max="200000" value="160000" step="1000" name="max_price">
+                    <input type="range" id="minRange" min="0" max="{{request('max_price', $max_price)}}" value="{{request('min_price', 0)}}" step="1000" name="min_price">
+                    <input type="range" id="maxRange" min="0" max="{{$max_price}}" value="{{request('max_price')}}" step="1000" name="max_price">
                 </div>
                 <div class="price-values">
                     <span id="minValue">$ 30,000</span>
