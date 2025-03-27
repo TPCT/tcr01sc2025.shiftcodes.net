@@ -77,12 +77,7 @@ class CarsController extends Controller
             })
             ->where('type', 'default');
 
-        $max_price_per_day = (clone $query)->max('price_per_day');
-        $max_price_per_week = (clone $query)->max('price_per_week');
-        $max_price_per_month = (clone $query)->max('price_per_month');
-
-        $max_price = max($max_price_per_day, $max_price_per_week, $max_price_per_month);
-        $max_price = app('currencies')->convert($max_price);
+        $max_price = app('currencies')->convert((clone $query)->max('price_per_day'));
 
         $cars = (clone $query)
             ->when(request('min_price'), function ($query, $min_price) {
