@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use App\Models\Car;
+
 class Utilities
 {
     public const PUBLISHED = 1;
@@ -278,5 +280,47 @@ class Utilities
             }
         }
         return $out;
+    }
+
+    public static function getCarsFilterQuery($with_price=false){
+        $query = Car::hasCompany()->with(['images','brand','model','color','types','company','year'])
+            ->when(request('order_by'), function ($query, $order) {
+                $query->orderBy('price_per_day', $order == "price_low" ? "asc" : "desc");
+            })
+            ->when(request('types'), function ($query, $types) {
+                $query->whereHas('types', function ($query) use ($types) {
+                    $query->whereIn('slug', $types);
+                });
+            })
+            ->when(request('brand'), function ($query, $brand) {
+                $query->whereHas('brand', function ($query) use ($brand) {
+                    $query->where('slug', $brand);
+                });
+            })
+            ->when(request('model'), function ($query, $model) {
+                $query->whereHas('model', function ($query) use ($model) {
+                    $query->where('slug', $model);
+                });
+            })
+            ->when(request('year'), function ($query, $year) {
+                $query->whereHas('year', function ($query) use ($year) {
+                    $query->where('title', $year);
+                });
+            })
+            ->when(request('color'), function ($query, $color) {
+                $query->whereHas('color', function ($query) use ($color) {
+                    $query->where('slug', $color);
+                });
+            })
+            ->where('type', 'default');
+        if ($with_price)
+            $query->when(request('min_price'), function ($query, $min_price) {
+                $query->where('price_per_day', '>=' , app('currencies')->getAedAmount($min_price));
+            })
+            ->when(request('max_price'), function ($query, $max_price) {
+                $query->where('price_per_day', '<=' , app('currencies')->getAedAmount($max_price));
+            });
+
+        return $query;
     }
 }
