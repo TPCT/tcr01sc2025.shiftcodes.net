@@ -82,11 +82,11 @@
                 </div>
             </div> -->
             <div class="price-range-container">
-                <h3 class="text-start">PRICE RANGE</h3>
+                <h3 class="text-start">@lang('lang.PRICE RANGE')</h3>
                 <div class="slider-wrapper">
                     <div class="slider-track"></div>
-                    <input type="range" id="minRange" min="0" max="200000" value="30000" step="1000">
-                    <input type="range" id="maxRange" min="0" max="200000" value="160000" step="1000">
+                    <input type="range" id="minRange" min="0" max="200000" value="30000" step="1000" name="min_price">
+                    <input type="range" id="maxRange" min="0" max="200000" value="160000" step="1000" name="max_price">
                 </div>
                 <div class="price-values">
                     <span id="minValue">$ 30,000</span>
@@ -177,6 +177,7 @@
         @endif
 
     @endsection
+
 <script>
 const minRange = document.getElementById("minRange");
 const maxRange = document.getElementById("maxRange");
