@@ -76,10 +76,10 @@ class CarsController extends Controller
                 });
             })
             ->when(request('min_price'), function ($query, $min_price) {
-                $query->where('price_per_day', '>=' , $min_price);
+                $query->where('price_per_day', '>=' , app('currencies')->getAedAmount($min_price));
             })
             ->when(request('max_price'), function ($query, $max_price) {
-                $query->where('price_per_day', '<=' , $max_price);
+                $query->where('price_per_day', '<=' , app('currencies')->getAedAmount($max_price));
             })
             ->where('type', 'default')
             ->paginate(10);

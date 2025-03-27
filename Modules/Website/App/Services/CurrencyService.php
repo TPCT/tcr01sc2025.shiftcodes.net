@@ -23,4 +23,8 @@ class CurrencyService {
     public function convert($amount) {
         return $amount * $this->currency->aed_rate;
     }
+
+    public function getAedAmount($amount) {
+        return $amount * 1 / $this->currency->aed_rate;
+    }
 }
