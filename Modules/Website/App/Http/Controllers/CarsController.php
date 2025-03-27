@@ -44,9 +44,9 @@ class CarsController extends Controller
     }
 
     public function filter($country, $city){
-        $max_price = max(Car::max('price_per_day'), Car::max('price_per_week'), Car::max('price_per_month'));
-        $max_price = app('currencies')->convert($max_price);
-        $cars = Car::hasCompany()->with(['images','brand','model','color','types','company','year'])
+//        $max_price = max(Car::max('price_per_day'), Car::max('price_per_week'), Car::max('price_per_month'));
+//        $max_price = app('currencies')->convert($max_price);
+        $query = Car::hasCompany()->with(['images','brand','model','color','types','company','year'])
             ->when(request('order_by'), function ($query, $order) {
                 $query->orderBy('price_per_day', $order == "price_low" ? "asc" : "desc");
             })
@@ -81,8 +81,16 @@ class CarsController extends Controller
             ->when(request('max_price'), function ($query, $max_price) {
                 $query->where('price_per_day', '<=' , app('currencies')->getAedAmount($max_price));
             })
-            ->where('type', 'default')
-            ->paginate(10);
+            ->where('type', 'default');
+
+        $max_price_per_day = (clone $query)->max('price_per_day');
+        $max_price_per_week = (clone $query)->max('price_per_week');
+        $max_price_per_month = (clone $query)->max('price_per_month');
+
+        $max_price = max($max_price_per_day, $max_price_per_week, $max_price_per_month);
+        $max_price = app('currencies')->convert($max_price);
+
+        $cars = (clone $query)->paginate(10);
 
         return view('website::cars.search')->with([
             'cars'         => $cars,
