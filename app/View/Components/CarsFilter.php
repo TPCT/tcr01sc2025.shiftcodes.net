@@ -23,7 +23,7 @@ class CarsFilter extends Component
         $query = Utilities::getCarsFilterQuery();
         $max_price = app('currencies')->convert((clone $query)->max('price_per_day'));
         return view('website::cars.parts.filters', [
-            'selected-types' => request('types', []),
+            'selected_types' => request('types', []),
             'max_price'     => $max_price,
         ]);
     }
