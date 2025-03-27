@@ -186,8 +186,8 @@ function updateRange() {
         minVal = maxVal - 1000;
     }
 
-    minValueDisplay.textContent = `{{$app('currencies')->getCurrency()->code}} ${minVal.toLocaleString()}`;
-    maxValueDisplay.textContent = `{{$app('currencies')->getCurrency()->code}} ${maxVal.toLocaleString()}`;
+    minValueDisplay.textContent = `{{app('currencies')->getCurrency()->code}} ${minVal.toLocaleString()}`;
+    maxValueDisplay.textContent = `{{app('currencies')->getCurrency()->code}} ${maxVal.toLocaleString()}`;
 
     // Update track color between the two handles
     let minPercent = ((minVal - 0) / ({{$max_price}} - 0)) * 100;
