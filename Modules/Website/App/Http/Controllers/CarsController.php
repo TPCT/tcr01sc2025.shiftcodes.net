@@ -28,7 +28,7 @@ class CarsController extends Controller
 
         $car->company->views()->create([
             'car_id' => $car->id,
-            'user_id' => null
+            'user_id' => \Auth::user()?->id ?? null
         ]);
 
         if($car->model) {

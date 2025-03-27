@@ -139,12 +139,13 @@ class Car extends Model implements Sitemapable
         'extra_price',
         'km_per_day',
         'km_per_month',
-        "insurance_type",
+        'insurance_type',
     ];
 
     protected $hidden = ['created_at', 'updated_at','image','is_day_offer','day_offer_price',
         'brand_id','color_id','model_id','year_id','refreshed_at'
     ];
+
     protected $appends = ['image_url'];
 
     public function getImageUrlAttribute() {
