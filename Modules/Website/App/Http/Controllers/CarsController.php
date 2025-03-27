@@ -75,12 +75,6 @@ class CarsController extends Controller
                     $query->where('slug', $color);
                 });
             })
-            ->when(request('min_price'), function ($query, $min_price) {
-                $query->where('price_per_day', '>=' , app('currencies')->getAedAmount($min_price));
-            })
-            ->when(request('max_price'), function ($query, $max_price) {
-                $query->where('price_per_day', '<=' , app('currencies')->getAedAmount($max_price));
-            })
             ->where('type', 'default');
 
         $max_price_per_day = (clone $query)->max('price_per_day');
@@ -90,7 +84,14 @@ class CarsController extends Controller
         $max_price = max($max_price_per_day, $max_price_per_week, $max_price_per_month);
         $max_price = app('currencies')->convert($max_price);
 
-        $cars = (clone $query)->paginate(10);
+        $cars = (clone $query)
+            ->when(request('min_price'), function ($query, $min_price) {
+                $query->where('price_per_day', '>=' , app('currencies')->getAedAmount($min_price));
+            })
+            ->when(request('max_price'), function ($query, $max_price) {
+                $query->where('price_per_day', '<=' , app('currencies')->getAedAmount($max_price));
+            })
+            ->paginate(10);
 
         return view('website::cars.search')->with([
             'cars'         => $cars,
