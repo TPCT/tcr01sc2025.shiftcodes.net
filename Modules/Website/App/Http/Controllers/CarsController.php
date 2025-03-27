@@ -45,7 +45,6 @@ class CarsController extends Controller
 
     public function filter($country, $city){
         $max_price = max(Car::max('price_per_day'), Car::max('price_per_week'), Car::max('price_per_month'));
-        $max_price = app('currencies')->convert($max_price);
         $cars = Car::hasCompany()->with(['images','brand','model','color','types','company','year'])
             ->when(request('order_by'), function ($query, $order) {
                 $query->orderBy('price_per_day', $order == "price_low" ? "asc" : "desc");
