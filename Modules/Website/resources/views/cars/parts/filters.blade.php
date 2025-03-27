@@ -186,12 +186,12 @@ function updateRange() {
         minVal = maxVal - 1000;
     }
 
-    minValueDisplay.textContent = `$ ${minVal.toLocaleString()}`;
-    maxValueDisplay.textContent = `$ ${maxVal.toLocaleString()}`;
+    minValueDisplay.textContent = `{{$app('currencies')->getCurrency()->code}} ${minVal.toLocaleString()}`;
+    maxValueDisplay.textContent = `{{$app('currencies')->getCurrency()->code}} ${maxVal.toLocaleString()}`;
 
     // Update track color between the two handles
-    let minPercent = ((minVal - 0) / (200000 - 0)) * 100;
-    let maxPercent = ((maxVal - 0) / (200000 - 0)) * 100;
+    let minPercent = ((minVal - 0) / ({{$max_price}} - 0)) * 100;
+    let maxPercent = ((maxVal - 0) / ({{$max_price}} - 0)) * 100;
     track.style.background = `linear-gradient(to right, #ddd ${minPercent}%, #A2E2FF ${minPercent}%, #A2E2FF ${maxPercent}%, #ddd ${maxPercent}%)`;
 }
 
