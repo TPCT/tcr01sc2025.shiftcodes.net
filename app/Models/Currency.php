@@ -42,5 +42,5 @@ class Currency extends Model
         return 'code';
     }
 
-    protected $fillable = ['name', 'code', 'aed_rate', 'default'];
+    protected $fillable = ['name', 'code', 'aed_rate', 'default', 'slug'];
 }
