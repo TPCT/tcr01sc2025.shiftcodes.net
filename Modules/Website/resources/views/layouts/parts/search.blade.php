@@ -1,6 +1,6 @@
     <section class="search-banner">
         <img class="search-image" alt="search" src="{{ asset("/website/images/search_bg.webp") }}">
-        <form action="/search" method="get">
+        <form action="{{LaravelLocalization::getLocalizedURL(null, route('website.cars.filter'))}}" method="get">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
