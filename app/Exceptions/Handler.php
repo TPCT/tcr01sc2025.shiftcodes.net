@@ -30,14 +30,21 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->renderable(function (NotFoundHttpException $e, $request) {
+
             $segments = $request->segments();
-            $identifier = $segments[0];
+            $language = $segments[0];
+            $country = $segments[1];
+            $city = $segments[2];
+
+            $segments = array_splice($segments, 3);
             $path = implode('/', $segments);
-            if (in_array($identifier, ['en', 'ar'])) {
-                $segments = array_splice($segments, 1);
-                $path = implode('/', $segments);
-                $identifier = $segments[0];
-            }
+            $identifier = $segments[0];
+
+            \URL::defaults([
+                'language' => $language,
+                'country' => $country,
+                'city' => $city,
+            ]);
 
             if ($path == "d/cars")
                 return redirect()->route('website.cars.with-drivers');

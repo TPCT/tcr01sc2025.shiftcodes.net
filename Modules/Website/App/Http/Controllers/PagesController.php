@@ -14,7 +14,7 @@ class PagesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function show(Page $page)
+    public function show($country, $city, Page $page)
     {
         return view('website::page')->with([
             'page' => $page

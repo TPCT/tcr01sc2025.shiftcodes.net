@@ -55,7 +55,7 @@ Route::group([
             Route::get("/account/wishlist/toggle", [UsersController::class, 'toggle_wish_list'])->name('website.account.toggleWishlist');
             Route::get("/account/logout", [UsersController::class, 'logout'])->name('website.account.logout');
         });
-        Route::get('/{page}', [PagesController::class, 'show'])->name('website.pages.show');
+
 
         Route::get('/iframes', [HomeController::class, 'reviews']);
 
@@ -88,10 +88,12 @@ Route::group([
                 Route::get('/{yacht}', 'show')->name('website.yachts.show');
             });
 
-            Route::prefix('/blogs')->controller(BlogsController::class)->group(function () {
+            Route::prefix('blogs')->controller(BlogsController::class)->group(function () {
                 Route::get('/', 'index')->name('website.blogs.index');
                 Route::get('/{blog}', 'show')->name('website.blogs.show');
             });
+
+            Route::get('/{page}', [PagesController::class, 'show'])->name('website.pages.show');
         });
  });
 
