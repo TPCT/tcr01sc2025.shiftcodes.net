@@ -72,6 +72,9 @@ class Handler extends ExceptionHandler
             if ($path == "blog")
                 return redirect()->route('website.blogs.index');
 
+            if ($path == "contact")
+                return redirect()->route('website.pages.contact-us');
+
             switch ($identifier) {
                 case 't':
                     $type = Type::findOrFail($segments[1]);
