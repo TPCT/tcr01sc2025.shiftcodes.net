@@ -516,16 +516,6 @@
                 </li>
             </ul>
             <div class="mobile-my-account ">
-                <div class="mobile-my-account-first ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                        <g id="User_User_Square" data-name="User / User_Square" transform="translate(-2 -2)">
-                            <path id="Vector" d="M15.444,19a4.444,4.444,0,1,0-8.889,0m8.889,0h.714a4.407,4.407,0,0,0,1.87-.194,1.781,1.781,0,0,0,.778-.778A4.407,4.407,0,0,0,19,16.158V5.842a4.41,4.41,0,0,0-.194-1.871,1.779,1.779,0,0,0-.778-.777A4.413,4.413,0,0,0,16.156,3H5.845a4.419,4.419,0,0,0-1.874.194,1.777,1.777,0,0,0-.777.777A4.419,4.419,0,0,0,3,5.845V16.156a4.413,4.413,0,0,0,.194,1.873,1.779,1.779,0,0,0,.777.778A4.41,4.41,0,0,0,5.842,19h.714m8.889,0H6.556M11,11.889a2.667,2.667,0,1,1,2.667-2.667A2.667,2.667,0,0,1,11,11.889Z" fill="none" stroke="#472459" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                        </g>
-                    </svg>
-                   <a href="#" class="mobile-my-account-link">
-                       @lang('lang.My account')
-                   </a>         
-                </div>
                 <div class="mobile-my-account-sec flex-wrap">
                     @if(!auth()->guard('customers')->check())
                         <span data-toggle="modal" class="open-auth" data-target="#signinModal" class=>
@@ -535,6 +525,16 @@
                                 {{__('lang.Sign up')}}
                             </span>
                     @else
+{{--                        <div class="mobile-my-account-first ">--}}
+{{--                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">--}}
+{{--                                <g id="User_User_Square" data-name="User / User_Square" transform="translate(-2 -2)">--}}
+{{--                                    <path id="Vector" d="M15.444,19a4.444,4.444,0,1,0-8.889,0m8.889,0h.714a4.407,4.407,0,0,0,1.87-.194,1.781,1.781,0,0,0,.778-.778A4.407,4.407,0,0,0,19,16.158V5.842a4.41,4.41,0,0,0-.194-1.871,1.779,1.779,0,0,0-.778-.777A4.413,4.413,0,0,0,16.156,3H5.845a4.419,4.419,0,0,0-1.874.194,1.777,1.777,0,0,0-.777.777A4.419,4.419,0,0,0,3,5.845V16.156a4.413,4.413,0,0,0,.194,1.873,1.779,1.779,0,0,0,.777.778A4.41,4.41,0,0,0,5.842,19h.714m8.889,0H6.556M11,11.889a2.667,2.667,0,1,1,2.667-2.667A2.667,2.667,0,0,1,11,11.889Z" fill="none" stroke="#472459" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>--}}
+{{--                                </g>--}}
+{{--                            </svg>--}}
+{{--                            <a href="{{LaravelLocalization::getLocalizedURL(null, route('website.account.'))}}" class="mobile-my-account-link">--}}
+{{--                                @lang('lang.My account')--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
                         <a href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.account.wishlist')) }}">
                             {{__('lang.Wishlist')}}
                         </a>
