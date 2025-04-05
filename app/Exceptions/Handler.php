@@ -73,7 +73,7 @@ class Handler extends ExceptionHandler
                     return redirect()->route('website.blogs.show', ['blog' => $blog]);
 
                 default:
-                    $car = Car::findOrFail($segments[1]);
+                    $car = Car::findOrFail($segments[0]);
                     return redirect()->route("website.cars.show", ['car' => $car]);
             }
         });
