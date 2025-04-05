@@ -5,6 +5,8 @@ namespace App\Exceptions;
 use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Car;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Page;
 use App\Models\Type;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -33,8 +35,23 @@ class Handler extends ExceptionHandler
 
             $segments = $request->segments();
             $language = $segments[0];
-            $country = $segments[1];
-            $city = $segments[2];
+            $country = Country::whereSlug($segments[1])->first();
+            $city = City::whereSlug($segments[2])->first();
+
+
+            if (!in_array($language, ['en', 'ar'])){
+                $segments = array_merge(['en'], $segments);
+            }
+
+            if (!$country){
+                $country = Country::whereDefault(1)->first() ?? Country::first();
+                $segments = array_merge([$segments[0], $country->slug], array_splice($segments, 1));
+            }
+
+            if (!$city){
+                $city = $country->cities()->whereDefault(1)->first() ?? $country->cities->first();
+                $segments = array_merge([$segments[0], $segments[1], $city->slug], array_splice($segments, 2));
+            }
 
             $segments = array_splice($segments, 3);
             $path = implode('/', $segments);
@@ -42,8 +59,8 @@ class Handler extends ExceptionHandler
 
             \URL::defaults([
                 'language' => $language,
-                'country' => $country,
-                'city' => $city,
+                'country' => $country->slug,
+                'city' => $city->slug,
             ]);
 
             if ($path == "d/cars")
@@ -61,7 +78,7 @@ class Handler extends ExceptionHandler
                     return redirect()->route('website.cars.types.show', ['type' => $type]);
 
                 case 'b':
-                    $brand = Brand::findOrFail($segments[1]);
+                    $brand = Brand::find($segments[1]) ?? Brand::whereSlug($segments[2])->first();
                     return redirect()->route('website.cars.brands.show', ['brand' => $brand]);
 
                 case 'p':
