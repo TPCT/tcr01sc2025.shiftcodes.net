@@ -2,7 +2,13 @@
 
 namespace App\Exceptions;
 
+use App\Models\Blog;
+use App\Models\Brand;
+use App\Models\Car;
+use App\Models\Page;
+use App\Models\Type;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -23,6 +29,48 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
+        $this->renderable(function (NotFoundHttpException $e, $request) {
+            $segments = $request->segments();
+            $identifier = $segments[0];
+            $path = implode('/', $segments);
+            if (in_array($identifier, ['en', 'ar'])) {
+                $segments = array_splice($segments, 1);
+                $path = implode('/', $segments);
+                $identifier = $segments[0];
+            }
+
+            if ($path == "d/cars")
+                return redirect()->route('website.cars.with-drivers');
+
+            if ($path == "yacht")
+                return redirect()->route('website.yachts.index');
+
+            if ($path == "blog")
+                return redirect()->route('website.blogs.index');
+
+            switch ($identifier) {
+                case 't':
+                    $type = Type::findOrFail($segments[1]);
+                    return redirect()->route('website.cars.types.show', ['type' => $type]);
+
+                case 'b':
+                    $brand = Brand::findOrFail($segments[1]);
+                    return redirect()->route('website.cars.brands.show', ['brand' => $brand]);
+
+                case 'p':
+                    $page = Page::findOrFail($segments[1]);
+                    return redirect()->route('website.pages.show', ['page' => $page]);
+
+                case 'blog-details':
+                    $blog = Blog::findOrFail($segments[1]);
+                    return redirect()->route('website.blogs.show', ['blog' => $blog]);
+
+                default:
+                    $car = Car::findOrFail($segments[1]);
+                    return redirect()->route("website.cars.show", ['car' => $car]);
+            }
+        });
+
         $this->reportable(function (Throwable $e) {
             //
         });

@@ -26,7 +26,7 @@ use Modules\Website\App\Http\Controllers\YachtsController;
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => [
-        'localeSessionRedirect', 'localizationRedirect',
+        "localeSessionRedirect", "localizationRedirect",
         "currency", "country"
     ]],
     function() {
