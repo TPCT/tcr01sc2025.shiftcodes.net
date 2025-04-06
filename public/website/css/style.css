@@ -474,6 +474,13 @@ footer ul li a {
   font-weight: 400;
   padding: 15px 20px;
   border-bottom: 1px solid #ededed;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 42px;
+  line-height: 21px;
 }
 
 .product__vertical_bottom_features {
@@ -1814,9 +1821,9 @@ a:hover {
   cursor: pointer;
 }
 
-.product__horizontal .product__vertical_top img {
+/* .product__horizontal .product__vertical_top img {
   max-height: 100%;
-}
+} */
 
 .header__actions_menu li a {
   display: block;
@@ -2712,4 +2719,12 @@ input[type="range"]::-webkit-slider-thumb {
   margin-top: 20px;
   margin-bottom: 20px;
   padding-inline-start: 4rem;
+}
+@media (min-width: 992px) {
+  .blogs-container-section .media {
+    flex-direction: row !important;
+  }
+}
+.contact__box_mt {
+  margin-top: 50px;
 }

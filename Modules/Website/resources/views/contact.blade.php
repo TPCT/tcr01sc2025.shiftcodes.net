@@ -34,7 +34,7 @@
             </div>
             <div class="row map-bg">
                 <div class="col-lg-3">
-                    <div class="contact__box_item">
+                    <div class="contact__box_item contact__box_mt">
                         <i class="fa fa-map-marker"></i>
                         <h4>{{__('lang.Head Office')}}</h4>
                         <p>{{app('settings')->get('footer_address')}}</p>
@@ -44,7 +44,7 @@
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3">
                     <a href="tel:{{str_replace(' ', '', app('settings')->get('contact_phone') )}}">
-                        <div class="contact__box_item">
+                        <div class="contact__box_item contact__box_mt">
                         <svg id="phone-svgrepo-com_1_" data-name="phone-svgrepo-com (1)" xmlns="http://www.w3.org/2000/svg" width="15.457" height="15.457" viewBox="0 0 15.457 15.457">
   <g id="Group_2510" data-name="Group 2510" transform="translate(1.562 0)">
     <path id="Path_1041" data-name="Path 1041" d="M20.327,11.406a7.674,7.674,0,0,0-2.292-1.981c-.408-.233-.9-.259-1.133.156a9.3,9.3,0,0,1-.735.8,1.369,1.369,0,0,1-1.948-.193L12.739,8.712,11.26,7.233a1.369,1.369,0,0,1-.193-1.948,9.3,9.3,0,0,1,.8-.735c.414-.233.389-.725.156-1.133a7.674,7.674,0,0,0-1.981-2.292,1.013,1.013,0,0,0-1.19.179L8.2,1.957C6.129,4.029,7.149,6.369,9.222,8.442l1.894,1.894L13.01,12.23c2.072,2.072,4.412,3.093,6.485,1.02l.654-.654A1.014,1.014,0,0,0,20.327,11.406Z" transform="translate(-6.808 -0.747)" fill="#3e1f50"/>
