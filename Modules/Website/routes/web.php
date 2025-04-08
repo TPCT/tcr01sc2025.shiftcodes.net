@@ -22,6 +22,7 @@ use Modules\Website\App\Http\Controllers\YachtsController;
 |
 */
 
+Route::get('/sitemap.xml', [HomeController::class, 'sitemap'])->name('sitemap');
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),

@@ -192,25 +192,6 @@
 
                             <div class="widget">
                                 <div class="widget__content">
-                                    <div class="widget_info">
-                                        <div class="widget_company">
-                                            <h3>{{$car->company->name}}</h3>
-                                            @php
-                                                $isOpen = false;
-                                                $today = strtolower(date('l'));
-                                                $workingDays = $car->company->hours()->where('type','=','open')->orWhere("type","24")->pluck('day')->toArray();
-                                                if(in_array($today, $workingDays)) {
-                                                    $isOpen = true;
-                                                }
-                                            @endphp
-                                            @if($isOpen)
-                                            <span class="link">{{__('lang.Open Now')}}</span>
-                                            @endif
-                                        </div>
-                                        <div class="widget_image">
-                                            <img alt="{{$car->company->name}}" src="{{secure_url('/')}}/storage/{{$car->company->image}}"/>
-                                        </div>
-                                    </div>
                                     <ul class="car_company_terms">
                                         @if( $car->type != "yacht")
                                         <li>
