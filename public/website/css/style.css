@@ -2720,11 +2720,15 @@ input[type="range"]::-webkit-slider-thumb {
   margin-bottom: 20px;
   padding-inline-start: 4rem;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .blogs-container-section .media {
     flex-direction: row !important;
   }
 }
 .contact__box_mt {
   margin-top: 50px;
+}
+.products-page__filter_body .form-group{
+  padding-inline-end: .5rem;
+  background-color: #e6f6ff;
 }
