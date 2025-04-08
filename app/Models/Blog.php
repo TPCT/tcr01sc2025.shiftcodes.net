@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Helpers\HasSlug;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sitemap\Tags\Url;
 use Spatie\Translatable\HasTranslations;
 /**
  * 
@@ -61,5 +63,11 @@ class Blog extends Model
     public function seo()
     {
         return $this->belongsTo(SEO::class, 'id', 'resource_id');
+    }
+
+    public function toSitemapTag()
+    {
+        return Url::create(route('website.blogs.show', ['blog' => $this]))
+            ->setLastModificationDate(Carbon::create($this->updated_at));
     }
 }
