@@ -2742,3 +2742,12 @@ input[type="range"]::-webkit-slider-thumb {
   padding-inline-end: .5rem;
   background-color: #e6f6ff;
 }
+@media (max-width: 576.89px) {
+  .car__features ul {
+    flex-direction: column;
+  }
+}
+.product__horizontal .product__vertical_bottom .home__brands_item {
+  max-width: 100%;
+  gap: 10px;
+}
