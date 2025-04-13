@@ -222,7 +222,8 @@
 
     .product__horizontal_fees {
         display: flex;
-        gap: 10px
+        gap: 10px;
+        flex-direction: column;
     }
 
     .product__vertical .product__vertical_bottom .home__brands_item h3 {

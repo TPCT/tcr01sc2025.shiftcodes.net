@@ -2284,7 +2284,7 @@ a:hover {
 }
 
 .car__features ul {
-  padding-left: 30px;
+  padding-inline: 30px;
   border-right: 1px solid white;
   height: auto;
   display: flex;
@@ -2750,4 +2750,26 @@ input[type="range"]::-webkit-slider-thumb {
 .product__horizontal .product__vertical_bottom .home__brands_item {
   max-width: 100%;
   gap: 10px;
+}
+@media (max-width: 425px) {
+  .product__vertical .product__vertical_top .product__vertical_meta {
+    flex-wrap: wrap;
+  }
+  .product__vertical_meta .wishlist {
+    margin-left: unset;
+  }
+}
+@media screen and (max-width: 991px) {
+  footer {
+      padding-bottom: 5rem !important;
+  }
+}
+.footer-apps ul {
+  padding-inline: 30px;
+}
+.footer-apps ul li {
+  list-style: none;
+}
+.footer-apps ul li a {
+  text-align: center;
 }

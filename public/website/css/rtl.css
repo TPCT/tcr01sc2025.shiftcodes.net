@@ -96,3 +96,24 @@ footer ul {
         padding: 15px 5px;
     } */
 }
+.home__brands_title h3 {
+    padding-right: 0;
+    padding-left: 30px;
+}
+.home_brands_view_all_holder {
+    margin-left: 0;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 20px;
+}
+.search-banner-field {
+    flex-direction: row;
+}
+.search-banner-field .search-banner-field__btn button {
+    flex-direction: row-reverse;
+}
+@media screen and (max-width: 991px) {
+    .collapse.show {
+        right: 0;
+    }
+}
