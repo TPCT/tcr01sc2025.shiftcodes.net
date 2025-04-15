@@ -117,3 +117,7 @@ footer ul {
         right: 0;
     }
 }
+.accordion .card .btn {
+    display: flex;
+    justify-content: space-between;
+}
