@@ -39,6 +39,7 @@ section {
 }
 
 @media (min-width: 992px) {
+
   header .container-fluid,
   nav .container-fluid {
     width: 88%;
@@ -47,6 +48,7 @@ section {
 
 .logo img {
   height: 60px;
+  max-width: 100%;
 }
 
 .header__list_your_car {
@@ -172,10 +174,10 @@ section {
   border-bottom: 3px solid #e6f6ff;
 }
 
-.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .active>.nav-link,
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
-.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .show>.nav-link,
 .navbar-light .navbar-nav .nav-link {
   color: #3a1b50;
   font-weight: 500;
@@ -740,8 +742,7 @@ footer ul li a {
   margin: 0 auto;
 }
 
-.home__book_your_next_trip_content ul li {
-}
+.home__book_your_next_trip_content ul li {}
 
 .sk-badge-name {
   font-size: 14pt !important;
@@ -1321,22 +1322,22 @@ footer ul li a:hover {
   border-bottom: 3px solid #3a1b50;
 }
 
-.single_product__bottom .tab-content > .tab-pane {
+.single_product__bottom .tab-content>.tab-pane {
   padding: 15px 0px;
   padding-bottom: 0;
 }
 
-.tab-content > .tab-pane h3 {
+.tab-content>.tab-pane h3 {
   margin-bottom: 15px;
 }
 
-.tab-content > .tab-pane p.headline {
+.tab-content>.tab-pane p.headline {
   margin-bottom: 5px;
   font-weight: bold;
   font-size: 14pt;
 }
 
-.tab-content > .tab-pane div {
+.tab-content>.tab-pane div {
   margin: 10px 0px;
 }
 
@@ -1570,7 +1571,7 @@ footer ul li a:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.my-account-content .tab-content > .tab-pane {
+.my-account-content .tab-content>.tab-pane {
   padding: 0px 0px;
 }
 
@@ -2283,7 +2284,7 @@ a:hover {
 }
 
 .car__features ul {
-  padding-left: 30px;
+  padding-inline: 30px;
   border-right: 1px solid white;
   height: auto;
   display: flex;
@@ -2407,7 +2408,7 @@ a:hover {
   direction: rtl;
 }
 
-.arabic-version .breadcrumb-item + .breadcrumb-item::before {
+.arabic-version .breadcrumb-item+.breadcrumb-item::before {
   padding-left: 0.5rem;
   float: right;
   /* transform: scale(-1); */
@@ -2459,7 +2460,7 @@ a:hover {
   color: #3a1b50;
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
+.breadcrumb-item+.breadcrumb-item::before {
   content: ">";
   color: #939393;
 }
@@ -2676,10 +2677,12 @@ input[type="range"]::-webkit-slider-thumb {
     height: 40px !important;
   }
 }
+
 .dropdown-toggle {
   position: relative;
   text-decoration: none !important;
 }
+
 .dropdown-toggle::after {
   border: 0 !important;
   background-image: url("../images/down-arrow.png");
@@ -2692,9 +2695,11 @@ input[type="range"]::-webkit-slider-thumb {
   transform: translate(-50%, -50%);
   position: absolute;
 }
+
 .nav-link {
   position: relative;
 }
+
 .dropdown-toggle::before {
   content: "";
   position: absolute;
@@ -2708,11 +2713,13 @@ input[type="range"]::-webkit-slider-thumb {
   z-index: -1;
   transform: translate(-50%, -50%);
 }
+
 @media screen and (max-width: 991px) {
   .navbar-nav {
     gap: 15px;
   }
 }
+
 .main-social-media ul {
   display: flex;
   gap: 10px;
@@ -2720,15 +2727,49 @@ input[type="range"]::-webkit-slider-thumb {
   margin-bottom: 20px;
   padding-inline-start: 4rem;
 }
+
 @media (min-width: 768px) {
   .blogs-container-section .media {
     flex-direction: row !important;
   }
 }
+
 .contact__box_mt {
   margin-top: 50px;
 }
-.products-page__filter_body .form-group{
+
+.products-page__filter_body .form-group {
   padding-inline-end: .5rem;
   background-color: #e6f6ff;
+}
+@media (max-width: 576.89px) {
+  .car__features ul {
+    flex-direction: column;
+  }
+}
+.product__horizontal .product__vertical_bottom .home__brands_item {
+  max-width: 100%;
+  gap: 10px;
+}
+@media (max-width: 425px) {
+  .product__vertical .product__vertical_top .product__vertical_meta {
+    flex-wrap: wrap;
+  }
+  .product__vertical_meta .wishlist {
+    margin-left: unset;
+  }
+}
+@media screen and (max-width: 991px) {
+  footer {
+      padding-bottom: 5rem !important;
+  }
+}
+.footer-apps ul {
+  padding-inline: 30px;
+}
+.footer-apps ul li {
+  list-style: none;
+}
+.footer-apps ul li a {
+  text-align: center;
 }
