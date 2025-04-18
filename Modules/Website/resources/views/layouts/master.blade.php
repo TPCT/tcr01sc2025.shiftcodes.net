@@ -12,45 +12,45 @@
     @section('seo')
     @show
 
-    <link rel="preload" href="{{asset('/website/css/font-awesome.css')}}" as="style"
+    <link rel="preload" href="{{asset('/minify/website/css/font-awesome.css')}}" as="style"
           onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="{{asset('/website/css/owl.carousel.min.css')}}" as="style"
+    <link rel="preload" href="{{asset('/minify/website/css/owl.carousel.min.css')}}" as="style"
           onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="{{asset('/website/css/owl.theme.default.min.css')}}" as="style"
+    <link rel="preload" href="{{asset('/minify/website/css/owl.theme.default.min.css')}}" as="style"
           onload="this.onload=null;this.rel='stylesheet'">
 
-    <link rel="stylesheet" href="{{asset('/website/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/minify/website/css/bootstrap.min.css')}}">
     @if(app()->getLocale() == 'ar')
-        <link rel="stylesheet" href="{{asset('/website/css/bootstrap-rtl.min.css')}}">
+        <link rel="stylesheet" href="{{asset('/minify/website/css/bootstrap-rtl.min.css')}}">
     @endif
-    <link href="{{asset('/website/css/style.css')}}" rel="stylesheet">
-    <link rel="preload" href="{{asset('/website/css/media.css')}}" as="style"
+    <link href="{{asset('/minify/website/css/style.css')}}" rel="stylesheet">
+    <link rel="preload" href="{{asset('/minify/website/css/media.css')}}" as="style"
           onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="{{asset('/website/css/media.css')}}">
+        <link rel="stylesheet" href="{{asset('/minify/website/css/media.css')}}">
     </noscript>
     <noscript>
-        <link rel="stylesheet" href="{{asset('/website/css/font-awesome.css')}}">
+        <link rel="stylesheet" href="{{asset('/minify/website/css/font-awesome.css')}}">
     </noscript>
     <noscript>
-        <link rel="stylesheet" href="{{asset('/website/css/owl.carousel.min.css')}}">
+        <link rel="stylesheet" href="{{asset('/minify/website/css/owl.carousel.min.css')}}">
     </noscript>
     <noscript>
-        <link rel="stylesheet" href="{{asset('/website/css/owl.theme.default.min.css')}}">
+        <link rel="stylesheet" href="{{asset('/minify/website/css/owl.theme.default.min.css')}}">
     </noscript>
     @section('css')
     @show
 
     @if(app()->getLocale() == 'ar')
-        <link href="{{asset('/website/css/rtl.css')}}" rel="stylesheet">
+        <link href="{{asset('/minify/website/css/rtl.css')}}" rel="stylesheet">
     @endif
     <link rel="icon" href="{{asset('/website/images/fav.jpg')}}" type="image/x-icon">
     <link href="{{url()->current()}}" rel="canonical"/>
     <!-- Preload Bootstrap JavaScript -->
-    <link rel="preload" href="{{asset('/website/js/bootstrap.min.js')}}" as="script">
-    <link rel="preload" href="{{asset('/website/js/owl.carousel.min.js')}}" as="script">
-    <link rel="preload" href="{{asset('/website/js/owl.carousel.min.js')}}" as="script">
-    <link rel="preload" href="{{asset('/website/js/core.js')}}" as="script">
+    <link rel="preload" href="{{asset('/minify/website/js/bootstrap.min.js')}}" as="script">
+    <link rel="preload" href="{{asset('/minify/website/js/owl.carousel.min.js')}}" as="script">
+    <link rel="preload" href="{{asset('/minify/website/js/owl.carousel.min.js')}}" as="script">
+    <link rel="preload" href="{{asset('/minify/website/js/core.js')}}" as="script">
 
     {!!app('settings')->get('scripts')!!}
 
@@ -737,10 +737,10 @@
     </div>
 </footer>
 
-<script src="{{asset('/website/js/jquery-3.2.1.min.js')}}"></script>
+<script src="{{asset('/minify/website/js/jquery-3.2.1.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
-<script src="{{asset('/website/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('/minify/website/js/bootstrap.min.js')}}"></script>
 
 <script>
     jQuery.event.special.touchstart = {
@@ -765,19 +765,19 @@
     };
 </script>
 
-<!-- <script  src="{{asset('/website/js/sweetalert2.all.min.js')}}" ></script> -->
-<script src="{{asset('/website/js/owl.carousel.min.js')}}"></script>
+<!-- <script  src="{{asset('/minify/website/js/sweetalert2.all.min.js')}}" ></script> -->
+<script src="{{asset('/minify/website/js/owl.carousel.min.js')}}"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.0/firebase-messaging.min.js"
         integrity="sha512-v5yEhqjlpSupFcjvkEP+AloVEjQBd/CK0pysyAw/YCChyiq54FUuucx2N9oACFBi1qHXsAuhOMsoHiFYxIXCMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="{{asset('/website/firebase/config.js')}}"></script>
-<script src="{{asset('/website/firebase/messaging.js')}}"></script>
+<script src="{{asset('/minify/website/firebase/config.js')}}"></script>
+<script src="{{asset('/minify/website/firebase/messaging.js')}}"></script>
 @section('libs')
 @show
 
-<script src="{{asset('/website/js/core.js')}}"></script>
+<script src="{{asset('/minify/website/js/core.js')}}"></script>
 
 @if($errors->signup->any())
     <script>

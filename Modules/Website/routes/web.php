@@ -10,7 +10,8 @@ use Modules\Website\App\Http\Controllers\BlogsController;
 use Modules\Website\App\Http\Controllers\TypesController;
 use Modules\Website\App\Http\Controllers\BrandsController;
 use Modules\Website\App\Http\Controllers\YachtsController;
-
+use Modules\Website\App\Http\Controllers\StorageController;
+use Modules\Website\App\Http\Controllers\MinifyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,8 @@ use Modules\Website\App\Http\Controllers\YachtsController;
 */
 
 Route::get('/sitemap.xml', [HomeController::class, 'sitemap'])->name('sitemap');
+Route::get('/storage/{path}', [StorageController::class, "show"])->where('path', '.*');
+Route::get('/minify/{any}', [MinifyController::class, 'minify'])->name('minify')->where('any', '.*');
 
 
 
