@@ -56,7 +56,6 @@ class WebpImage
             $newPathInfo = explode('/', $newFileFullPath);
             $finalImage  = $newPathInfo[count($newPathInfo)-1];
 
-            \Cache::put($newFileFullPath, 1, 24 * 3600);
             $result = array(
                 "fullPath"=>$newPathInfo,
                 "file"=>$finalImage,
