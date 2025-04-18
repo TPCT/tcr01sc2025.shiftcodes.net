@@ -92,6 +92,8 @@ $(".owl-carousel").each(function() {
 });
 $(".link").on("click", function() {
     var url = $(this).attr('data-href')
+    if (!url)
+        return;
     window.location.href = url
 })
 $(window).on("load", function() {
