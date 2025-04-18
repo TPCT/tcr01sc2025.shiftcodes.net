@@ -19,17 +19,7 @@ class WebpImage
             $ext = pathinfo($fullPath, PATHINFO_EXTENSION);
             $extension = strtolower($ext);
             $newFileFullPath = str_replace('.'.$ext,'.webp',$fullPath);
-            if (\Cache::get($newFileFullPath) && is_file($newFileFullPath)){
-                $newPathInfo = explode('/', $newFileFullPath);
-                $finalImage  = $newPathInfo[count($newPathInfo)-1];
-                return (object) array(
-                    "fullPath"=>$newPathInfo,
-                    "file"=>$finalImage,
-                    "status"=>1
-                );
-            }
 
-            \Cache::put($newFileFullPath, 0, 24 * 3600);
             $isValidFormat = false;
             $img = null;
 
