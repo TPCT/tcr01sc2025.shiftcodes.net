@@ -1063,7 +1063,6 @@ footer ul li a:hover {
 }
 
 .product-page__sub_categories li {
-  flex: 0 25%;
   list-style-type: disc;
   padding: 10px;
 }
@@ -2322,6 +2321,7 @@ a:hover {
   height: 65px;
   padding-bottom: 20px;
   overflow: hidden;
+  justify-content: space-between;
 }
 
 .expand-models {
@@ -2772,4 +2772,4 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .footer-apps ul li a {
   text-align: center;
-}
+}                 
