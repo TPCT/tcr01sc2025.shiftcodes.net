@@ -2,7 +2,6 @@
 if (isset($resource)) {
     $title = $resource->page_title;
 } elseif (isset($seo) && $seo->meta_title) {
-//    $title = $seo->meta_title;
 }elseif(isset($car)){
     $title = __('lang.Rent') . " " . $title;
 }
@@ -21,7 +20,7 @@ if (isset($resource)) {
         <meta property="og:description" content="{{$desc}}" />
         <meta name="twitter:description" content="{{$desc}}" />
 
-    @elseif(\Request::route()->getName() == 'company')
+    @elseif(\Request::route()?->getName() == 'company')
         <meta name="description" content="{{$company->description}}">
         <meta property="og:description" content="{{$company->description}}" />
         <meta name="twitter:description" content="{{$company->description}}" />
