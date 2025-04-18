@@ -12,7 +12,7 @@ class WebpImage
     public static function convert(
         $fullPath,
         $outPutQuality = 50,
-        $deleteOriginal=false
+        $deleteOriginal=true
      ){
         if(file_exists($fullPath)):
 
