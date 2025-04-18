@@ -18,6 +18,7 @@ class StorageController extends Controller
             abort(404);
 
         if ($cache_path = Cache::get($path))
+            var_dump($cache_path);
             return response()->download($cache_path);
 
         if (@is_array(getimagesize($path))){
