@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Cache;
 class StorageController extends Controller
 {
     public function show($path){
+        var_dump($path);
+        exit;
         $path = storage_path('app/public/' . $path);
         $extension = \request('extension');
         $path = str_replace('.webp', '.' . $extension, $path);
