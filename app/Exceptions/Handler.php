@@ -34,6 +34,8 @@ class Handler extends ExceptionHandler
     {
         $this->renderable(function (NotFoundHttpException $e, $request) {
             try{
+                var_dump($e->getMessage());
+                exit;
                 $segments = $request->segments();
                 $language = $segments[0];
                 $country = Country::whereSlug($segments[1])->first();
@@ -55,8 +57,6 @@ class Handler extends ExceptionHandler
                 }
 
                 $segments = array_splice($segments, 3);
-                var_dump($segments);
-                exit;
                 $path = implode('/', $segments);
                 $identifier = $segments[0];
 
