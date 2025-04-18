@@ -53,7 +53,7 @@
                                                     <label class="custom-file-label" for="customFile">{{__('admin.choose_file')}}</label>
                                                 </div>
                                                 @if($item->image)
-                                                <img src="{{url('/')}}/storage/{{$item->image}}" style="width: 100px; margin-top: 10px;">
+                                                <img src="{{url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($item->image)}}" style="width: 100px; margin-top: 10px;">
                                                 @endif
                                             
                                             </div>

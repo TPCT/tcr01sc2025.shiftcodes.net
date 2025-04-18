@@ -30,7 +30,7 @@
                         <h2>{{$blog->getTranslation("title", \App::getLocale())}}</h2>
 
                         @if($blog->image)
-                        <img alt="{{$blog->getTranslation("title", \App::getLocale())}}" src="/storage/{{$blog->image}}" />
+                        <img alt="{{$blog->getTranslation("title", \App::getLocale())}}" src="/storage/{{\App\Helpers\WebpImage::generateUrl($blog->image)}}" />
                         @endif
                         {!!$blog->content!!}
                     </div>

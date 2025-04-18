@@ -36,7 +36,7 @@
                         @foreach($types as $item)
                         <a href="{{LaravelLocalization::getLocalizedURL(null, route('website.cars.types.show', ['type' => $item])) }}">
                             <div class="home__brands_item">
-                                <img width="174" height="100" loading="lazy" alt="{{$item->slug}}" src="{{asset("/storage/{$item->image}")}}"/>
+                                <img width="174" height="100" loading="lazy" alt="{{$item->slug}}" src="{{asset("/storage/") . "/" . \App\Helpers\WebpImage::generateUrl($item->image)}}"/>
                                 <h3>{{$item->title}}</h3>
                             </div>
                         </a>
@@ -73,7 +73,7 @@
                         @foreach(app('cars')->brands as $item)
                         <a href="{{LaravelLocalization::getLocalizedURL(null, route('website.cars.brands.show', ['brand' => $item])) }}">
                             <div class="home__brands_item">
-                                <img width="174" height="100"  loading="lazy" alt="{{$item->slug}}" src="{{asset("/storage/{$item->image}")}}"/>
+                                <img width="174" height="100"  loading="lazy" alt="{{$item->slug}}" src="{{asset("/storage/") . "/" . \App\Helpers\WebpImage::generateUrl($item->image)}}"/>
                                 <h3>{{$item->title}}</h3>
                             </div>
                         </a>

@@ -11,7 +11,7 @@
 
             </div>
             <a aria-label="{{$yacht->name}}" href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.yachts.show', ['yacht' => $yacht])) }}">
-                <img alt="{{$yacht->name}}" src="{{ asset("/storage/{$yacht->image}") }}"/>
+                <img alt="{{$yacht->name}}" src="{{ asset("/storage/") . "/" . \App\Helpers\WebpImage::generateUrl($yacht->image) }}"/>
             </a>
         </div>
         <div class="product__vertical_bottom">

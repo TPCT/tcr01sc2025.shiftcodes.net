@@ -23,7 +23,7 @@
          
                 <li class="nav-item dropdown user-profile-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <img src="{{auth()->user()->type == 'user' && auth()->user()->company->image ? '/storage/' . auth()->user()->company->image : '/storage/' . \App\Models\Setting::first()->header_logo }}" alt="avatar">
+                        <img src="{{auth()->user()->type == 'user' && auth()->user()->company->image ? '/storage/' . auth()->user()->company->image : '/storage/' . \App\Helpers\WebpImage::generateUrl(\App\Models\Setting::first()->header_logo) }}" alt="avatar">
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                         <div class="">

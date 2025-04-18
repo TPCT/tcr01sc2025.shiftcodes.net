@@ -4,6 +4,11 @@ namespace App\Helpers;
 
 class WebpImage
 {
+    public static function generateUrl($url){
+        [$url, $extension] = explode(".", $url);
+        $extension = strtolower($extension);
+        return $url. '.' . "webp?extension=$extension";
+    }
     public static function convert(
         $fullPath,
         $outPutQuality = 100,

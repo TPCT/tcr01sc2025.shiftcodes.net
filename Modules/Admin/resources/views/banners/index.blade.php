@@ -102,7 +102,7 @@
                                                 <tr>
                                                     
                                                     <td class="text-center">
-                                                        <img src="{{url('/')}}/storage/{{$item->image}}" style="width: autopx; height:100px;max-width:100%;border-radius:4px">
+                                                        <img src="{{url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($item->image)}}" style="width: autopx; height:100px;max-width:100%;border-radius:4px">
                                                     </td>
                                                     <td class="text-center"> {{$item->title}}</td>
                                                     <td class="text-center"> {{$item->link}}</td>

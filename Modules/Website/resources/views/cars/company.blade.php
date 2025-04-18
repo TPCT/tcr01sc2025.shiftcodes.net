@@ -6,7 +6,7 @@
     @include('website::layouts.parts.seo', [
         'seo' => \App\Models\SEO::where('type','company')->where('resource_id', $company->id)->first(),
         "title" => $company->name,
-        "image" => secure_url('/') . '/storage/'. $company->image
+        "image" => secure_url('/') . '/storage/'. \App\Helpers\WebpImage::generateUrl($company->image)
     ])
 @endsection
 

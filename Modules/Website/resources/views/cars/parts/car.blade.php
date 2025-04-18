@@ -11,7 +11,7 @@
 
             </div>
             <a aria-label="{{$car->name}}" href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.cars.show', ['car' => $car])) }}">
-                <img alt="{{$car->name}}" src="{{ asset("/storage/{$car->image}") }}"/>
+                <img alt="{{$car->name}}" src="{{ asset("/storage/") . "/" . \App\Helpers\WebpImage::generateUrl($car->image) }}"/>
             </a>
         </div>
         <div class="product__vertical_bottom">
@@ -72,7 +72,7 @@
                     @if($car->company)
                     <a href="{{LaravelLocalization::localizeUrl("/c/{$car->company->id}/{$car->company->slug}")}}" class="flex-1 link">
                         <div class="home__brands_item">
-                                <img loading="lazy" alt="{{$car->company->name . rand(0,999)}}" src="{{asset("/storage/{$car->company->image}")}}"/>
+                                <img loading="lazy" alt="{{$car->company->name . rand(0,999)}}" src="{{asset("/storage/") . "/" . \App\Helpers\WebpImage::generateUrl($car->company->image)}}"/>
                                 <h3>{{$car->company->name}}</h3>
                         </div>
                     </a>

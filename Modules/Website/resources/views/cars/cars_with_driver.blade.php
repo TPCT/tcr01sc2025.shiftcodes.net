@@ -79,7 +79,7 @@
             "vehicleIdentificationNumber": "{{substr(md5($car->id) , 0 , 17)}}",
             "vehicleModelDate": "{{$car->year ? $car->year->title : '2021'}}",
             "image": [
-                "{{secure_url('/')}}/storage/{{$car->image}}"
+                "{{secure_url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($car->image)}}"
             ],
             "url": "{{secure_url('/')}}/{{$car->id}}/{{$car->slug}}",
             "offers": {

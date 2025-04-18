@@ -84,8 +84,8 @@
                                                     <label class="custom-file-label" for="customFile">{{__('admin.choose_file')}}</label>
                                                 </div>
                                                 @if($company->image)
-                                                <a href="{{url('/')}}/storage/{{$company->image}}" target="_blank">
-                                                    <img class="image-form" src="{{url('/')}}/storage/{{$company->image}}" alt="">
+                                                <a href="{{url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($company->image)}}" target="_blank">
+                                                    <img class="image-form" src="{{url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($company->image)}}" alt="">
                                                 </a>
                                                 @endif 
                                             

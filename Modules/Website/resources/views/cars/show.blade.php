@@ -26,7 +26,7 @@
     @include('website::layouts.parts.seo', [
         'seo' => $car->model ? \App\Models\SEO::where('type','model')->where('resource_id', $car->model->id)->first() : null,
         "title" => $car->name . "-" .  ( $car->company?->name ??  ''  ) . " #" .   $car->id ,
-        "image" => secure_url('/') . '/storage/'. $car->image
+        "image" => secure_url('/') . '/storage/'. \App\Helpers\WebpImage::generateUrl($car->image)
     ])
 @endsection
 @section("content")
@@ -45,15 +45,15 @@
                 <div class="col-lg-7">
                     <div class="single_product_main_image">
                     <div data-items-large="1" data-items-small="1" class="single-image-slider owl-carousel owl-theme">
-                    <div class="single_product_main_image-box" data-src="/storage/{{$car->image}}" data-fancybox="gallery">
-                        <img alt="{{$car->name}}" src="/storage/{{$car->image}}" />
+                    <div class="single_product_main_image-box" data-src="/storage/{{\App\Helpers\WebpImage::generateUrl($car->image)}}" data-fancybox="gallery">
+                        <img alt="{{$car->name}}" src="/storage/{{\App\Helpers\WebpImage::generateUrl($car->image)}}" />
                         <div class="product__vertical_meta">
                             <span class="wishlist wishlist-toggle" data-auth="" data-id="">@lang('lang.Save to wishlist')</span>
                         </div>
                     </div>
                         @foreach($car->images as $image)
-                        <div data-src="/storage/{{$car->image}}" data-fancybox="gallery">
-                            <img alt="{{$car->name}}" src="/storage/{{$image->image}}" />
+                        <div data-src="/storage/{{\App\Helpers\WebpImage::generateUrl($car->image)}}" data-fancybox="gallery">
+                            <img alt="{{$car->name}}" src="/storage/{{\App\Helpers\WebpImage::generateUrl($image->image)}}" />
                         </div>
                         @endforeach
                     </div>
@@ -62,8 +62,8 @@
                     <div data-items-large="3" data-items-small="2" class="single_product_images owl-carousel owl-theme">
                     @foreach($car->images as $image)
                         <div class="single_product_images_item">
-                            <div data-src="/storage/{{$image->image}}" data-fancybox="gallery">
-                                <img alt="{{$car->name}}" src="/storage/{{$image->image}}" />
+                            <div data-src="/storage/{{\App\Helpers\WebpImage::generateUrl($image->image)}}" data-fancybox="gallery">
+                                <img alt="{{$car->name}}" src="/storage/{{\App\Helpers\WebpImage::generateUrl($image->image)}}" />
                             </div>
                         </div>
                     @endforeach
@@ -369,7 +369,7 @@
             "vehicleIdentificationNumber": "{{substr(md5($car->id) , 0 , 17)}}",
             "vehicleModelDate": "{{$car->year ? $car->year->title : '2021'}}",
             "image": [
-                "{{secure_url('/')}}/storage/{{$car->image}}"
+                "{{secure_url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($car->image)}}"
             ],
             "url": "{{secure_url('/')}}/{{$car->id}}/{{$car->slug}}",
             "offers": {
@@ -427,42 +427,4 @@
               "color": "{{ $car?->color?->title ?? 'White' }}"
             }
         </script>
-        <!-- <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "Product",
-                "description": "{{$car->getDescription()}}",
-                "name": "{{$car->name}}",
-                "image": "{{secure_url('/')}}/storage/{{$car->image}}",
-                "offers": {
-                    "@type": "Offer",
-                    "availability": "https://schema.org/InStock",
-                    "price": "{{$car->price_per_day ? $car->price_per_day : '100'}}",
-                    "priceCurrency": "AED",
-                    "priceValidUntil": "2025-12-31"
-                },
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": "5",
-                    "ratingCount": "5"
-                },
-                "review": [
-                    {
-                        "@type": "Review",
-                        "author": "Tajeer",
-                        "datePublished": "{{date('Y-m-d')}}",
-                        "reviewBody": "{{$car->getDescription()}}",
-                        "name": "{{$car->name}}",
-                        "reviewRating": {
-                            "@type": "Rating",
-                            "bestRating": "5",
-                            "ratingValue": "5",
-                            "worstRating": "1"
-                        }
-                    }
-                ]
-            }
-        </script> -->
-
-
 @endsection

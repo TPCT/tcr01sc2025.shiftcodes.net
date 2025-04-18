@@ -79,7 +79,7 @@
             "vehicleIdentificationNumber": "{{substr(md5($yacht->id) , 0 , 17)}}",
             "vehicleModelDate": "{{$yacht->year ? $yacht->year->title : '2021'}}",
             "image": [
-                "{{secure_url('/')}}/storage/{{$yacht->image}}"
+                "{{secure_url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($yacht->image)}}"
             ],
             "url": "{{secure_url('/')}}/{{$yacht->id}}/{{$yacht->slug}}",
             "offers": {

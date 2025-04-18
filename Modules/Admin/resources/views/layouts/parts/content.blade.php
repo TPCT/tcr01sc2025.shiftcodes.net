@@ -36,7 +36,7 @@
                                     <label class="custom-file-label" for="customFileContent">{{__('admin.choose_file')}}</label>
                                 </div>
                                 @if($content && $content->image)
-                                    <img src="{{asset('storage/'.$content->image)}}" class="img-fluid mt-2" style="max-width: 200px;">
+                                    <img src="{{asset('storage/'.\App\Helpers\WebpImage::generateUrl($content->image))}}" class="img-fluid mt-2" style="max-width: 200px;">
                                     <br/>
                                     <a href="{{url('/')}}/admin/content/delete-image/{{$content->id}}/1" class="btn btn-danger btn-rounded mt-2">{{__('admin.delete')}} {{__('admin.image')}}</a>
                                     @endif
@@ -94,7 +94,7 @@
                                     <label class="custom-file-label" for="customFileContent2">{{__('admin.choose_file')}}</label>
                                 </div>
                                 @if($content && $content->image_2)
-                                    <img src="{{asset('storage/'.$content->image_2)}}" class="img-fluid mt-2" style="max-width: 200px;">
+                                    <img src="{{asset('storage/'.\App\Helpers\WebpImage::generateUrl($content->image_2))}}" class="img-fluid mt-2" style="max-width: 200px;">
                                     <br/>
                                     <a href="{{url('/')}}/admin/content/delete-image/{{$content->id}}/2" class="btn btn-danger btn-rounded mt-2">{{__('admin.delete')}} {{__('admin.image')}}</a>
                                 @endif
@@ -152,7 +152,7 @@
                                     <label class="custom-file-label" for="customFileContent3">{{__('admin.choose_file')}}</label>
                                 </div>
                                 @if($content && $content->image_3)
-                                    <img src="{{asset('storage/'.$content->image_3)}}" class="img-fluid mt-2" style="max-width: 200px;">
+                                    <img src="{{asset('storage/'.\App\Helpers\WebpImage::generateUrl($content->image_3))}}" class="img-fluid mt-2" style="max-width: 200px;">
                                     <br/>
                                     <a href="{{url('/')}}/admin/content/delete-image/{{$content->id}}/3" class="btn btn-danger btn-rounded mt-2">{{__('admin.delete')}} {{__('admin.image')}}</a>
                                 @endif

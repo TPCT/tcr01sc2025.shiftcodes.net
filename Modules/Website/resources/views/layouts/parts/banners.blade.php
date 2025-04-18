@@ -7,7 +7,7 @@
                         @foreach($banners as $item)
                         <a href="{{ $item->company ? LaravelLocalization::localizeUrl("/c/{$item->company->id}/{$item->company->slug}") : $item->link}}">
                             <div class="home__banner_item">
-                                <img width="1100" height="300" alt="{{$item->id}}" src="{{asset("/storage/{$item->image}")}}" />
+                                <img width="1100" height="300" alt="{{$item->id}}" src="{{asset("/storage/") . "/" . \App\Helpers\WebpImage::generateUrl($item->image)}}" />
                             </div>
                         </a>
                         @endforeach

@@ -26,7 +26,7 @@
     @include('website::layouts.parts.seo', [
         'seo' => $yacht->model ? \App\Models\SEO::where('type','model')->where('resource_id', $yacht->model->id)->first() : null,
         "title" => $yacht->name . "-" .  ( $yacht->company?->name ??  ''  ) . " #" .   $yacht->id ,
-        "image" => secure_url('/') . '/storage/'. $yacht->image
+        "image" => secure_url('/') . '/storage/'. \App\Helpers\WebpImage::generateUrl($yacht->image)
     ])
 @endsection
 @section("content")
@@ -45,15 +45,15 @@
                 <div class="col-lg-7">
                     <div class="single_product_main_image">
                     <div data-items-large="1" data-items-small="1" class="single-image-slider owl-carousel owl-theme">
-                    <div class="single_product_main_image-box" data-src="/storage/{{$yacht->image}}" data-fancybox="gallery">
-                        <img alt="{{$yacht->name}}" src="/storage/{{$yacht->image}}" />
+                    <div class="single_product_main_image-box" data-src="/storage/{{\App\Helpers\WebpImage::generateUrl($yacht->image)}}" data-fancybox="gallery">
+                        <img alt="{{$yacht->name}}" src="/storage/{{\App\Helpers\WebpImage::generateUrl($yacht->image)}}" />
                         <div class="product__vertical_meta">
                             <span class="wishlist wishlist-toggle" data-auth="" data-id="">@lang('lang.Save to wishlist')</span>
                         </div>
                     </div>
                         @foreach($yacht->images as $image)
-                        <div data-src="/storage/{{$yacht->image}}" data-fancybox="gallery">
-                            <img alt="{{$yacht->name}}" src="/storage/{{$image->image}}" />
+                        <div data-src="/storage/{{\App\Helpers\WebpImage::generateUrl($yacht->image)}}" data-fancybox="gallery">
+                            <img alt="{{$yacht->name}}" src="/storage/{{\App\Helpers\WebpImage::generateUrl($image->image)}}" />
                         </div>
                         @endforeach
                     </div>
@@ -62,8 +62,8 @@
                     <div data-items-large="3" data-items-small="2" class="single_product_images owl-carousel owl-theme">
                     @foreach($yacht->images as $image)
                         <div class="single_product_images_item">
-                            <div data-src="/storage/{{$image->image}}" data-fancybox="gallery">
-                                <img alt="{{$yacht->name}}" src="/storage/{{$image->image}}" />
+                            <div data-src="/storage/{{\App\Helpers\WebpImage::generateUrl($image->image)}}" data-fancybox="gallery">
+                                <img alt="{{$yacht->name}}" src="/storage/{{\App\Helpers\WebpImage::generateUrl($image->image)}}" />
                             </div>
                         </div>
                     @endforeach
@@ -365,7 +365,7 @@
             "vehicleIdentificationNumber": "{{substr(md5($yacht->id) , 0 , 17)}}",
             "vehicleModelDate": "{{$yacht->year ? $yacht->year->title : '2021'}}",
             "image": [
-                "{{secure_url('/')}}/storage/{{$yacht->image}}"
+                "{{secure_url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($yacht->image)}}"
             ],
             "url": "{{secure_url('/')}}/{{$yacht->id}}/{{$yacht->slug}}",
             "offers": {
@@ -423,42 +423,5 @@
               "color": "{{ $yacht?->color?->title ?? 'White' }}"
             }
         </script>
-        <!-- <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "Product",
-                "description": "{{$yacht->getDescription()}}",
-                "name": "{{$yacht->name}}",
-                "image": "{{secure_url('/')}}/storage/{{$yacht->image}}",
-                "offers": {
-                    "@type": "Offer",
-                    "availability": "https://schema.org/InStock",
-                    "price": "{{$yacht->price_per_day ? $yacht->price_per_day : '100'}}",
-                    "priceCurrency": "AED",
-                    "priceValidUntil": "2025-12-31"
-                },
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": "5",
-                    "ratingCount": "5"
-                },
-                "review": [
-                    {
-                        "@type": "Review",
-                        "author": "Tajeer",
-                        "datePublished": "{{date('Y-m-d')}}",
-                        "reviewBody": "{{$yacht->getDescription()}}",
-                        "name": "{{$yacht->name}}",
-                        "reviewRating": {
-                            "@type": "Rating",
-                            "bestRating": "5",
-                            "ratingValue": "5",
-                            "worstRating": "1"
-                        }
-                    }
-                ]
-            }
-        </script> -->
-
 
 @endsection

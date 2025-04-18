@@ -5,7 +5,7 @@
                 <div class="row">
                     @if($content->image)
                     <div class="col-lg-6">
-                        <img loading="lazy" width="550" height="350" alt="{{$content->title}}" src="{{asset("/storage/{$content->image}")}}" />
+                        <img loading="lazy" width="550" height="350" alt="{{$content->title}}" src="{{asset("/storage/") . "/" . \App\Helpers\WebpImage::generateUrl($content->image)}}" />
                     </div>
                     @endif
                     <div class="col-lg-6">

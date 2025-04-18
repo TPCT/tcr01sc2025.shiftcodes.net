@@ -22,7 +22,7 @@
 
         </div>
         <a aria-label="{{$car->name}}" href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.cars.show', ['car' => $car])) }}">
-            <img loading="lazy" alt="{{$car->name}}" src="{{asset("/storage/{$car->image}")}}" />
+            <img loading="lazy" alt="{{$car->name}}" src="{{asset("/storage/") . "/" . \App\Helpers\WebpImage::generateUrl($car->image)}}" />
         </a>
     </div>
 

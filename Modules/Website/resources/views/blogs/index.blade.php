@@ -29,7 +29,7 @@
                 <div class="card card-body">
                             <div class="media align-items-center align-items-lg-start  flex-column flex-lg-row">
                                 <div class="mr-2 mb-3 mb-lg-0">
-                                    <img src="{{asset("/storage/{$blog->image}")}}" width="150" height="150" alt="" style="max-height:150px;width:200px;">
+                                    <img src="{{asset("/storage/") . "/" . \App\Helpers\WebpImage::generateUrl($blog->image)}}" width="150" height="150" alt="" style="max-height:150px;width:200px;">
                                 </div>
 
                                 <div class="media-body" style="padding:0px 20px;">

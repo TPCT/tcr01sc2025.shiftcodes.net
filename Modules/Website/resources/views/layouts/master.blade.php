@@ -468,7 +468,7 @@
                                         <a href="{{ LaravelLocalization::getLocalizedUrl(null, route('website.cars.brands.show', ['brand' => $item]))}}">
                                             <div class="navbar__car_brand_item">
                                                 <img loading="lazy" alt="{{$item->title}}"
-                                                     src="/storage/{{$item->image}}"/>
+                                                     src="/storage/{{\App\Helpers\WebpImage::generateUrl($item->image)}}"/>
                                                 <p>{{$item->title}} </p>
                                             </div>
                                         </a>

@@ -10,6 +10,9 @@ class StorageController extends Controller
 {
     public function show($path){
         $path = storage_path('app/public/' . $path);
+        $extension = \request('extension');
+        $path = str_replace('.webp', '.' . $extension, $path);
+
         if (!file_exists($path))
             abort(404);
 

@@ -125,7 +125,7 @@
                                                 <tr>
                                                     
                                                     <td class="text-center">
-                                                        <img src="{{url('/')}}/storage/{{$item->image}}" class="table-img">
+                                                        <img src="{{url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($item->image)}}" class="table-img">
                                                     </td>
                                                     <td class="text-center">
                                                         @foreach(\Config::get("app.languages") as $key => $value)

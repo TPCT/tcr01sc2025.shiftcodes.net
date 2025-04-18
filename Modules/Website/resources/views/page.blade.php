@@ -19,7 +19,7 @@
                 @if($page->image)
                 <div class="col-lg-6">
                     <div class="home__about_img">
-                        <img alt="{{$page->name}}" src="{{secure_url('/')}}/storage/{{$page->image}}" alt="{{$page->name}}">
+                        <img alt="{{$page->name}}" src="{{secure_url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($page->image)}}" alt="{{$page->name}}">
                     </div>
                 </div>
                 @endif

@@ -287,8 +287,8 @@
                                                     <label class="custom-file-label" for="customFile">{{__('admin.choose_file')}}</label>
                                                 </div>
                                                 @if($car->image)
-                                                <a href="{{url('/')}}/storage/{{$car->image}}" target="_blank">
-                                                    <img class="image-form" src="{{url('/')}}/storage/{{$car->image}}" alt="">
+                                                <a href="{{url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($car->image)}}" target="_blank">
+                                                    <img class="image-form" src="{{url('/')}}/storage/{{\App\Helpers\WebpImage::generateUrl($car->image)}}" alt="">
                                                    
                                                 </a>
                                                 @endif
@@ -307,7 +307,7 @@
                                                 <div class="all-images">
                                                     @foreach($car->images as $img)
                                                     <div class="all-images-item">
-                                                    <img src="/storage/{{$img->image}}" />
+                                                    <img src="/storage/{{\App\Helpers\WebpImage::generateUrl($img->image)}}" />
                                                     <a href="/admin/cars/images/{{$img->id}}/delete">{{__('admin.delete')}}</a>
                                                     </div>
 
