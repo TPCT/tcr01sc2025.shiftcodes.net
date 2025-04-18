@@ -17,10 +17,6 @@ class StorageController extends Controller
         if (!file_exists($path))
             abort(404);
 
-        if ($cache_path = Cache::get($path))
-            return response()->download($cache_path);
-
-
         if (@is_array(getimagesize($path))){
             $image_data = WebpImage::convert($path);
             if ($image_data->status) {
