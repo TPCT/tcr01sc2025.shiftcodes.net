@@ -11,8 +11,9 @@ class WebpImage
     }
     public static function convert(
         $fullPath,
-        $outPutQuality = 100,
-        $deleteOriginal=false){
+        $outPutQuality = 50,
+        $deleteOriginal=false
+     ){
         if(file_exists($fullPath)):
 
             $ext = pathinfo($fullPath, PATHINFO_EXTENSION);
