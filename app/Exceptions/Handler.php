@@ -56,7 +56,7 @@ class Handler extends ExceptionHandler
 
                 $segments = array_splice($segments, 3);
                 $path = implode('/', $segments);
-                $identifier = $segments[0];
+                $identifier = $segments[0] ?? null;
 
 
                 \URL::defaults([
