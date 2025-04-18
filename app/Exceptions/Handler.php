@@ -9,6 +9,7 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\Page;
 use App\Models\Type;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
@@ -32,69 +33,82 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->renderable(function (NotFoundHttpException $e, $request) {
+            try{
+                $segments = $request->segments();
+                $language = $segments[0];
+                $country = Country::whereSlug($segments[1])->first();
+                $city = City::whereSlug($segments[2])->first();
 
-            $segments = $request->segments();
-            $language = $segments[0];
-            $country = Country::whereSlug($segments[1])->first();
-            $city = City::whereSlug($segments[2])->first();
+
+                if (!in_array($language, array_keys( \LaravelLocalization::getSupportedLocales() ))){
+                    $segments = array_merge(['en'], $segments);
+                }
+
+                if (!$country){
+                    $country = Country::whereDefault(1)->first() ?? Country::first();
+                    $segments = array_merge([$segments[0], $country->slug], array_splice($segments, 1));
+                }
+
+                if (!$city){
+                    $city = $country->cities()->whereDefault(1)->first() ?? $country->cities->first();
+                    $segments = array_merge([$segments[0], $segments[1], $city->slug], array_splice($segments, 2));
+                }
+
+                $segments = array_splice($segments, 3);
+                $path = implode('/', $segments);
+                $identifier = $segments[0];
 
 
-            if (!in_array($language, ['en', 'ar'])){
-                $segments = array_merge(['en'], $segments);
-            }
+                \URL::defaults([
+                    'language' => $language,
+                    'country' => $country->slug,
+                    'city' => $city->slug,
+                ]);
 
-            if (!$country){
-                $country = Country::whereDefault(1)->first() ?? Country::first();
-                $segments = array_merge([$segments[0], $country->slug], array_splice($segments, 1));
-            }
+                if ($path == "d/cars")
+                    return redirect()->route('website.cars.with-drivers');
 
-            if (!$city){
-                $city = $country->cities()->whereDefault(1)->first() ?? $country->cities->first();
-                $segments = array_merge([$segments[0], $segments[1], $city->slug], array_splice($segments, 2));
-            }
+                if ($path == "yacht")
+                    return redirect()->route('website.yachts.index');
 
-            $segments = array_splice($segments, 3);
-            $path = implode('/', $segments);
-            $identifier = $segments[0];
+                if ($path == "blog")
+                    return redirect()->route('website.blogs.index');
 
-            \URL::defaults([
-                'language' => $language,
-                'country' => $country->slug,
-                'city' => $city->slug,
-            ]);
+                if ($path == "contact")
+                    return redirect()->route('website.pages.contact-us');
 
-            if ($path == "d/cars")
-                return redirect()->route('website.cars.with-drivers');
+                switch ($identifier) {
+                    case 't':
+                        $slug = str_replace('rent-', '', strtolower($segments[2]));
+                        $slug = str_replace('-car-rental-dubai', '', strtolower($slug));
+                        $slug = str_replace('-car-dubai', '', strtolower($slug));
+                        $type = Type::find($segments[1]) ?? Type::whereSlug($slug)->firstOrFail();
+                        return redirect()->route('website.cars.types.show', ['type' => $type]);
 
-            if ($path == "yacht")
-                return redirect()->route('website.yachts.index');
+                    case 'b':
+                        $slug = str_replace('rent-', '', strtolower($segments[2]));
+                        $slug = str_replace('-in-dubai', '', $slug);
+                        $brand = Brand::find($segments[1]) ?? Brand::whereSlug($slug)->firstOrFail();
+                        return redirect()->route('website.cars.brands.show', ['brand' => $brand]);
 
-            if ($path == "blog")
-                return redirect()->route('website.blogs.index');
+                    case 'p':
+                        $page = Page::findOrFail($segments[1]);
+                        return redirect()->route('website.pages.show', ['page' => $page]);
 
-            if ($path == "contact")
-                return redirect()->route('website.pages.contact-us');
+                    case 'blog-details':
+                        $blog = Blog::findOrFail($segments[1]);
+                        return redirect()->route('website.blogs.show', ['blog' => $blog]);
 
-            switch ($identifier) {
-                case 't':
-                    $type = Type::findOrFail($segments[1]);
-                    return redirect()->route('website.cars.types.show', ['type' => $type]);
+                    case 'c':
+                        $car = Car::find($segments[1]) ?? Car::whereSlug($segments[2])->firstOrFail();
+                        return redirect()->route('website.cars.show', ['car' => $car]);
 
-                case 'b':
-                    $brand = Brand::find($segments[1]) ?? Brand::whereSlug($segments[2])->first();
-                    return redirect()->route('website.cars.brands.show', ['brand' => $brand]);
-
-                case 'p':
-                    $page = Page::findOrFail($segments[1]);
-                    return redirect()->route('website.pages.show', ['page' => $page]);
-
-                case 'blog-details':
-                    $blog = Blog::findOrFail($segments[1]);
-                    return redirect()->route('website.blogs.show', ['blog' => $blog]);
-
-                default:
-                    $car = Car::findOrFail($segments[0]);
-                    return redirect()->route("website.cars.show", ['car' => $car]);
+                    default:
+                        $car = Car::find($segments[0]) ?? Car::whereSlug($segments[1] ?? null)->firstOrFail();
+                        return redirect()->route("website.cars.show", ['car' => $car]);
+                }
+            }catch (ModelNotFoundException $e){
+                return response()->view('errors.404', [], 404);
             }
         });
 
@@ -105,9 +119,7 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $e)
     {
-        if ($e instanceof ModelNotFoundException) {
-            return response()->view('errors.404', [], 404);
-        }
+
         return parent::render($request, $e); // TODO: Change the autogenerated stub
     }
 }

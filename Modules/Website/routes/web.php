@@ -24,15 +24,15 @@ use Modules\Website\App\Http\Controllers\YachtsController;
 
 Route::get('/sitemap.xml', [HomeController::class, 'sitemap'])->name('sitemap');
 
+
+
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => [
         "localeSessionRedirect", "localizationRedirect",
-        "currency", "country"
+        "currency"
     ]],
     function() {
-
-
         Route::get('/language/{key}/switch', [HomeController::class, 'switchLanguage'])->name('website.switch.language');
         Route::get('/country/{country?}/switch', [HomeController::class, 'switchCountry'])->name('website.switch.country');
         Route::get('/currency/{currency?}/switch', [HomeController::class, 'switchCurrency'])->name('website.switch.currency');
@@ -61,8 +61,8 @@ Route::group([
         Route::get('/iframes', [HomeController::class, 'reviews']);
 
         Route::group([
-            'middleware' => [\Modules\Website\App\Http\Middleware\CountryMiddleware::class],
-            'prefix' => '{country?}/{city?}'
+            'prefix' => '{country?}/{city?}',
+            'middleware' => \Modules\Website\App\Http\Middleware\CountryMiddleware::class,
         ], function () {
             Route::get('/', [HomeController::class, 'index'])->name('home');
 

@@ -15,6 +15,7 @@ use \App\Models\Section;
 use \App\Models\Company;
 use \App\Models\Banner;
 use Carbon\Carbon;
+use Illuminate\Routing\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -206,22 +207,35 @@ class HomeController extends Controller
 
     public function switchCountry(Country $country) {
         $city = $country->cities()->whereDefault(true)->first()->id ?? $country->cities()->first()->id;
-        return redirect()->back()->withCookies([
-            \Cookie::make('country_id', $country->id, 60 * 60 * 24 * 30),
-            \Cookie::make('city_id', $city->id, 60 * 60 * 24 * 30),
+        $previousUrl = url()->previous();
+        $previousRequest = request()->create($previousUrl);
+        $previousRoute = \Illuminate\Support\Facades\Route::getRoutes()->match($previousRequest);
+        $previousRoute->setParameter('country', $country);
+        $previousRoute->setParameter('city', $city);
+
+        return redirect()->route($previousRoute->getName(), $previousRoute->parameters)->withCookies([
+            \Cookie::make('country_id', $country->id, 60 * 24 * 30),
+            \Cookie::make('city_id', $city->id, 60 * 24 * 30),
         ]);
     }
 
     public function switchCity(?City $city) {
-        return redirect()->back()->withCookies([
-            \Cookie::make('country_id', $city->country->id, 60 * 60 * 24 * 30),
-            \Cookie::make('city_id', $city->id, 60 * 60 * 24 * 30),
+        $previousUrl = url()->previous();
+        $previousRequest = request()->create($previousUrl);
+        $previousRoute = \Illuminate\Support\Facades\Route::getRoutes()->match($previousRequest);
+
+        $previousRoute->setParameter('country', $city->country);
+        $previousRoute->setParameter('city', $city);
+
+        return redirect()->route($previousRoute->getName(), $previousRoute->parameters)->withCookies([
+            \Cookie::make('country_id', $city->country->id, 60 * 24 * 30),
+            \Cookie::make('city_id', $city->id, 60 * 24 * 30),
         ]);
     }
 
     public function switchCurrency(Currency $currency) {
         session()->put('currency_id', $currency->id);
-        return redirect()->back()->withCookie(cookie('currency_id', $currency->id, 60 * 60 * 24 * 30));
+        return redirect()->back()->withCookie(\Cookie::make('currency_id', $currency->id, 60 * 60 * 24 * 30));
     }
 
 }
