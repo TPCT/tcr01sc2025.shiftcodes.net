@@ -26,7 +26,7 @@ class StorageController extends Controller
         if (@is_array(getimagesize($path))){
             $image_data = WebpImage::convert($path);
             if ($image_data->status) {
-                \Cache::put($path, $image_data->fullPath, 60 * 60 * 24 * 30 * 365);
+                \Cache::put($path, implode('/', $image_data->fullPath), 60 * 60 * 24 * 30 * 365);
                 $path = implode("/", $image_data->fullPath);
             }
         }
