@@ -271,17 +271,9 @@
                                             </span>
                                         </li>
                                     </ul>
-                                    <a href="{{secure_url('/')}}/c/{{$car->company->id}}/{{$car->company->slug}}" class="company_more_link">{{__('lang.For More information visit the company page click here')}}</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- <a href="{{secure_url('/')}}/c/{{$car->company->id}}/{{$car->company->slug}}" class="flex-1">
-                            <div class="home__brands_item single-company-name">
-                                    <img alt="{{$car->company->name}}" src="{{secure_url('/')}}/storage/{{$car->company->image}}"/>
-                                    <h3>{{$car->company->name}}</h3>
-
-                            </div>
-                        </a> -->
                     </div>
 
                 </div>

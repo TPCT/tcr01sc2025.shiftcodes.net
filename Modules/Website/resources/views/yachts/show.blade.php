@@ -271,7 +271,6 @@
                                             </span>
                                         </li>
                                     </ul>
-                                    <a href="{{secure_url('/')}}/c/{{$yacht->company->id}}/{{$yacht->company->slug}}" class="company_more_link">{{__('lang.For More information visit the company page click here')}}</a>
                                 </div>
                             </div>
                         </div>
