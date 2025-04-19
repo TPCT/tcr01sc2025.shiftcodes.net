@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Country;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Website\App\Http\Controllers\CarsController;
@@ -66,6 +67,7 @@ Route::group([
         Route::group([
             'prefix' => '{country?}/{city?}',
             'middleware' => \Modules\Website\App\Http\Middleware\CountryMiddleware::class,
+            'where' => ['country' => Country::implode('slug', '|'), 'city' => \App\Models\City::implode('slug', '|')],
         ], function () {
             Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -100,8 +102,5 @@ Route::group([
             Route::get('/{page}', [PagesController::class, 'show'])->name('website.pages.show');
         });
  });
-
-
-
 
 

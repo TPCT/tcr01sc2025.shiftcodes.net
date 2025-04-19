@@ -58,7 +58,6 @@ class Handler extends ExceptionHandler
                 $path = implode('/', $segments);
                 $identifier = $segments[0];
 
-
                 \URL::defaults([
                     'language' => $language,
                     'country' => $country->slug,
