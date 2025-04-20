@@ -5,7 +5,14 @@ namespace App\Helpers;
 class WebpImage
 {
     public static function generateUrl($url){
-        [$url, $extension] = explode(".", $url);
+        $data = explode(".", $url);
+        if (count($data) == 1){
+            $url = $data[0];
+            $extension = "jpeg";
+        }else{
+            $url = $data[0];
+            $extension = $data[1];
+        }
         $extension = strtolower($extension);
         return $url. '.' . "webp?extension=$extension";
     }
