@@ -36,8 +36,8 @@ class Handler extends ExceptionHandler
             try{
                 $segments = $request->segments();
                 $language = $segments[0];
-                $country = Country::whereSlug($segments[1])->first();
-                $city = City::whereSlug($segments[2])->first();
+                $country = Country::whereSlug($segments[1] ?? null)->first();
+                $city = City::whereSlug($segments[2] ?? null)->first();
 
 
                 if (!in_array($language, array_keys( \LaravelLocalization::getSupportedLocales() ))){
