@@ -5,13 +5,9 @@
         <div class="home-filter">
             <p>{{__('admin.period')}}:</p>
             <select class="form-control home-period-filter" name="period" id="exampleFormControlSelect1">
-                <option value="">{{__('admin.all')}}</option>
-                <option @if(request()->get('period') == "today") selected @endif value="today">{{__('admin.today')}}</option>
-                <option @if(request()->get('period') == "yesterday") selected @endif value="yesterday">{{__('admin.yesterday')}}</option>
-                <option @if(request()->get('period') == "week") selected @endif value="week">{{__('admin.week')}}</option>
-                <option @if(request()->get('period') == "month") selected @endif value="month">{{__('admin.month')}}</option>
-                <option @if(request()->get('period') == "year") selected @endif value="year">{{__('admin.year')}}</option>
-
+                @foreach(\App\Helpers\Utilities::getPeriods() as $key => $value)
+                    <option @if(request()->get('period') == $key) selected @endif value="{{$key}}">{{$value}}</option>
+                @endforeach
             </select>
         </div>
     </form>

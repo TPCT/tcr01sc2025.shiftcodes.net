@@ -281,4 +281,38 @@ class Utilities
         }
         return $out;
     }
+
+    public static function getPeriods(){
+        return [
+            '' => __('admin.all'),
+            'today' => __('admin.today'),
+            'yesterday' => __('admin.yesterday'),
+            'week' => __('admin.week'),
+            'month' => __('admin.month'),
+            'year' => __('admin.year'),
+        ];
+    }
+
+    public static function parsePeriod($period){
+        $start_date = null;
+        $end_data   = null;
+        if($period == "today") {
+            $start_date = now()->startOfDay();
+            $end_data   = now()->endOfDay();
+        }else if($period == "yesterday") {
+            $start_date = now()->subDay()->startOfDay();
+            $end_data   = now()->subDay()->endOfDay();
+        }else if($period == "week") {
+            $start_date = now()->startOfWeek();
+            $end_data   = now()->endOfWeek();
+        }else if($period == "month") {
+            $start_date = now()->startOfMonth();
+            $end_data   = now()->endOfMonth();
+        }else if($period == "year") {
+            $start_date = now()->startOfYear();
+            $end_data   = now()->endOfYear();
+        }
+
+        return [$start_date, $end_data];
+    }
 }

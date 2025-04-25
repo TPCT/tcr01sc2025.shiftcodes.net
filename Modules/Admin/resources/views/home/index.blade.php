@@ -15,8 +15,5 @@
 
 @section('js')
     <script>
-        // $(document).ready(function () {
-        //     $('#style-3').DataTable();
-        // });
     </script>
 @endsection

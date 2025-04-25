@@ -5,13 +5,9 @@
                 <div class="home-filter">
                     <p>{{__('admin.period')}}:</p>
                     <select class="form-control home-period-filter" name="period" id="exampleFormControlSelect1">
-                        <option value="">{{__('admin.all')}}</option>
-                        <option @if(request()->get('period') == "today") selected @endif value="today">{{__('admin.today')}}</option>
-                        <option @if(request()->get('period') == "yesterday") selected @endif value="yesterday">{{__('admin.yesterday')}}</option>
-                        <option @if(request()->get('period') == "week") selected @endif value="week">{{__('admin.week')}}</option>
-                        <option @if(request()->get('period') == "month") selected @endif value="month">{{__('admin.month')}}</option>
-                        <option @if(request()->get('period') == "year") selected @endif value="year">{{__('admin.year')}}</option>
-
+                        @foreach(\App\Helpers\Utilities::getPeriods() as $key => $value)
+                            <option @if(request()->get('period') == $key) selected @endif value="{{$key}}">{{$value}}</option>
+                        @endforeach
                     </select>
                 </div>
             </form>
@@ -25,7 +21,7 @@
                                 <i class='fas fa-car'></i>
                             </div>
                             <div class="w-content">
-                                <span class="w-value">{{auth()->user()->company->getCarsCount()}} / {{auth()->user()->company->getCarsLimit()}}</span>
+                                <span class="w-value">{{$cars_count}}</span>
                                 <span class="w-numeric-title">{{__('admin.cars')}}</span>
                             </div>
                         </div>
@@ -40,7 +36,7 @@
                                 <i class="fas fa-sync-alt"></i>
                             </div>
                             <div class="w-content">
-                                <span class="w-value">{{auth()->user()->company->getRefreshCarsCount()}} / {{auth()->user()->company->getRefreshLimit()}}</span>
+                                <span class="w-value">{{$refresh_count}}</span>
                                 <span class="w-numeric-title">{{__('admin.refreshes')}}</span>
                             </div>
                         </div>
@@ -56,7 +52,7 @@
                                 <i class="fas fa-eye"></i>
                             </div>
                             <div class="w-content">
-                                <span class="w-value">{{auth()->user()->company->getViewsCount(request()->get('period'))}}</span>
+                                <span class="w-value">{{$visits}}</span>
                                 <span class="w-numeric-title">{{__('admin.visits')}}</span>
                             </div>
                         </div>
@@ -72,7 +68,7 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="w-content">
-                                <span class="w-value">{{auth()->user()->company->getActionsByType('phone',request()->get('period'))}}</span>
+                                <span class="w-value">{{$phone}}</span>
                                 <span class="w-numeric-title">{{__('admin.phone_calls')}}</span>
                             </div>
                         </div>
@@ -87,7 +83,7 @@
                                 <i class="fab fa-whatsapp"></i>
                             </div>
                             <div class="w-content">
-                                <span class="w-value">{{auth()->user()->company->getActionsByType('whatsapp',request()->get('period'))}}</span>
+                                <span class="w-value">{{$whatsapp}}</span>
                                 <span class="w-numeric-title">{{__('admin.whatsapp')}}</span>
                             </div>
                         </div>
@@ -102,7 +98,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="w-content">
-                                <span class="w-value">{{auth()->user()->company->getActionsByType('email',request()->get('period'))}}</span>
+                                <span class="w-value">{{$email}}</span>
                                 <span class="w-numeric-title">{{__('admin.email')}}</span>
                             </div>
                         </div>
@@ -123,20 +119,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- loop through dates from beginig of company created_at until today -->
-                        @for($i = now()->format('Y-m-d'); $i >= auth()->user()->company->created_at->format('Y-m-d'); $i = \Carbon\Carbon::parse($i)->subDay()->format('Y-m-d'))
-                        <tr>
-                            <td class="text-center">{{$i}}</td>
-                            <td class="text-center">{{auth()->user()->company->getActionsByTypeDate('phone',$i)}}</td>
-                            <td class="text-center">{{auth()->user()->company->getActionsByTypeDate('whatsapp',$i)}}</td>
-                            <td class="text-center">{{auth()->user()->company->getActionsByTypeDate('email',$i)}}</td>
-                            <td class="text-center">{{auth()->user()->company->getViewsCountDate($i)}}</td>
-                        </tr>
-                        @endfor
-
+                        @foreach($actions as $action)
+                           <tr>
+                               <td class="text-center">{{$action->date}}</td>
+                               <td class="text-center">{{$action->phone ?? 0}}</td>
+                               <td class="text-center">{{$action->whatsapp ?? 0}}</td>
+                               <td class="text-center">{{$action->email ?? 0}}</td>
+                               <td class="text-center">{{auth()->user()->company->getViewsCountDate($action->date)}}</td>
+                           </tr>
+                        @endforeach
                     </tbody>
                 </table>
 
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                    {{$actions->links()}}
+                    <br/>
+                    <br/>
+                </div>
 
             </div>
 
