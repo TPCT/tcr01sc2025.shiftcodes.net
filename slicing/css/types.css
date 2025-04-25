@@ -1,0 +1,14 @@
+.car-type-brand-slide img {
+    width: 100%;
+    margin: auto;
+    height: 120px;
+    object-fit: cover;
+  }
+  .car-type-card {
+    padding-inline: 0.2rem !important;
+  }
+  @media (max-width: 575px) {
+    .car-type-brand-slide img {
+      height: auto;
+    }
+  }

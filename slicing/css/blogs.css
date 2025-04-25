@@ -1,0 +1,65 @@
+.blog-section .blog-card {
+    box-shadow: rgb(0 0 0 / .1) 0 4px 6px -1px, rgb(0 0 0 / .06) 0 2px 4px -1px;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+.blog-section .blog-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.blog-section .blog-card-content p {
+    height: 100%;
+}
+
+.blog-section h3 {
+    font-weight: 400;
+    padding: 10px 20px;
+    border-bottom: 1px solid #EDEDED;
+    min-height: 75px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 1800px) {
+    .blog-section h3 {
+        min-height: 94px;
+    }
+}
+
+@media (max-width: 992px) {
+    .blog-section h3 {
+        min-height: auto;
+        display: block;
+        overflow: visible;
+    }
+}
+
+.blog-section p {
+    padding: 10px;
+}
+
+.blog-section .blog-card-button {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    padding-block: 1.5rem;
+    background-color: #E6F6FF;
+    width: 100%;
+}
+
+.blog-section .blog-card-button a {
+    width: 100%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}

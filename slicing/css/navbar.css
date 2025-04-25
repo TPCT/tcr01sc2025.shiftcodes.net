@@ -1,0 +1,128 @@
+.header__actions_list_item span {
+    font-size: 10pt;
+    color: var(--third-color);
+}
+
+.header__actions_list_item .dropdown-toggle {
+    color: #fff;
+    font-size: 10pt;
+}
+
+.header__actions_list_item {
+    gap: 10px !important;
+}
+
+.header__actions_list_item .dropdown-menu {
+    max-height: 200px;
+    overflow-y: scroll;
+    padding-inline-start: .5rem;
+}
+
+.header__actions_list_item .dropdown-menu li ul {
+    padding-inline-start: 0;
+}
+
+.header__actions_list_item .dropdown-menu li ul li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-inline-start: 1.2rem;
+    font-weight: 500;
+}
+
+.header__actions_list_item .dropdown-menu li ul li:hover {
+    background-color: var(--third-color);
+}
+
+.header__actions_list_item .dropdown-menu li ul li:not(:last-child) {
+    border-bottom: 2px solid #e6f6ff;
+}
+
+.header__actions_list_item .dropdown-menu li ul li i {
+    display: none;
+}
+
+.header__actions_list_item .dropdown-menu li ul li.active i {
+    display: block;
+}
+
+.dropdown-item {
+    font-size: 10pt !important;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-item:hover {
+    background-color: var(--third-color) !important;
+}
+
+.header__actions_list_item picture {
+    display: block !important;
+    width: 20px !important;
+}
+
+.header__actions_list_item p {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.header__actions_list_item .dropdown-menu {
+    border-radius: 10px;
+    border: 3px solid var(--third-color);
+}
+
+.desktop-view {
+    padding-block: .5rem;
+}
+
+.desktop-view li:not(:last-child) {
+    border-inline-end: 3px solid var(--third-color);
+}
+
+.desktop-view li a {
+    font-size: 16px;
+    color: var(--primary-color);
+}
+
+.desktop-view .nav-icons {
+    display: flex;
+    flex-direction: row-reverse !important;
+}
+
+.desktop-view .nav-item,
+.desktop-view .nav-item .dropdown {
+    display: flex;
+    align-items: center;
+}
+
+.desktop-view .nav-item a {
+    text-decoration: none !important;
+}
+
+.desktop-view .dropdown-menu {
+    top: 200%;
+}
+
+.desktop-view .dropdown-menu.brands-logo {
+    width: 991px !important;
+}
+
+.desktop-view picture {
+    display: block;
+    width: 90px;
+    height: auto;
+}
+
+.desktop-view .dropdown-menu li,
+.desktop-view .dropdown-menu li a {
+    border: 0 !important;
+}
+
+@media (max-width: 1200px) {
+    .desktop-view {
+        display: none !important;
+    }
+}

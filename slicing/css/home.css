@@ -1,0 +1,1025 @@
+p {
+  font-size: 10.5pt !important;
+}
+
+li {
+  font-size: 11pt !important;
+}
+
+section {
+  overflow: hidden;
+}
+
+.home-1st-section {
+  position: relative;
+  height: 275px;
+}
+
+.home-1st-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-1st-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #3A1B50;
+  opacity: 0.66;
+}
+
+.home-1st-section form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.view-all-cars-input {
+  display: flex;
+  height: 45px;
+  border-radius: 30px;
+  overflow: hidden;
+  width: 550px;
+  margin: .8rem auto;
+}
+
+.arabic-version .view-all-cars-input i {
+  transform: rotate(180deg);
+}
+
+.home-1st-section form input {
+  background-color: white;
+  border-radius: 0;
+  height: 100%;
+  text-indent: 30px;
+  background-image: url(../assets/icons/search.svg);
+  background-repeat: no-repeat;
+  background-position: left 10px center;
+}
+
+.home-1st-section form input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.home-1st-section form button {
+  background-color: #3a1b50d4;
+  height: 100%;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 1.5rem;
+  gap: 1rem;
+}
+
+.home-1st-section form button .icon-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #E6F6FF;
+}
+
+.home-1st-section form button .icon-view i {
+  color: #3A1B50;
+  opacity: 0.66;
+}
+
+.home-1st-section form button span {
+  color: white;
+  white-space: nowrap;
+
+}
+
+@media (max-width:767.89px) {
+  .view-all-cars-input {
+    width: 300px;
+  }
+}
+
+@media (max-width:350.89px) {
+  .black-line {
+    display: none;
+  }
+
+  .section-header .section-header-title {
+    gap: 0.5rem !important;
+  }
+}
+
+
+/* /////////// */
+.section-header p a {
+  color: black;
+}
+
+.car-type-section,
+.car-brand-section {
+  margin-bottom: 1rem;
+}
+
+.choose-fav-car-slider-wrapper,
+.choose-fav-car-slider-wrapper,
+.rent-car-slider-wrapper {
+  margin-top: 2rem;
+}
+
+/* @media (max-width:576.89px) {
+  .choose-fav-car-type-slider {
+    width: 85%;
+  }
+
+  .choose-fav-car-brand-slider {
+    width: 85%;
+  }
+} */
+
+.car-type-brand-slide {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #E6EAEE;
+  border-radius: 5px;
+  margin-inline-end: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -2px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.car-type-brand-slide img {
+  width: 80%;
+  margin: auto;
+}
+
+.car-type-brand-slide-footer {
+  background-color: #e6f6ff;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+}
+
+.car-type-brand-slide-footer p {
+  margin-bottom: 0;
+}
+
+.choose-fav-car-slider-wrapper,
+.rent-car-slider-wrapper,
+.banner-slider-wrappper,
+.testimonials-slider-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.choose-fav-car-type-next,
+.choose-fav-car-type-prev,
+.choose-fav-car-brand-next,
+.choose-fav-car-brand-prev,
+.rent-car-next,
+.rent-car-prev,
+.banner-next-desktop,
+.banner-prev-desktop,
+.banner-next-mobile,
+.banner-prev-mobile,
+.testimonials-next,
+.testimonials-prev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: #e6f6ff;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.arabic-version .choose-fav-car-type-next,
+.arabic-version .choose-fav-car-type-prev,
+.arabic-version .choose-fav-car-brand-next,
+.arabic-version .choose-fav-car-brand-prev,
+.arabic-version .rent-car-next,
+.arabic-version .rent-car-prev,
+.arabic-version .banner-next-desktop,
+.arabic-version .banner-prev-desktop,
+.arabic-version .banner-next-mobile,
+.arabic-version .banner-prev-mobile,
+.arabic-version .testimonials-next,
+.arabic-version .testimonials-prev {
+  transform: rotate(180deg);
+}
+
+.choose-fav-car-type-next i,
+.choose-fav-car-type-prev i,
+.choose-fav-car-brand-next i,
+.choose-fav-car-brand-prev i,
+.rent-car-next i,
+.rent-car-prev i,
+.banner-next-desktop i,
+.banner-prev-desktop i,
+.banner-next-mobile i,
+.banner-prev-mobile i,
+.testimonials-next i,
+.testimonials-prev i {
+  color: black;
+}
+
+/* ////////////////////// */
+
+.rent-car-slider .slick-track {
+  display: flex !important;
+  gap: 1rem;
+}
+
+.rent-car-slide-tittle {
+  padding: 0.2rem 1rem;
+  border-bottom: 1px solid #EDEDED;
+
+}
+
+.rent-car-slide-tittle h4 {
+  margin-bottom: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rent-car-slide-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid #EDEDED;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.rent-car-slide-footer a {
+  display: flex;
+  gap: 0.5rem;
+  text-decoration: none;
+  align-items: center;
+}
+
+.rent-car-slide-footer a div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e6f6ff;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.rent-car-slide-footer a div i {
+  color: black;
+}
+
+.rent-car-slide {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex !important;
+  flex-direction: column;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.rent-car-slide picture {
+  position: relative;
+}
+
+.rent-car-labels {
+  position: absolute;
+  top: 0.5rem;
+  inset-inline-start: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.rent-car-label {
+  padding: 0.2rem 0.4rem;
+  border-radius: 5px;
+  color: white;
+}
+
+.rent-car-label span {
+  color: white;
+}
+
+.rent-car-label.Featured {
+  background-color: #03A9F4;
+}
+
+.rent-car-label.Premium {
+  background-color: black;
+}
+
+.rent-car-label.Verified {
+  background-color: #FFA200;
+}
+
+.rent-car-slide-description {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  height: 100%;
+}
+
+.rent-car-slide-description-blue-boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.rent-car-slide-description-blue-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e6f6ff;
+  padding: 0.5rem;
+}
+
+.rent-car-slide img {
+  width: 100%;
+}
+
+@media (max-width:991.89px) {
+
+  .rent-car-next,
+  .rent-car-prev,
+  .testimonials-next,
+  .testimonials-prev,
+  .choose-fav-car-type-next,
+  .choose-fav-car-type-prev,
+  .choose-fav-car-brand-next,
+  .choose-fav-car-brand-prev,
+  .banner-next-desktop,
+  .banner-prev-mobile,
+  .banner-next-mobile,
+  .banner-prev-desktop {
+    display: none !important;
+  }
+}
+
+/* /////////// */
+
+.banner-slider-wrappper img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+
+}
+
+.home-main-boxes-topic {
+  margin-bottom: 3rem;
+}
+
+@media (max-width:575.89px) {
+
+  .banner-next-desktop,
+  .banner-prev-desktop,
+  .banner-next-mobile,
+  .banner-prev-mobile {
+    display: none;
+  }
+}
+
+/* /////// */
+.home-main-boxes {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.home-main-box {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 2rem;
+  border-radius: 16px;
+  flex: 1;
+  text-align: center;
+  margin-bottom: 1rem;
+
+}
+
+.home-main-boxes picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-main-box div {
+  background-color: #e6f6ff;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.home-main-box div i {
+  font-size: 2rem;
+}
+
+.home-main-boxes-topic {
+  width: 70%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (max-width:1399.89px) {
+  .home-main-box {
+    padding: 1rem;
+  }
+
+  .home-main-boxes img {
+    width: 150px;
+  }
+}
+
+@media (max-width:1199.89px) {
+  .home-main-boxes img {
+    width: 100px;
+  }
+}
+
+@media (max-width:991.89px) {
+  .home-main-box {
+    padding: 2rem;
+  }
+
+  .home-main-boxes {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .home-main-boxes img {
+    width: unset;
+  }
+}
+
+/* ///////// */
+.home-content-section {
+  background-image: url(../assets/images/about_bg.webp);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding-block: 3rem;
+}
+
+.arabic-version .home-content-section {
+  background-image: url(../assets/images/about_bg_flipped.jpg);
+
+}
+
+.home-content-section .container {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 20px;
+}
+
+.home-content-section .container img {
+  width: 100%;
+}
+
+@media (max-width:991.89px) {
+  .home-content-section .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* //////// */
+.booking-stpes-section {
+  position: relative;
+}
+
+.booking-stpes-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #3A1B50;
+  opacity: 0.66;
+}
+
+.booking-stpes-section img {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.booking-steps-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-block: 5rem;
+  align-items: center;
+  position: relative;
+  z-index: 99;
+  color: white;
+  gap: 8rem;
+}
+
+.booking-steps-content h2,
+.booking-steps-content p,
+.booking-steps-content h5 {
+  color: white;
+}
+
+.booking-steps-content div div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+}
+
+.booking-steps {
+  width: 80%;
+  margin: auto;
+}
+
+.booking-steps p {
+  width: 70%;
+}
+
+.booking-stpes-section::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 70%;
+  top: 9rem;
+  background-color: white;
+  inset-inline-start: 50%;
+  z-index: 99;
+}
+
+.booking-steps-content-topic {
+  margin-bottom: 1rem;
+}
+
+@media (max-width:991.89px) {
+  .booking-stpes-section::before {
+    display: none;
+  }
+
+  .booking-steps-content {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-steps {
+    width: unset;
+  }
+
+  .booking-steps p {
+    width: unset;
+  }
+}
+
+/* ////////// */
+.testimonials-container {
+  /* border-block: 1px solid black; */
+  padding-top: 1rem;
+}
+
+.testimonials-slider .slick-track {
+  display: flex !important;
+  gap: 1rem;
+}
+
+.testimonials-slider-wrapper {
+  margin-block: 3rem;
+}
+
+.testimonials-slide {
+  display: flex !important;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  height: auto;
+  justify-content: space-between;
+}
+
+.testimonials-slide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.testimonials-slide-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.testimonials-slide-footer img {
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* /// */
+/* =========> Accordion single item Start*/
+/* =========> Accordion single item Border Start*/
+.custom-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 5rem;
+}
+
+.custom-accordion .accordion-button {
+  border: none;
+  padding-block: 0;
+  padding-inline-start: 1.25rem;
+  padding-inline-end: 5px;
+  min-height: 45px;
+  display: flex;
+  gap: 1rem;
+  color: var(--main-color);
+  font-weight: 600;
+  background-color: #E6F6FF;
+}
+
+.custom-accordion .accordion-item .accordion-button:last-of-type,
+.custom-accordion .accordion-item .accordion-button {
+  border-radius: 7px;
+  font-size: 0.9rem;
+  text-align: start;
+  font-weight: 400;
+}
+
+.custom-accordion .accordion-item:last-of-type,
+.custom-accordion .accordion-item:first-child,
+.custom-accordion .accordion-item {
+  border: none;
+  border-radius: 28px;
+}
+
+.custom-accordion .accordion-button:focus {
+  box-shadow: none;
+}
+
+.custom-accordion .accordion-button:not(.collapsed) {
+  box-shadow: none;
+  transition: all 0.3s ease-out;
+}
+
+/* =========> Accordion single item Border End*/
+.custom-accordion .accordion-button::after,
+.custom-accordion .accordion-button:not(.collapsed)::after {
+  display: none;
+}
+
+/* accordion button plus img start */
+.custom-accordion .accordion-btn {
+  height: 30px;
+  aspect-ratio: 1;
+  margin-inline-start: auto;
+  position: relative;
+  transition: all 0.3s ease-out;
+
+  border-radius: 100%;
+  background: var(--main-color);
+}
+
+.custom-accordion .accordion-btn .fa-plus {
+  color: var(--primary-color);
+  position: absolute;
+  font-size: 18px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+.custom-accordion .accordion-btn .fa-minus {
+  display: none;
+}
+
+.custom-accordion .accordion-button:not(.collapsed) .fa-minus {
+  color: var(--primary-color);
+  position: absolute;
+  font-size: 18px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  display: block;
+}
+
+.custom-accordion .accordion-button:not(.collapsed) .fa-plus {
+  display: none;
+}
+
+.custom-accordion .accordion-button .accordion-btn::after {
+  background: var(--main-color);
+}
+
+.custom-accordion .accordion-btn picture {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background: var(--main-color);
+}
+
+.custom-accordion .accordion-btn img {
+  width: 16px;
+  object-fit: contain;
+  height: 16px;
+  transform: rotate(45deg);
+  transition: all 0.3s ease-out;
+}
+
+.custom-accordion .accordion-button .accordion-btn {
+  background: #fff;
+  transition: all 0.3s ease-out;
+}
+
+.custom-accordion .accordion-button:not(.collapsed) .accordion-btn img {
+  transition: all 0.3s ease-out;
+  transform: rotate(360deg);
+}
+
+.custom-accordion .accordion-button:not(.collapsed) picture {
+  transition: all 0.3s ease-out;
+
+  background: #fff;
+}
+
+.custom-accordion .accordion-button:not(.collapsed) {
+
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+/* accordion button plus img end */
+
+.custom-accordion .accordion-item .accordion-body p {
+  color: var(--main-color);
+}
+
+.custom-accordion .accordion-item .accordion-body {
+  background-color: #E6F6FF;
+}
+
+/* ===============> Accordion single item END */
+
+.Faqs-acc-splited-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+
+.view-all-btn {
+  text-decoration: none;
+  background: #e6f6ff;
+  padding: 5px 25px;
+  border-radius: 25px;
+  color: #3d1f50 !important;
+}
+
+.section-header {
+  margin-top: 2rem;
+}
+
+.section-header .section-header-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-header .section-header-title h3,
+.section-header .section-header-title a {
+  white-space: nowrap;
+}
+
+.section-header .section-header-title h3 {
+  font-weight: bold;
+}
+
+.section-header .black-line {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+}
+
+/* Edit */
+.choose-fav-car-slider-wrapper .slick-track {
+  padding-block: .5rem;
+}
+
+.slick-disabled {
+  opacity: .5;
+}
+
+.custom-accordion .accordion-btn i {
+  font-size: 13px !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #81d2ff;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #81d2ff;
+  opacity: .25;
+}
+
+.rent-car-slide img {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.banner-slider .slick-track picture {
+  /* gap: 1rem; */
+  padding-inline: 1rem;
+}
+
+.home-desc {
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  position: relative;
+}
+
+.home-desc.show-more {
+  max-height: none;
+}
+
+.home-desc::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, white, transparent);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.home-desc.show-more::after {
+  opacity: 0;
+}
+
+
+.main-btn {
+  cursor: pointer;
+}
+
+/* .rent-car-slide-description ul {
+  height: 230px;
+  overflow-y: hidden;
+} */
+.rent-car-slide-description ul {
+  padding-inline-start: 2.2rem;
+}
+
+@media (max-width: 575px) {
+  .rent-car-slide-description {
+    flex-direction: column;
+  }
+}
+
+.rent-car-slide-description li {
+  color: #041e42;
+}
+
+.banner-slider-mobile .slick-track,
+.banner-slider-desktop .slick-track {
+  display: flex !important;
+  gap: 10px;
+}
+
+.rent-car-slide>a {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.rent-car-title {
+  height: 100%;
+}
+
+@media (max-width: 991px) {
+  .home-content-section {
+    background: unset;
+    position: relative;
+  }
+
+  @media (max-width: 991px) {
+    .home-content-section::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      background: url(../assets/images/about_bg.webp) no-repeat center center;
+      background-size: contain;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+
+@media (min-width:992px) {
+
+  .testimonials-container>h2,
+  .testimonials-container>h4 {
+    padding-inline-start: 9rem;
+  }
+}
+
+.testimonials-container>h2 {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+
+
+/* ////////// */
+.description-container {
+  position: relative;
+}
+
+.description-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-bottom: 5px;
+}
+
+.description-text.expanded {
+  -webkit-line-clamp: unset;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+
+  cursor: pointer;
+  padding: 0;
+  margin-top: 5px;
+  text-decoration: underline;
+  display: inline-block;
+}

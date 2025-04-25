@@ -1,0 +1,13 @@
+#list-your-cars .home-content-section .container:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+#list-your-cars .home-content-section picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#list-your-cars .home-content-section picture img {
+    width: 50%;
+}

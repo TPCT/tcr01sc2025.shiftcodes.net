@@ -1,0 +1,33 @@
+.rent-container-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.rent-car-slide-description ul {
+    padding-inline: 0 !important;
+}
+
+@media (max-width: 1200px) {
+    .rent-container-section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .rent-car-slide-description {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .rent-container-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1400px) {}
+
+.rent-car-labels {
+    top: -5rem;
+}
