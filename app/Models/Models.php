@@ -50,7 +50,7 @@ class Models extends Model
     use HasSlug;
     use HasTranslations;
 
-    public $translatable = ['title','page_features','page_description'];
+    public $translatable = ['title', 'page_title', 'page_features','page_description'];
 
     protected $fillable = [
         'title',
@@ -58,6 +58,7 @@ class Models extends Model
         'type',
         'sync_id',
         'page_features',
+        'page_title',
         'page_description',
         'slug',
     ];

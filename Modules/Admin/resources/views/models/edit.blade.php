@@ -36,6 +36,15 @@
                                             </div>
                                         </div>
                                         @endforeach
+
+                                        @foreach(\Config::get("app.languages") as $key => $value)
+                                            <div class="form-group row mb-4">
+                                                <label class="col-xl-3 col-sm-3 col-sm-2 col-form-label">{{__('admin.title')}} {{__('admin.page')}} {{$value}}</label>
+                                                <div class="col-xl-9 col-lg-9 col-sm-10">
+                                                    <input  value='{{$item->getTranslation("page_title",$key)}}' type="text" required class="form-control" name="page_title_{{$key}}" >
+                                                </div>
+                                            </div>
+                                        @endforeach
                                         
                                         @foreach(\Config::get("app.languages") as $key => $value)
                                         <div class="form-group row mb-4">
