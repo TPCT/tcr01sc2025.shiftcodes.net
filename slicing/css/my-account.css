@@ -1,0 +1,332 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #E6F6FF;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #E6F6FF;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* ////// */
+.account-settings {
+  margin-block: 3rem;
+}
+
+.account-settings .container {
+  display: grid;
+  grid-template-columns: 1fr 4.5fr;
+  gap: 2rem;
+}
+
+.account-settings-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  border: 3px solid #E6F6FF;
+  height: fit-content;
+
+}
+
+.account-settings-box-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 3px solid #E6F6FF;
+  width: 100%;
+  padding: 0.8rem 2rem;
+}
+
+.account-settings-box-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 3px solid #E6F6FF;
+  width: 100%;
+  padding: 0.8rem 2rem;
+}
+
+.account-settings-box-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.8rem 2rem;
+}
+
+.account-settings-box-footer button {
+  background-color: transparent;
+  border: none;
+  color: #3C1D4E;
+}
+
+
+.account-settings-tabs {
+  margin-top: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.account-settings-tabs .nav-tabs {
+  border-bottom: none;
+  background-color: #E6F6FF;
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-settings-tabs .nav-item {
+  flex: 1;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.account-settings-tabs .nav-item {
+  border-inline-end: 5px solid white;
+}
+
+.account-settings-tabs .nav-link {
+  border: none;
+  padding: 15px;
+  color: #333;
+  font-weight: 500;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  margin: 0;
+}
+
+.account-settings-tabs .nav-link.active {
+  background-color: white;
+  border: none;
+
+}
+
+.tab-content {
+  padding: 30px;
+  background-color: white;
+  min-height: 200px;
+}
+
+.call-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.call-content p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.back-home {
+  background-color: #3a214b;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+}
+
+#my-account .rent-car-slide {
+  flex-direction: row;
+}
+
+.account-settings-card {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 0.5fr;
+  gap: 1rem;
+  align-items: start;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+
+}
+
+.account-settings-card-main-picture {
+  width: 100%;
+  height: 320px;
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.account-settings-card-main-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.arabic-version .account-settings-card-main-picture img {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.account-settings-card ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 576px) {
+  .account-settings-card ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+.account-settings-card ul li {
+  position: relative;
+  padding-inline-start: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.account-settings-card ul li::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+  inset-inline-start: 0;
+  top: 8px;
+}
+
+.account-settings-card .rent-car-slide-description-blue-boxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.account-settings-card .rent-car-slide-description-blue-box {
+  display: flex;
+  flex-direction: column;
+  width: 130px;
+  padding: 0.2rem;
+}
+
+.account-settings-card-last picture {
+  width: fit-content;
+}
+
+.tab-content>.tab-pane div {
+  margin: 0;
+}
+
+.account-settings-card .rent-car-slide-footer {
+  padding: 1rem 0 0 0;
+}
+
+.account-settings-card-wrapper {
+  padding-bottom: 4rem;
+}
+
+.account-card-settings-date {
+  font-size: 22px;
+  font-weight: 100;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+
+.profile-content-item div {
+  display: flex;
+  gap: 6rem;
+  align-items: center;
+}
+
+.profile-content-item input {
+  width: 200px;
+  border: none;
+  border-radius: 0;
+}
+
+.profile-content-item button {
+  background-color: transparent;
+  border: none;
+  color: #3C1D4E;
+}
+
+.call-content img {
+  width: 100%;
+}
+
+@media (max-width: 1199.89px) {
+  .account-settings .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 991.89px) {
+  .account-settings-card {
+    grid-template-columns: 1fr;
+  }
+
+  .account-settings-card .rent-car-slide-description-blue-boxes {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

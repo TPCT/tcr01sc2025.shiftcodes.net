@@ -1,0 +1,641 @@
+/* ticket 59 latest new page */
+
+
+.latest-news-content {
+    padding-top: 1.5rem !important;
+}
+
+
+
+.latest-news-added-content {
+    padding-top: 1rem;
+}
+
+/* ticket 58 Intimation-form */
+.custom-accordion .accordion-button {
+    font-weight: 400;
+}
+
+.protection-main-section .col-12 {
+    gap: .5rem !important;
+}
+
+body.arabic-version .protection-main-section label {
+    font-size: .9rem;
+}
+
+.protection-main-section {
+    padding-bottom: 3rem;
+}
+
+/* ticket 55 DonationTools */
+.filter select option {
+    font-weight: 400;
+    color: var(--primary-color);
+    font-size: .85rem;
+    width: 33%;
+}
+
+.donation-tools .donation-tools-container ul picture {
+    width: 156px;
+}
+
+.donation-tools-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100%;
+}
+
+
+
+
+/* ticket 111 */
+#Testimonials .effective-card-date {
+    padding-top: 1.5rem;
+}
+
+#Testimonials .effective-card-date h5 {
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+#Testimonials .effective-card-main-video {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ticket 110 */
+#join-us .join-us-topic {
+    margin-block: 2rem
+}
+
+
+#join-us .cv-upload-input img {
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+#join-us .cv-upload-input .upload-label p {
+    margin-bottom: 0;
+}
+
+/* ticket 109 */
+
+
+
+#ecard-step-2 .payment-method-box div input {
+    accent-color: #041e42 !important;
+}
+
+#ecard-step-2 .ecard-main-container .payment-method h3 {
+    line-height: 1rem;
+}
+
+
+#ecard-step-2 .ecard-main-container .ecard-header-item {
+    padding-top: 1rem;
+}
+
+#ecard-step-2 .ecard-step-content .ecard-next-btn {
+    height: 45px;
+    font-size: .85rem;
+    font-weight: 400;
+    color: rgba(4, 30, 66, 1);
+
+}
+
+
+/* ticket 107 */
+
+
+#payment-method-options .ecard-step-content input#cvv {
+    background-size: 1.8rem;
+}
+
+#payment-method-options .ecard-step-content input#card-number {
+    background-size: 1.8rem;
+
+}
+
+#payment-method-options .payment-method-container {
+    padding-bottom: 4rem;
+}
+
+
+
+/* ticket 108 */
+#ecard-step-1 .ecard-step-content #date {
+    padding: 0.4rem 2.2rem;
+    background-image: url(../assets/Icons/CalenFade.svg);
+    background-repeat: no-repeat;
+    background-position: center left .4rem;
+    background-size: 1.25rem;
+}
+
+body.arabic-version #ecard-step-1 .ecard-step-content #date {
+    background-position: center right .4rem;
+
+}
+
+#ecard-step-1 .ecard-step-content .preivew-ecard-btn p {
+    line-height: 1rem;
+}
+
+#ecard-step-1 .ecard-step-content .ecard-next-btn {
+    font-size: .85rem;
+    font-weight: 400;
+    color: rgba(4, 30, 66, 1);
+    height: 45px;
+}
+
+.ecard-main-container .ecard-header-item-content h5 {
+    margin-bottom: 0;
+}
+
+#ecard-step-1 .ecard-main-container .ecard-header-item {
+    padding-top: 1rem;
+}
+
+#ecard-step-2 .payment-method-box div input:hover {
+    accent-color: rgba(4, 30, 66, 1) !important;
+    /* تعود للقيمة الافتراضية */
+    z-index: 888;
+}
+
+#ecard-step-2 .payment-method-box div input:hover {
+    accent-color: rgba(4, 30, 66, 1) !important;
+    /* تعود للقيمة الافتراضية */
+    box-shadow: none !important;
+    text-shadow: none !important;
+    z-index: 99999 !important;
+
+}
+
+
+/* ticket 105 */
+
+.floationg-quick-donation .send-eCard a {}
+
+.floationg-quick-donation .send-eCard a {
+    font-size: .95rem;
+    text-decoration: none;
+}
+
+.floationg-quick-donation .send-eCard a:hover {
+    text-decoration: underline;
+}
+
+.arabic-version .floationg-quick-donation .send-eCard a {
+    font-size: .9rem;
+}
+
+.floationg-quick-donation .send-eCard {
+    margin-block: 1.5rem;
+}
+
+/* ticket 104 */
+
+.floationg-quick-donation-card .custom-panel #corporate-tab {
+    font-size: .85rem !important;
+    font-weight: 400 !important;
+}
+
+.floationg-quick-donation-card #pills-tabContent #pills-individuals h5 {
+    font-size: .85rem !important;
+    font-weight: 400 !important;
+}
+
+.floationg-quick-donation-card .custom-panel .nav-link {
+    font-size: .85rem !important;
+    font-weight: 400 !important;
+
+}
+
+
+.floationg-quick-donation {
+    z-index: 99999;
+}
+
+
+/* ticket 81 */
+#contributions .contributions-content .total-donations {
+    border-radius: 5px;
+}
+
+
+#contributions .contributions-content .impact-inputs input[type="date"] {
+    padding: 0.4rem 1.8rem;
+    background-image: url(../assets/Icons/CalenFade.svg);
+    background-repeat: no-repeat;
+    background-position: center left .7rem;
+    background-size: 1rem;
+    text-indent: .2rem;
+}
+
+body.arabic-version #contributions .contributions-content .impact-inputs input[type="date"] {
+    background-position: center right .4rem;
+    text-indent: .8rem;
+}
+
+/* ticket 82 */
+
+#create-new-account .create-account-main-section .container {
+    align-items: start;
+}
+
+
+
+#create-new-account .vistor-checkout-form input[type="text"] {
+    background-image: url("../assets/Icons/User.svg");
+    background-repeat: no-repeat;
+    background-position: left 15px center;
+    text-indent: 40px;
+    /* لإبعاد النص عن الأيقونة اليسرى */
+    background-size: 1.25rem;
+}
+
+#create-new-account .create-account-main-section .login-main-pic img {
+    border-radius: 5px;
+}
+
+
+/* ticket 83 */
+
+
+#create-new-account .vistor-checkout-form .not-member a {
+    font-size: .95rem;
+    font-weight: 400;
+}
+
+#create-new-account .vistor-checkout-form .check-box-box p span a {
+    color: #5BC2E7;
+    font-size: .95rem;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+#create-new-account .vistor-checkout-form .check-box-box p span a:hover {
+    text-decoration: underline;
+}
+
+.arabic-version #create-new-account .vistor-checkout-form .check-box-box p span a {
+    font-size: .9rem;
+}
+
+.arabic-version #create-new-account .vistor-checkout-form .not-member a {
+    font-size: .9rem;
+}
+
+
+
+/* ticket 84 */
+#donation-as-guest-or-login .donation-login .vistor-checkout-form .not-member a {
+    font-size: .95rem;
+    font-weight: 400;
+}
+
+.arabic-version #donation-as-guest-or-login .donation-login .vistor-checkout-form .not-member a {
+    font-size: .9rem;
+}
+
+#donation-as-guest-or-login .donation-login .vistor-checkout-form .col-12 a {
+    font-size: .95rem;
+    font-weight: 400;
+}
+
+.arabic-version #donation-as-guest-or-login .donation-login .vistor-checkout-form .col-12 a {
+    font-size: .9rem;
+}
+
+/* ticket 85 */
+#login .login-main-section .donation-login .vistor-checkout-form .type-3-btn {
+    background-color: rgba(250, 250, 250, 1);
+}
+
+#login .login-main-section .donation-login .vistor-checkout-form .not-member a {
+    font-size: .95rem;
+    font-weight: 400;
+}
+
+.arabic-version #login .login-main-section .donation-login .vistor-checkout-form .not-member a {
+    font-size: .85rem;
+    font-weight: 400;
+}
+
+#login .login-main-section .donation-login .vistor-checkout-form .col-12 a {
+    font-size: .95rem;
+    font-weight: 400;
+}
+
+.arabic-version #login .login-main-section .donation-login .vistor-checkout-form .col-12 a {
+    font-size: .85rem;
+    font-weight: 400;
+}
+
+#login .login-main-section .donation-login .vistor-checkout-form .type-3-btn {
+    text-decoration: none;
+
+}
+
+/* ticket 88 */
+#offered-tenders .effective-card div .effective-card-date {
+    padding-top: 1.5rem;
+}
+
+#offered-tenders .effective-card div .effective-card-content {
+    padding-bottom: 1rem;
+}
+
+#offered-tenders .effective-card div .effective-card-content h4 {
+    margin-bottom: 1rem;
+}
+
+#offered-tenders .container .custom-panel.nav-pills {
+    border-radius: 50px;
+    border: 1.5px solid #002e6140;
+    margin-bottom: 2.5rem !important;
+
+}
+
+#offered-tenders .custom-panel .nav-link {
+    padding-block: 0.3rem;
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+@media(max-width:410px){
+    #offered-tenders .custom-panel .nav-link {
+        width: 100% !important;
+    }
+    #offered-tenders .custom-panel .nav-item button{
+        padding-inline: 1.5rem !important;
+
+    }
+}
+
+#offered-tenders .value-cards-container {
+    padding-bottom: 4rem;
+}
+
+#offered-tenders .value-cards-container .value-card picture {
+    width: 80px;
+    height: 80px;
+}
+
+#offered-tenders .value-cards-container .value-card picture img {
+    scale: .75;
+}
+
+#offered-tenders .value-cards-container .value-card {
+    background-color: rgba(4, 30, 66, 0.03);
+}
+
+/* ticket 89 */
+#offered-tenders-inner .offered-tenders-inner-container .offered-tenders-inner-content {
+    padding-bottom: 2.5rem;
+}
+
+#offered-tenders-inner .offered-tenders-inner-container .offered-tenders-inner-content a+h4 {
+    margin-top: 1.5rem;
+}
+
+#offered-tenders-inner .offered-tenders-inner-container .offered-tenders-inner-content ul li {
+    line-height: 1.5rem;
+}
+
+#offered-tenders-inner .offered-tenders-inner-container .offered-tenders-inner-content ul li::marker {
+    text-align: center !important;
+}
+
+#offered-tenders-inner .offered-tenders-inner-container .effective-card-date {
+    padding-inline-start: 0;
+}
+
+#offered-tenders-inner .offered-tenders-inner-container .offered-tenders-inner-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+#offered-tenders-inner .offered-tenders-inner-container .offered-tenders-inner-content ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    padding-inline-start: 20px;
+}
+
+#offered-tenders-inner .offered-tenders-inner-container .offered-tenders-inner-content ul li::before {
+    content: "";
+    font-size: 1.2em;
+    color: #041E42;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background-color: rgba(91, 194, 231, 1);
+    position: absolute;
+    inset-inline-start: 0;
+    top: 8px;
+}
+
+.thumbs-slider .swiper-slide .ytp-large-play-button {
+    background-color: black;
+}
+
+.thumbs-slider .swiper-slide iframe {
+    pointer-events: none;
+}
+
+.thumbs-slider .swiper-slide iframe .ytp-large-play-button {
+    width: 30px;
+}
+
+/* ticket 76 */
+#account-info .account-info-content .account-info-form ::placeholder {
+    color: rgba(4, 30, 66, .15);
+}
+
+#account-info .account-info-content .account-info-form #account-email {
+    background-size: 20px;
+}
+
+/* /ticket 77/ */
+/* ticket 77 */
+/* #VolunteeringProgramsApply .contact-us-section .payment-method-box div input {
+    width: 24px;
+    height: 24px;
+} */
+
+#VolunteeringProgramsApply .contact-us-section .VolunteeringProgramsApply-content-container .VolunteeringProgramsApply-content ul li {
+    line-height: 1.5rem;
+}
+
+
+#VolunteeringProgramsApply .contact-us-section .VolunteeringProgramsApply-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+#VolunteeringProgramsApply .contact-us-section .VolunteeringProgramsApply-content ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    padding-inline-start: 20px;
+}
+
+#VolunteeringProgramsApply .contact-us-section .VolunteeringProgramsApply-content ul li::before {
+    content: "";
+    font-size: 1.2em;
+    color: #041E42;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background-color: rgba(91, 194, 231, 1);
+    position: absolute;
+    inset-inline-start: 0;
+}
+
+#VolunteeringProgramsApply .contact-us-section form input[type="date"] {
+    background-image: url(../assets/Icons/Calen.svg);
+    background-repeat: no-repeat;
+    background-position: center right .7rem;
+    background-size: 1.25rem;
+}
+
+
+
+#VolunteeringProgramsApply .contact-us-section .VolunteeringProgramsApply-content-container {
+    padding: 18px;
+}
+
+#VolunteeringProgramsApply .contact-us-section form p {
+    margin-bottom: 0 !important;
+}
+
+#VolunteeringProgramsApply .contact-us-section .VolunteeringProgramsApply-content h5 {
+    font-size: .85rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* ticket 91 */
+#offered-tenders-step-1 .ecard-main .ecard-main-container .e-card-next-step .ecard-main-icon {
+    width: 50px;
+    height: 50px;
+}
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .e-card-next-step .ecard-header-item-content h5{
+    line-height: 1.4;
+}
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .e-card-recent-step {
+    padding-top: 1rem;
+}
+
+
+
+/* #offered-tenders-step-1 .ecard-main .ecard-main-container .ecard-step-content .choosen-ecard-section picture img {
+    width: 60% !important;
+} */
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .ecard-step-content form input[type="email"] {
+    background-image: none;
+}
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .ecard-step-content form .cv-upload-input {
+    width: 100%;
+}
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .ecard-step-content .type-4-btn {
+    border-width: 1.8px;
+}
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container {
+    border-radius: 5px;
+}
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .e-card-next-step {
+    border-inline: none !important;
+}
+
+/* #offered-tenders-step-1 .ecard-main .ecard-main-container .ecard-header {
+    border: none !important;
+} */
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .ecard-step-content .choosen-ecard-section {
+    width: 100%;
+}
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .ecard-step-content {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .ecard-step-content form {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .ecard-step-content form+button {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+/* ticket 90 */
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .payment-method-box input[type="radio"] {
+    border-color: #041E42;
+}
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container .ecard-step-content input#card-number {
+    background-image: url(../assets/Icons/c.svg);
+}
+
+/* .arabic-version #donate-gift-step-1 .ecard-main{
+    transform: scaleX(-1);
+    direction: rtl;
+    background-position-x: right; /* يجعل الخلفية تتناسب مع RTL }*/
+
+#offered-tenders-step-1 .ecard-main .ecard-main-container h4 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+#donate-gift-step-1 .ecard-main {
+    background-image: url(../assets/Images/22.png) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 20%;
+}
+
+/* ticket 152 */
+#NumberOfBeneficiariesOptionOne .number-of-beneficiaries-slider-section {
+    margin-bottom: 2rem;
+}
+
+/* ticket 153 */
+#offered-tenders .offered-tenders-last-section .LoadingData a {
+    font-size: .95rem;
+    font-weight: 400;
+}
+
+.arabic-version #offered-tenders .offered-tenders-last-section .LoadingData a {
+    font-size: .9rem;
+}
+
+#offered-tenders .offered-tenders-last-section {
+    margin-bottom: 2rem;
+}
+
+/* ticket 154 */
+
+
+/* ticket 156 donition tools */
+/* ticket 169 */

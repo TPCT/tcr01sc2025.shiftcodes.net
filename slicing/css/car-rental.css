@@ -1,0 +1,91 @@
+.rental-section-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+@media (max-width: 1200px) {
+    .rental-section-container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+.account-settings-card-main-picture {
+    height: 360px !important;
+}
+
+.account-settings-card-wrapper {
+    padding-bottom: 2rem;
+}
+
+.account-settings-card {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.filter-box-inputs {
+    background-color: var(--third-color);
+    padding: 10px;
+}
+
+@media (min-width: 1200px) {
+    .filter-box-inputs {
+        width: 90%;
+    }
+}
+
+.filter-box-inputs .form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.arabic-version .filter-box-inputs .form-check {
+    gap: 40px;
+}
+
+.filter-box-inputs .form-check-input:checked {
+    background-color: var(--border-color);
+    border-color: var(--border-color);
+}
+
+.filter-box-inputs .form-check input {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.sort-filter .form-select {
+    width: fit-content !important;
+}
+
+.rent-car-slide-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rent-car-slide-icon img {
+    width: 114px;
+}
+
+.wishlist-btn {
+    margin-inline-start: 1.5rem;
+}
+
+.rent-car-label span {
+    font-size: 14px;
+    font-weight: normal;
+
+}
+
+.rent-car-label {
+    height: 31px;
+    display: flex;
+    align-items: center;
+
+}
+
+.rent-car-labels {
+    flex-wrap: wrap;
+}
