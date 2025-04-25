@@ -19,10 +19,12 @@ trait HasSlug
             if ($model->slug)
                 return;
             $language = 'en';
-            if (in_array('name', $this->getAttributes())){
+            if (in_array('name', $model->translatable)){
                 $slug = Utilities::slug($model->getTranslation('name', $language));
-            }else{
+            }elseif (in_array('title', $model->translatable)){
                 $slug = Utilities::slug($model->getTranslation('title', $language));
+            }else{
+                $slug = Utilities::slug(uniqid());
             }
             $count = static::where('slug', 'like', '%' . $slug . '%')->count();
             $model->slug = trim($slug . ($count ? "-" . ($count + 1) : ""), '-._?\\/');
