@@ -29,8 +29,8 @@
                 ])
 
                 @include('website::layouts.parts.page-title', [
-                    "title"       => $resource?->page_title ?? "",
-                    "description" => $resource?->page_description ?? ""
+                    "title"       => $resource_model?->page_title ?? $resource?->page_title ?? "",
+                    "description" => $resource_model?->page_description ?? $resource?->page_description ?? ""
                 ])
 
                 @include('website::cars.parts.models')
